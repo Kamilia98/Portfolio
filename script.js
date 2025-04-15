@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log(5);
     if (window.innerWidth <= 1200) {
       sidenav.style.transition = 'none';
-      openbtn.style.display = 'block';
+      openbtn.style.display = 'flex';
       sidenav.classList.add('hidden');
       openbtn.classList.add('active');
       openbtn.classList.add('open');

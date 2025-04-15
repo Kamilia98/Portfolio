@@ -212,11 +212,11 @@ p {
 
 #home.section {
   width: 100%;
-  background: url('./images/ED082438-7FFF-4B2A-93F1-96E105145F3A.gif') center / cover no-repeat;
+  background: url('./images/Header.gif') center / cover no-repeat;
   -o-background-size: cover;
-    -moz-background-size: cover;
-    -webkit-background-size:cover;
-    background-size: cover;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  background-size: cover;
   position: fixed;
   font-size: 25px;
   color: white;
@@ -928,9 +928,9 @@ footer.section {
 /* Button Styles */
 .openbtn {
   position: fixed;
-  display:flex;
-  justify-content:center;
-  align-items:center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   z-index: 5;
   top: 10px;
   right: 10px;
@@ -949,7 +949,7 @@ footer.section {
 
 .openbtn::after {
   content: '\00D7';
-  display:block;
+  display: block;
   font-size: 20px;
 }
 
@@ -1008,7 +1008,6 @@ footer.section {
   h1 {
     font-size: 1.5em;
   }
- 
 }
 
 /* Up to 750px */
