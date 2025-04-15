@@ -947,13 +947,13 @@ footer.section {
   -o-border-radius: 50%;
 }
 
-.openbtn::after {
+.openbtn span::after {
   content: '\00D7';
   display: block;
-  font-size: 20px;
+  font-size: 25px;
 }
 
-.openbtn.open::after {
+.openbtn.open span::after {
   content: '\2630';
   display: block;
 }
