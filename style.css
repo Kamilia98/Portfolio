@@ -184,6 +184,7 @@ p {
   flex-direction: column;
   gap: 24px;
   background-color: white;
+  position: relative;
 }
 
 /* Animation on scroll */
@@ -445,7 +446,20 @@ p {
 }
 
 /* Resume Section */
-
+#resume a.cv-btn {
+  text-decoration: none;
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  background-color: var(--primary-dark-color);
+  color: var(--primary-light-color);
+  padding: 16px;
+  border-radius: 24px;
+  -webkit-border-radius: 24px;
+  -moz-border-radius: 24px;
+  -ms-border-radius: 24px;
+  -o-border-radius: 24px;
+}
 #resume > p {
   width: 90%;
 }
@@ -986,9 +1000,7 @@ footer.section {
   h1 {
     font-size: 1.5em;
   }
-  h3 {
-    font-size: 0.9em;
-  }
+ 
 }
 
 /* Up to 750px */
