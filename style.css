@@ -949,11 +949,13 @@ footer.section {
 
 .openbtn::after {
   content: '\00D7';
+  display:block;
   font-size: 20px;
 }
 
 .openbtn.open::after {
   content: '\2630';
+  display: block;
 }
 
 /* ------- Icons styles ------- */
