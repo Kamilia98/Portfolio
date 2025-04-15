@@ -213,7 +213,10 @@ p {
 #home.section {
   width: 100%;
   background: url('./images/ED082438-7FFF-4B2A-93F1-96E105145F3A.gif') center / cover no-repeat;
-  background-attachment: fixed;
+  -o-background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size:cover;
+    background-size: cover;
   position: fixed;
   font-size: 25px;
   color: white;
