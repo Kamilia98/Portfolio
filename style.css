@@ -676,6 +676,10 @@ p {
     opacity var(--transition-duration) ease;
 }
 
+#portfolio .projects .project a:has(img) {
+  width: 100%;
+}
+
 #portfolio .projects .project:hover img {
   transform: scale(1.1);
   opacity: 0.8;
