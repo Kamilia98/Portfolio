@@ -113,7 +113,6 @@ document.addEventListener('DOMContentLoaded', () => {
    */
   function adjustLayout() {
     if (!sidenav || !openbtn || !main) return;
-    console.log(5);
     if (window.innerWidth <= 1200) {
       sidenav.style.transition = 'none';
       openbtn.style.display = 'flex';
