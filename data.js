@@ -129,21 +129,23 @@ const portfolioData = {
     education: [
       {
         degree: "Bachelor's in Computer and System Engineering",
-        period: "2019 - 2024",
+        period: "October 2019 - July 2024",
         institution: "Zagazig University",
         grade: "Grade: Excellent - 92.4%",
         rank: "Rank: 3<sup>rd</sup> in Class",
       },
       {
         degree: "ITI 9-Month Scholarship",
-        period: "2024 - Present",
+        period: "October 2024 - July 2025",
         track: "Track: Web & User Interface Development",
-        expectedGraduation: "Expected Graduation: July 2025",
       },
     ],
     experience: [
       {
-        title: "To be added",
+        title: "Full Stack Developer",
+        period: "July 2025 - Present",
+        company: "AIM Technologies",
+        location: "Maadi, Cairo, Egypt (Hybrid)",
         description: "",
       },
     ],

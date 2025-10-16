@@ -281,6 +281,17 @@ const PortfolioRenderer = {
                 <div class="line"></div>
                 <div class="content">
                   <div class="degree">${exp.title}</div>
+                  ${exp.period ? `<div class="date">${exp.period}</div>` : ""}
+                  ${
+                    exp.company
+                      ? `<div class="university">${exp.company}</div>`
+                      : ""
+                  }
+                  ${
+                    exp.location
+                      ? `<div class="grade">${exp.location}</div>`
+                      : ""
+                  }
                   ${exp.description ? `<p>${exp.description}</p>` : ""}
                 </div>
               </div>
