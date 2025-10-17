@@ -7,7 +7,7 @@ const portfolioData = {
   // Personal Information
   personal: {
     name: "Kamilia Ahmed",
-    role: "I'm a Frontend Developer",
+    role: "Software Engineer | Full Stack Developer",
     image: "./images/Profile.jpg",
     profileImage: "./images/Info-image.png",
     email: "kamiliaahmed01@gmail.com",
@@ -62,10 +62,11 @@ const portfolioData = {
 
   // About Section
   about: {
+    title: "About Me",
     description: [
-      "I'm a passionate <strong>Frontend Developer</strong> with a solid background in <strong>HTML, CSS, JavaScript</strong>, and modern frameworks. I recently earned my Computer Science degree from <strong>Zagazig University</strong>, graduating with excellence and top scores (92.47%).",
-      "I thrive on building clean, responsive, and interactive user interfaces. My journey includes hands-on experience with open-source platforms, crafting seamless UX, and integrating dynamic features that bring ideas to life.",
-      "Currently open to freelance opportunities and always ready to take on new challenges.",
+      "Software Engineer specializing in building modern, data-driven web applications. I graduated with <strong>Excellent distinction (92.47%)</strong> from <strong>Faculty of Engineering, Zagazig University</strong> and completed the intensive <strong>9-month ITI program</strong> in Web & User Interface Development.",
+      "Currently working as a <strong>Full Stack Developer at AIM Technologies</strong>, I'm building an <strong>AI-powered social media listening tool</strong> that collects and analyzes data from multiple social channels to deliver impactful insights. I create scalable solutions using <strong>React, Node.js, Nest.js</strong>, and modern frameworks, with focus on real-time data processing and intuitive analytics dashboards.",
+      "Passionate about leveraging technology and AI to solve complex problems and deliver exceptional user experiences.",
     ],
   },
 
@@ -117,27 +118,25 @@ const portfolioData = {
   // Resume Section
   resume: {
     summary: {
+      title: "Professional Summary",
       name: "Kamilia Ahmed",
       description:
-        'With a focus on web development, I bring a strong foundation in both front-end and back-end solutions. I hold a Bachelor\'s degree with an "Excellent" grade, achieving a 92.47% average. My expertise lies in developing fully functional, responsive websites tailored to meet client needs. I prioritize simplicity, functionality, and a seamless user experience in my work.',
-      contact: [
-        { label: "Location", value: "Cairo, Egypt" },
-        { label: "Phone", value: "(+20) 112452988" },
-        { label: "Email", value: "kamiliaahmed01@gmail.com" },
-      ],
+        "Software Engineer with expertise in modern JavaScript frameworks and full-stack development. Currently working as a Full Stack Developer at AIM Technologies, building AI-powered social media listening and insights platforms that collect and analyze data from multiple social channels. Delivering high-quality, data-driven web applications with focus on performance, scalability, and user experience. Graduated with Excellent distinction from Faculty of Engineering, Zagazig University and completed the intensive ITI program in Web & UI Development. Strong problem-solving skills with experience in real-time data processing, AI integration, and creating intuitive analytics dashboards.",
     },
     education: [
       {
         degree: "Bachelor's in Computer and System Engineering",
         period: "October 2019 - July 2024",
-        institution: "Zagazig University",
-        grade: "Grade: Excellent - 92.4%",
+        institution: "Faculty of Engineering, Zagazig University",
+        grade: "Grade: Excellent - 92.47%",
         rank: "Rank: 3<sup>rd</sup> in Class",
       },
       {
-        degree: "ITI 9-Month Scholarship",
+        degree: "ITI 9-Month Professional Program",
         period: "October 2024 - July 2025",
+        institution: "Information Technology Institute (ITI)",
         track: "Track: Web & User Interface Development",
+        status: "Graduated",
       },
     ],
     experience: [
@@ -146,7 +145,8 @@ const portfolioData = {
         period: "July 2025 - Present",
         company: "AIM Technologies",
         location: "Maadi, Cairo, Egypt (Hybrid)",
-        description: "",
+        description:
+          "Building and maintaining a comprehensive social media insights platform that collects and analyzes data from multiple social media channels. Developing a social media listening tool integrated with AI to extract impactful insights and actionable intelligence from social conversations. Working with modern JavaScript frameworks to create scalable, data-driven solutions that help businesses understand their digital presence and audience sentiment. Collaborating with cross-functional teams to implement real-time data processing, AI-powered analytics, and intuitive visualization dashboards.",
       },
     ],
   },
@@ -197,6 +197,9 @@ const portfolioData = {
 
   // Contact Information
   contact: {
+    title: "Get In Touch",
+    subtitle:
+      "Let's discuss your project. Available for freelance work and collaborations.",
     info: [
       {
         icon: "fa fa-solid fa-location-dot",
@@ -205,21 +208,33 @@ const portfolioData = {
       },
       {
         icon: "fa fa-solid fa-phone",
-        label: "Call me",
+        label: "Phone",
         value: "(+20)1124529888",
       },
       {
         icon: "fa fa-solid fa-envelope",
-        label: "Email me",
+        label: "Email",
         value: "kamiliaahmed01@gmail.com",
       },
     ],
   },
 
+  // Portfolio Section
+  portfolio: {
+    title: "Featured Projects",
+    subtitle:
+      "Selected projects demonstrating my expertise in frontend development, from healthcare systems to e-commerce platforms and email templates.",
+  },
+
+  // Testimonials Section
+  testimonials_section: {
+    title: "Client Feedback",
+    subtitle: "What clients say about working with me on Fiverr.",
+  },
+
   // Footer
   footer: {
     copyright: "© 2024 Kamilia Ahmed. All rights reserved.",
-    tagline: "Designed with passion and precision ♥",
   },
 };
 

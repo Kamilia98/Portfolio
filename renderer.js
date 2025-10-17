@@ -18,6 +18,7 @@ const PortfolioRenderer = {
     this.renderTestimonials();
     this.renderContact();
     this.renderFooter();
+    this.renderSectionHeaders();
   },
 
   /**
@@ -211,27 +212,19 @@ const PortfolioRenderer = {
     container.innerHTML = `
       <h2 class="section-title">Resume</h2>
       <a href="${cvBtn}" download class="cv-btn">
-        Download my CV
+        Download CV
       </a>
 
       <div class="parts">
         <!-- Summary Section -->
         <div class="part">
-          <h3>Summary</h3>
+          <h3>${summary.title || "Professional Summary"}</h3>
           <div class="steps">
             <div class="step">
               <div class="line"></div>
               <div class="content">
                 <div>${summary.name}</div>
                 <p>${summary.description}</p>
-                <ul class="contact-info">
-                  ${summary.contact
-                    .map(
-                      (item) =>
-                        `<li><strong>${item.label}:</strong> ${item.value}</li>`
-                    )
-                    .join("")}
-                </ul>
               </div>
             </div>
           </div>
@@ -257,6 +250,7 @@ const PortfolioRenderer = {
                   ${edu.grade ? `<div class="grade">${edu.grade}</div>` : ""}
                   ${edu.rank ? `<div class="rank">${edu.rank}</div>` : ""}
                   ${edu.track ? `<div class="track">${edu.track}</div>` : ""}
+                  ${edu.status ? `<div class="grade">${edu.status}</div>` : ""}
                   ${
                     edu.expectedGraduation
                       ? `<div class="expected-graduation">${edu.expectedGraduation}</div>`
@@ -382,11 +376,55 @@ const PortfolioRenderer = {
     const footer = document.querySelector("footer.section");
     if (!footer) return;
 
-    const { copyright, tagline } = this.data.footer;
+    const { copyright } = this.data.footer;
     footer.innerHTML = `
       <p>${copyright}</p>
-      <p>${tagline.replace("♥", "&hearts;")}</p>
     `;
+  },
+
+  /**
+   * Render section titles and subtitles
+   */
+  renderSectionHeaders() {
+    // About section
+    if (this.data.about.title) {
+      const aboutTitle = document.querySelector("#about .section-title");
+      if (aboutTitle) aboutTitle.textContent = this.data.about.title;
+    }
+
+    // Portfolio section
+    if (this.data.portfolio) {
+      const portfolioTitle = document.querySelector(
+        "#portfolio .section-title"
+      );
+      const portfolioSubtitle = document.querySelector("#portfolio > p");
+      if (portfolioTitle)
+        portfolioTitle.textContent = this.data.portfolio.title;
+      if (portfolioSubtitle)
+        portfolioSubtitle.textContent = this.data.portfolio.subtitle;
+    }
+
+    // Testimonials section
+    if (this.data.testimonials_section) {
+      const testimonialsTitle = document.querySelector(
+        "#testimonials .section-title"
+      );
+      const testimonialsSubtitle = document.querySelector("#testimonials > p");
+      if (testimonialsTitle)
+        testimonialsTitle.textContent = this.data.testimonials_section.title;
+      if (testimonialsSubtitle)
+        testimonialsSubtitle.textContent =
+          this.data.testimonials_section.subtitle;
+    }
+
+    // Contact section
+    if (this.data.contact) {
+      const contactTitle = document.querySelector("#contact .section-title");
+      const contactSubtitle = document.querySelector("#contact > p");
+      if (contactTitle) contactTitle.textContent = this.data.contact.title;
+      if (contactSubtitle)
+        contactSubtitle.textContent = this.data.contact.subtitle;
+    }
   },
 };
 

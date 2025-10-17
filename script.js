@@ -286,7 +286,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /**
-   * Add Parallax Effect to Hero Section
+   * Add Subtle Parallax Effect to Hero Section
    */
   function initParallaxEffect() {
     const hero = document.getElementById("home");
@@ -294,188 +294,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
     window.addEventListener("scroll", () => {
       const scrolled = window.pageYOffset;
-      const parallaxSpeed = 0.5;
-      if (hero) {
+      const parallaxSpeed = 0.3; // Reduced for subtler effect
+      if (hero && scrolled < window.innerHeight) {
         hero.style.transform = `translateY(${scrolled * parallaxSpeed}px)`;
       }
     });
   }
 
   /**
-   * Add Cursor Trail Effect (Optional - can be disabled)
-   */
-  function initCursorEffect() {
-    const cursor = document.createElement("div");
-    cursor.className = "cursor-trail";
-    cursor.style.cssText = `
-      position: fixed;
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background: rgba(76, 37, 20, 0.3);
-      pointer-events: none;
-      z-index: 9999;
-      transition: transform 0.2s ease;
-      display: none;
-    `;
-    document.body.appendChild(cursor);
-
-    // Show cursor trail only on desktop
-    if (window.innerWidth > 1024) {
-      cursor.style.display = "block";
-
-      document.addEventListener("mousemove", (e) => {
-        cursor.style.left = e.clientX - 10 + "px";
-        cursor.style.top = e.clientY - 10 + "px";
-      });
-
-      // Enlarge cursor on hover over interactive elements
-      document
-        .querySelectorAll("a, button, input, textarea, .project")
-        .forEach((el) => {
-          el.addEventListener("mouseenter", () => {
-            cursor.style.transform = "scale(2)";
-            cursor.style.background = "rgba(76, 37, 20, 0.5)";
-          });
-          el.addEventListener("mouseleave", () => {
-            cursor.style.transform = "scale(1)";
-            cursor.style.background = "rgba(76, 37, 20, 0.3)";
-          });
-        });
-    }
-  }
-
-  /**
-   * Add Floating Particles Background (Optional)
-   */
-  function initParticles() {
-    const hero = document.getElementById("home");
-    if (!hero) return;
-
-    const particlesContainer = document.createElement("div");
-    particlesContainer.className = "particles";
-    particlesContainer.style.cssText = `
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      z-index: 1;
-      pointer-events: none;
-    `;
-
-    // Create particles
-    for (let i = 0; i < 30; i++) {
-      const particle = document.createElement("div");
-      particle.className = "particle";
-      particle.style.cssText = `
-        position: absolute;
-        width: ${Math.random() * 5 + 2}px;
-        height: ${Math.random() * 5 + 2}px;
-        background: rgba(255, 255, 255, ${Math.random() * 0.5 + 0.2});
-        border-radius: 50%;
-        top: ${Math.random() * 100}%;
-        left: ${Math.random() * 100}%;
-        animation: floatParticle ${Math.random() * 10 + 10}s linear infinite;
-        animation-delay: ${Math.random() * 5}s;
-      `;
-      particlesContainer.appendChild(particle);
-    }
-
-    hero.insertBefore(particlesContainer, hero.firstChild);
-
-    // Add particle animation
-    const style = document.createElement("style");
-    style.textContent = `
-      @keyframes floatParticle {
-        0% {
-          transform: translateY(0) translateX(0);
-          opacity: 0;
-        }
-        10% {
-          opacity: 1;
-        }
-        90% {
-          opacity: 1;
-        }
-        100% {
-          transform: translateY(-100vh) translateX(${
-            Math.random() * 100 - 50
-          }px);
-          opacity: 0;
-        }
-      }
-    `;
-    document.head.appendChild(style);
-  }
-
-  /**
-   * Add Loading Animation
-   */
-  function initLoadingAnimation() {
-    const loader = document.createElement("div");
-    loader.className = "page-loader";
-    loader.style.cssText = `
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: var(--primary-dark-color);
-      z-index: 99999;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      transition: opacity 0.5s ease, visibility 0.5s ease;
-    `;
-
-    loader.innerHTML = `
-      <div style="text-align: center; color: white;">
-        <div class="spinner" style="
-          width: 50px;
-          height: 50px;
-          border: 5px solid rgba(255, 255, 255, 0.3);
-          border-top-color: white;
-          border-radius: 50%;
-          animation: spin 1s linear infinite;
-          margin: 0 auto 20px;
-        "></div>
-        <h3>Loading...</h3>
-      </div>
-    `;
-
-    document.body.prepend(loader);
-
-    // Add spinner animation
-    const style = document.createElement("style");
-    style.textContent = `
-      @keyframes spin {
-        to { transform: rotate(360deg); }
-      }
-    `;
-    document.head.appendChild(style);
-
-    // Hide loader after page loads
-    window.addEventListener("load", () => {
-      setTimeout(() => {
-        loader.style.opacity = "0";
-        loader.style.visibility = "hidden";
-        setTimeout(() => loader.remove(), 500);
-      }, 500);
-    });
-  }
-
-  /**
    * Initialize
    */
-  initLoadingAnimation();
   initTypingEffect();
   initScrollFadeEffect();
   initSmoothScroll();
   initParallaxEffect();
-  initCursorEffect();
-  initParticles();
   adjustLayout();
   handleContactForm();
   handleProjectFiltering();

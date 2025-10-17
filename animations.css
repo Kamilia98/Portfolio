@@ -1,17 +1,17 @@
 /**
- * Advanced Animations for Portfolio
- * Modern, smooth, and eye-catching effects
+ * Simplified and Smooth Animations for Portfolio
+ * Modern, subtle, and performance-optimized effects
  */
 
 /* ============================================
    KEYFRAME ANIMATIONS
    ============================================ */
 
-/* Fade in from bottom */
+/* Fade in from bottom - simplified */
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -19,11 +19,11 @@
   }
 }
 
-/* Fade in from left */
+/* Fade in from left - simplified */
 @keyframes fadeInLeft {
   from {
     opacity: 0;
-    transform: translateX(-30px);
+    transform: translateX(-20px);
   }
   to {
     opacity: 1;
@@ -31,11 +31,11 @@
   }
 }
 
-/* Fade in from right */
+/* Fade in from right - simplified */
 @keyframes fadeInRight {
   from {
     opacity: 0;
-    transform: translateX(30px);
+    transform: translateX(20px);
   }
   to {
     opacity: 1;
@@ -43,11 +43,11 @@
   }
 }
 
-/* Scale in */
+/* Scale in - simplified */
 @keyframes scaleIn {
   from {
     opacity: 0;
-    transform: scale(0.9);
+    transform: scale(0.95);
   }
   to {
     opacity: 1;
@@ -55,128 +55,56 @@
   }
 }
 
-/* Bounce in */
-@keyframes bounceIn {
-  0% {
-    opacity: 0;
-    transform: scale(0.3);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.05);
-  }
-  70% {
-    transform: scale(0.9);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-
-/* Slide down */
-@keyframes slideDown {
+/* Fade in simple */
+@keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(-20px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
   }
 }
 
-/* Pulse animation */
+/* Pulse animation - subtle */
 @keyframes pulse {
-  0% {
-    transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(76, 37, 20, 0.7);
-  }
-  50% {
-    transform: scale(1.05);
-    box-shadow: 0 0 0 10px rgba(76, 37, 20, 0);
-  }
+  0%,
   100% {
     transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(76, 37, 20, 0);
+  }
+  50% {
+    transform: scale(1.02);
   }
 }
 
-/* Float animation */
+/* Float animation - subtle */
 @keyframes float {
   0%,
   100% {
     transform: translateY(0px);
   }
   50% {
-    transform: translateY(-10px);
+    transform: translateY(-5px);
   }
 }
 
-/* Shimmer effect */
+/* Shimmer effect - subtle */
 @keyframes shimmer {
   0% {
-    background-position: -1000px 0;
+    background-position: -200% 0;
   }
   100% {
-    background-position: 1000px 0;
+    background-position: 200% 0;
   }
 }
 
-/* Glow pulse */
-@keyframes glowPulse {
+/* Gradient animation - subtle */
+@keyframes gradientShift {
   0%,
   100% {
-    box-shadow: 0 0 5px rgba(76, 37, 20, 0.5), 0 0 10px rgba(76, 37, 20, 0.3);
-  }
-  50% {
-    box-shadow: 0 0 20px rgba(76, 37, 20, 0.8), 0 0 30px rgba(76, 37, 20, 0.6);
-  }
-}
-
-/* Rotate subtle */
-@keyframes rotateSubtle {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* Gradient animation */
-@keyframes gradientShift {
-  0% {
     background-position: 0% 50%;
   }
   50% {
     background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-/* Wave animation */
-@keyframes wave {
-  0%,
-  100% {
-    transform: rotate(0deg);
-  }
-  10%,
-  30% {
-    transform: rotate(14deg);
-  }
-  20% {
-    transform: rotate(-8deg);
-  }
-  40% {
-    transform: rotate(-4deg);
-  }
-  50% {
-    transform: rotate(10deg);
-  }
-  60% {
-    transform: rotate(0deg);
   }
 }
 
@@ -192,15 +120,14 @@
   }
 }
 
-/* Slide from left staggered */
-@keyframes slideFromLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-50px);
+/* Border blink - simplified */
+@keyframes blink-border {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(233, 69, 96, 0);
   }
-  to {
-    opacity: 1;
-    transform: translateX(0);
+  50% {
+    box-shadow: 0 0 0 3px rgba(233, 69, 96, 0.3);
   }
 }
 
@@ -213,7 +140,7 @@
   overflow: hidden;
 }
 
-/* Animated background overlay */
+/* Subtle animated background overlay */
 #home.section::before {
   content: "";
   position: absolute;
@@ -222,28 +149,28 @@
   right: 0;
   bottom: 0;
   background: linear-gradient(
-    45deg,
-    rgba(76, 37, 20, 0.3),
-    rgba(118, 68, 53, 0.3),
-    rgba(76, 37, 20, 0.3)
+    135deg,
+    rgba(26, 26, 46, 0.4),
+    rgba(15, 52, 96, 0.4),
+    rgba(233, 69, 96, 0.3)
   );
-  background-size: 400% 400%;
-  animation: gradientShift 15s ease infinite;
+  background-size: 200% 200%;
+  animation: gradientShift 10s ease infinite;
   z-index: 1;
 }
 
 #home.section header {
   position: relative;
   z-index: 2;
-  animation: fadeInUp 1s ease-out 0.3s both;
+  animation: fadeInUp 0.6s ease-out 0.2s both;
 }
 
 #home.section #name {
-  animation: fadeInUp 1s ease-out 0.5s both;
+  animation: fadeInUp 0.6s ease-out 0.4s both;
 }
 
 #home.section #role {
-  animation: fadeInUp 1s ease-out 0.7s both;
+  animation: fadeInUp 0.6s ease-out 0.6s both;
 }
 
 /* ============================================
@@ -251,46 +178,44 @@
    ============================================ */
 
 #sidenav .my-img img {
-  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 #sidenav .my-img img:hover {
-  transform: scale(1.1) rotate(5deg);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 /* Staggered social media icons animation */
 #sidenav .social-media a {
-  animation: bounceIn 0.6s ease-out both;
-  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  animation: fadeIn 0.4s ease-out both;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 #sidenav .social-media a:nth-child(1) {
   animation-delay: 0.1s;
 }
 #sidenav .social-media a:nth-child(2) {
-  animation-delay: 0.2s;
+  animation-delay: 0.15s;
 }
 #sidenav .social-media a:nth-child(3) {
-  animation-delay: 0.3s;
+  animation-delay: 0.2s;
 }
 #sidenav .social-media a:nth-child(4) {
-  animation-delay: 0.4s;
+  animation-delay: 0.25s;
 }
 #sidenav .social-media a:nth-child(5) {
-  animation-delay: 0.5s;
+  animation-delay: 0.3s;
 }
 
 #sidenav .social-media a:hover {
-  transform: translateY(-5px) scale(1.2);
-  filter: brightness(1.2);
+  transform: translateY(-3px);
 }
 
-/* Navigation links hover effect */
+/* Navigation links hover effect - simplified */
 #sidenav .links a {
   position: relative;
-  overflow: hidden;
+  transition: all 0.25s ease;
 }
 
 #sidenav .links a::before {
@@ -300,8 +225,8 @@
   bottom: 0;
   width: 3px;
   height: 0;
-  background: var(--white-color);
-  transition: height 0.3s ease;
+  background: var(--highlight-color);
+  transition: height 0.25s ease;
 }
 
 #sidenav .links a:hover::before,
@@ -314,32 +239,12 @@
    ============================================ */
 
 .section {
-  animation: fadeInUp 0.8s ease-out both;
-}
-
-/* Staggered section animations */
-#about {
-  animation-delay: 0.1s;
-}
-#skills {
-  animation-delay: 0.2s;
-}
-#resume {
-  animation-delay: 0.3s;
-}
-#portfolio {
-  animation-delay: 0.4s;
-}
-#testimonials {
-  animation-delay: 0.5s;
-}
-#contact {
-  animation-delay: 0.6s;
+  animation: fadeInUp 0.5s ease-out both;
 }
 
 /* Section title underline animation */
 .section-title::after {
-  animation: slideFromLeft 0.6s ease-out 0.3s both;
+  animation: fadeInLeft 0.4s ease-out 0.2s both;
   transform-origin: left;
 }
 
@@ -348,65 +253,44 @@
    ============================================ */
 
 .skills .skill {
-  animation: scaleIn 0.5s ease-out both;
-  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  position: relative;
-  overflow: hidden;
-}
-
-.skills .skill::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
-  transform: translate(-50%, -50%);
-  transition: width 0.6s, height 0.6s;
-}
-
-.skills .skill:hover::before {
-  width: 300px;
-  height: 300px;
+  animation: scaleIn 0.3s ease-out both;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .skills .skill:hover {
-  transform: translateY(-5px) scale(1.05);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
 }
 
-/* Staggered skill animations */
+/* Staggered skill animations - reduced delays */
 .skills .skill:nth-child(1) {
   animation-delay: 0.05s;
 }
 .skills .skill:nth-child(2) {
-  animation-delay: 0.1s;
+  animation-delay: 0.08s;
 }
 .skills .skill:nth-child(3) {
-  animation-delay: 0.15s;
+  animation-delay: 0.11s;
 }
 .skills .skill:nth-child(4) {
-  animation-delay: 0.2s;
+  animation-delay: 0.14s;
 }
 .skills .skill:nth-child(5) {
-  animation-delay: 0.25s;
+  animation-delay: 0.17s;
 }
 .skills .skill:nth-child(6) {
-  animation-delay: 0.3s;
+  animation-delay: 0.2s;
 }
 .skills .skill:nth-child(7) {
-  animation-delay: 0.35s;
+  animation-delay: 0.23s;
 }
 .skills .skill:nth-child(8) {
-  animation-delay: 0.4s;
+  animation-delay: 0.26s;
 }
 .skills .skill:nth-child(9) {
-  animation-delay: 0.45s;
+  animation-delay: 0.29s;
 }
 .skills .skill:nth-child(10) {
-  animation-delay: 0.5s;
+  animation-delay: 0.32s;
 }
 
 /* ============================================
@@ -414,9 +298,8 @@
    ============================================ */
 
 .project {
-  animation: scaleIn 0.6s ease-out both;
-  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  position: relative;
+  animation: scaleIn 0.4s ease-out both;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .project::before {
@@ -428,11 +311,11 @@
   bottom: 0;
   background: linear-gradient(
     135deg,
-    rgba(76, 37, 20, 0) 0%,
-    rgba(76, 37, 20, 0.8) 100%
+    rgba(15, 52, 96, 0) 0%,
+    rgba(15, 52, 96, 0.7) 100%
   );
   opacity: 0;
-  transition: opacity 0.4s ease;
+  transition: opacity 0.3s ease;
   z-index: 1;
   pointer-events: none;
 }
@@ -442,35 +325,35 @@
 }
 
 .project:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  transform: translateY(-5px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
 }
 
 .project img {
-  transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .project:hover img {
-  transform: scale(1.15) rotate(2deg);
+  transform: scale(1.05);
 }
 
 .project a:first-child {
   z-index: 2;
-  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .project:hover a:first-child {
-  transform: translate(-50%, -50%) scale(1.3) rotate(360deg);
+  transform: translate(-50%, -50%) scale(1.2);
 }
 
 .projectTitle {
-  transition: all 0.4s ease;
+  transition: all 0.3s ease;
   z-index: 2;
 }
 
 .project:hover .projectTitle {
   opacity: 1;
-  transform: translateY(-10px);
+  transform: translateY(-5px);
 }
 
 /* Staggered project animations */
@@ -478,19 +361,19 @@
   animation-delay: 0.1s;
 }
 .project:nth-child(2) {
-  animation-delay: 0.2s;
+  animation-delay: 0.15s;
 }
 .project:nth-child(3) {
-  animation-delay: 0.3s;
+  animation-delay: 0.2s;
 }
 .project:nth-child(4) {
-  animation-delay: 0.4s;
+  animation-delay: 0.25s;
 }
 .project:nth-child(5) {
-  animation-delay: 0.5s;
+  animation-delay: 0.3s;
 }
 .project:nth-child(6) {
-  animation-delay: 0.6s;
+  animation-delay: 0.35s;
 }
 
 /* ============================================
@@ -498,7 +381,7 @@
    ============================================ */
 
 .step {
-  animation: fadeInLeft 0.8s ease-out both;
+  animation: fadeInLeft 0.5s ease-out both;
 }
 
 .step:nth-child(1) {
@@ -515,12 +398,12 @@
 }
 
 .step .line::before {
-  animation: pulse 2s ease-in-out infinite;
+  transition: all 0.3s ease;
 }
 
 .step:hover .line::before {
-  animation: pulse 1s ease-in-out infinite;
-  background: var(--white-color);
+  background: var(--highlight-color);
+  transform: scale(1.2);
 }
 
 /* ============================================
@@ -528,32 +411,31 @@
    ============================================ */
 
 .testimonal {
-  animation: fadeInUp 0.8s ease-out both;
-  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  animation: fadeInUp 0.5s ease-out both;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .testimonal:nth-child(1) {
-  animation-delay: 0.2s;
+  animation-delay: 0.1s;
 }
 .testimonal:nth-child(2) {
-  animation-delay: 0.4s;
+  animation-delay: 0.2s;
 }
 
 .testimonal:hover {
-  transform: translateY(-10px);
+  transform: translateY(-5px);
 }
 
 .testimonal .content {
   transition: all 0.3s ease;
-  position: relative;
 }
 
 .testimonal:hover .content {
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .testimonal .icon {
-  animation: float 3s ease-in-out infinite;
+  animation: float 4s ease-in-out infinite;
 }
 
 /* ============================================
@@ -561,89 +443,66 @@
    ============================================ */
 
 .contact-info {
-  animation: fadeInLeft 0.6s ease-out both;
-  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  animation: fadeInLeft 0.4s ease-out both;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .contact-info:nth-child(1) {
   animation-delay: 0.1s;
 }
 .contact-info:nth-child(2) {
-  animation-delay: 0.2s;
+  animation-delay: 0.15s;
 }
 .contact-info:nth-child(3) {
-  animation-delay: 0.3s;
+  animation-delay: 0.2s;
 }
 
 .contact-info:hover {
-  transform: translateX(10px);
+  transform: translateX(5px);
 }
 
 /* Form animations */
 .form-input {
-  animation: fadeInRight 0.6s ease-out both;
+  animation: fadeInRight 0.4s ease-out both;
 }
 
 .form-input:nth-child(1) {
   animation-delay: 0.1s;
 }
 .form-input:nth-child(2) {
-  animation-delay: 0.2s;
+  animation-delay: 0.15s;
 }
 .form-input:nth-child(3) {
-  animation-delay: 0.3s;
+  animation-delay: 0.2s;
 }
 
 input,
 textarea {
-  transition: all 0.3s ease;
-  position: relative;
+  transition: all 0.25s ease;
 }
 
 input:focus,
 textarea:focus {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
 }
 
-/* Button animations */
+/* Button animations - simplified */
 button,
 .cv-btn {
-  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
 }
 
-button::before,
-.cv-btn::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.2);
-  transform: translate(-50%, -50%);
-  transition: width 0.6s, height 0.6s;
-}
-
-button:hover::before,
-.cv-btn:hover::before {
-  width: 300px;
-  height: 300px;
-}
-
 button:hover,
 .cv-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(76, 37, 20, 0.4);
+  transform: translateY(-2px);
 }
 
 button:active,
 .cv-btn:active {
-  transform: translateY(-1px);
-  box-shadow: 0 5px 15px rgba(76, 37, 20, 0.4);
+  transform: translateY(0);
 }
 
 /* ============================================
@@ -651,28 +510,46 @@ button:active,
    ============================================ */
 
 .openbtn {
-  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  animation: bounceIn 0.8s ease-out 0.5s both;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: fadeIn 0.5s ease-out 0.3s both;
 }
 
 .openbtn:hover {
-  transform: scale(1.1) rotate(90deg);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-.openbtn.open:hover {
-  transform: scale(1.1) rotate(-90deg);
+/* ============================================
+   ABOUT SECTION ENHANCED ANIMATIONS
+   ============================================ */
+
+#about .summary img {
+  animation: float 8s ease-in-out infinite;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#about .summary img:hover {
+  animation-play-state: paused;
+  transform: scale(1.05);
+}
+
+#about .summary .info ul li div {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#about.show .summary .info ul li:hover div {
+  transform: translateX(-5%) scale(1.02) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 /* ============================================
    SCROLL ANIMATIONS
    ============================================ */
 
-/* Add this class via JavaScript when element enters viewport */
 .animate-on-scroll {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 .animate-on-scroll.animated {
@@ -681,51 +558,20 @@ button:active,
 }
 
 /* ============================================
-   ABOUT SECTION ENHANCED ANIMATIONS
-   ============================================ */
-
-#about .summary img {
-  animation: float 6s ease-in-out infinite;
-  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-}
-
-#about .summary img:hover {
-  animation-play-state: paused;
-  transform: scale(1.1) rotate(5deg);
-}
-
-#about .summary .info ul li div {
-  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-}
-
-#about.show .summary .info ul li:hover div {
-  transform: translateX(-5%) scale(1.05) !important;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-/* ============================================
    LOADING ANIMATIONS
    ============================================ */
 
-@keyframes skeleton {
-  0% {
-    background-position: -200px 0;
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
   }
-  100% {
-    background-position: calc(200px + 100%) 0;
-  }
-}
-
-.skeleton {
-  background: linear-gradient(90deg, #f0f0f0 0px, #f8f8f8 40px, #f0f0f0 80px);
-  background-size: 200px 100%;
-  animation: skeleton 1.2s ease-in-out infinite;
 }
 
 /* ============================================
    RESPONSIVE ANIMATIONS
    ============================================ */
 
+/* Respect user's motion preferences */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -736,17 +582,44 @@ button:active,
   }
 }
 
-/* Reduce animation complexity on mobile */
+/* Simplify animations on mobile for better performance */
 @media (max-width: 768px) {
   .project:hover img {
-    transform: scale(1.05);
+    transform: scale(1.02);
   }
 
   .skills .skill:hover {
-    transform: translateY(-3px) scale(1.02);
+    transform: translateY(-1px);
   }
 
   #sidenav .my-img img:hover {
-    transform: scale(1.05) rotate(0deg);
+    transform: scale(1.02);
   }
+
+  /* Disable float animations on mobile */
+  #about .summary img,
+  .testimonal .icon {
+    animation: none;
+  }
+}
+
+/* ============================================
+   PERFORMANCE OPTIMIZATIONS
+   ============================================ */
+
+/* Use will-change for better performance on animated elements */
+.project,
+.skill,
+button,
+.cv-btn,
+.contact-info {
+  will-change: transform;
+}
+
+/* Remove will-change after animation completes */
+.project:hover,
+.skill:hover,
+button:hover,
+.cv-btn:hover {
+  will-change: auto;
 }
