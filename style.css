@@ -1,6 +1,8 @@
 /* General Reset */
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
 }
 
 body {
@@ -12,6 +14,29 @@ body {
   background: var(--primary-light-color);
   line-height: 1.6;
   font-size: var(--font-size-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Better touch interactions */
+a,
+button,
+input,
+textarea,
+select {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Smooth scrolling for touch devices */
+* {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Ensure images are responsive */
+img {
+  max-width: 100%;
+  height: auto;
 }
 
 h1,
@@ -146,7 +171,7 @@ p {
 }
 
 #sidenav .social-media a {
-  color:var(--gray-color);
+  color: var(--gray-color);
   font-size: 1.5rem;
   text-decoration: none;
   transition: all var(--transition-duration) ease;
@@ -279,40 +304,43 @@ p {
 
 #about .information {
   display: flex;
-  gap: var(--spacing-xl);
-  align-items: center;
+  gap: var(--spacing-2xl);
+  align-items: flex-start;
 }
 
 #about .description {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-lg);
-  width: 70%;
+  flex: 1;
   line-height: 1.8;
 }
 
 #about .summary {
-  width: 100%;
+  position: relative;
+  width: 450px;
+  flex-shrink: 0;
   display: flex;
   align-items: center;
-  gap: var(--spacing-lg);
+  justify-content: center;
+  cursor: pointer;
 }
 
 #about .summary img {
-  align-self: center;
-  width: 300px;
-  height: 300px;
+  width: 400px;
+  height: 400px;
   object-fit: cover;
   border-radius: 50%;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  -ms-border-radius: 50%;
-  -o-border-radius: 50%;
-  border: 5px solid transparent;
-  animation: blink-border 2s infinite;
-  -webkit-animation: blink-border 2s infinite;
-  z-index: 999;
-  cursor: pointer;
+  border: 5px solid var(--primary-dark-color);
+  box-shadow: var(--shadow-lg);
+  transition: all var(--transition-slow) ease;
+  position: relative;
+  z-index: 2;
+}
+
+/* Hover effect - keep image sharp, slight scale */
+#about .summary:hover img {
+  transform: scale(1.05);
 }
 @keyframes blink-border {
   0% {
@@ -1019,60 +1047,253 @@ footer.section {
 
 /* Base Responsive Design - Mobile First */
 
-/* Up to 600px */
+/* Up to 600px - Small Mobile */
 @media (max-width: 600px) {
+  /* General Layout */
+  body {
+    font-size: 0.9rem;
+  }
+
+  #main .section {
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-sm);
+    border-radius: var(--radius-md);
+  }
+
+  /* Typography */
+  h1 {
+    font-size: 1.75rem;
+    line-height: 1.2;
+  }
+
+  h2,
+  .section-title {
+    font-size: 1.5rem !important;
+  }
+
+  h3 {
+    font-size: 1.25rem;
+  }
+
+  h4 {
+    font-size: 1.1rem;
+  }
+
+  p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  /* Hero Section */
+  #home.section {
+    padding: var(--spacing-lg);
+    font-size: 1rem;
+  }
+
+  #home.section header {
+    height: auto;
+    gap: var(--spacing-sm);
+  }
+
+  /* About Section */
+  #about .summary {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-lg);
+  }
+
+  #about .summary img {
+    width: 150px;
+    height: 150px;
+  }
+
+  #about .summary .info ul {
+    padding: var(--spacing-lg);
+    gap: var(--spacing-sm);
+  }
+
+  #about .summary .info ul li div {
+    font-size: 0.85rem;
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+
+  /* Skills Section */
+  .skills .skill {
+    font-size: 0.85rem;
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+
+  /* Resume Section */
+  #resume a.cv-btn {
+    position: static;
+    display: inline-block;
+    margin-bottom: var(--spacing-md);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    font-size: 0.9rem;
+    text-align: center;
+  }
+
+  #resume .parts .part .steps .step .content {
+    font-size: 0.9rem;
+  }
+
+  /* Projects */
   #services .services,
   #portfolio .projects {
     grid-template-columns: 1fr;
+    gap: var(--spacing-md);
   }
-  #about .summary {
-    font-size: x-small;
-  }
-  #about .summary img {
-    width: 110px;
-    height: 110px;
-  }
-  body {
-    font-size: smaller;
-  }
-  h1 {
-    font-size: 1.5em;
-  }
-}
 
-/* Up to 750px */
-@media (max-width: 750px) {
+  #portfolio .projects .project img {
+    height: 250px;
+  }
+
+  /* Contact Form */
+  #contact .cards .card {
+    padding: var(--spacing-lg);
+  }
+
+  #contact .cards .card form button {
+    width: 100%;
+    padding: var(--spacing-md);
+  }
+
+  #contact .cards .card .contact-info {
+    gap: var(--spacing-md);
+  }
+
+  /* Touch Targets - Minimum 44px */
   .openbtn {
-    display: block;
+    width: 48px;
+    height: 48px;
+    top: var(--spacing-sm);
+    right: var(--spacing-sm);
+  }
+
+  #sidenav .links a {
+    padding: var(--spacing-md) 0;
+    font-size: 1rem;
+  }
+
+  #sidenav .social-media a {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  /* Testimonials */
+  .testimonal .content {
+    padding: var(--spacing-md);
+    font-size: 0.9rem;
+  }
+
+  /* Footer */
+  footer.section {
+    padding: var(--spacing-lg);
+    font-size: 0.85rem;
+  }
+
+  /* Form Inputs - Prevent zoom on iOS */
+  #contact .cards .card form .form-input input,
+  textarea {
+    font-size: 16px !important; /* iOS won't zoom if >= 16px */
+  }
+
+  /* Better button spacing */
+  #contact .cards .card form button {
+    min-height: 48px;
+  }
+
+  /* Sidebar width */
+  #sidenav {
+    width: 280px;
   }
 }
 
-/* Up to 850px */
+/* Up to 750px - Mobile & Small Tablets */
+@media (max-width: 750px) {
+  /* Show hamburger menu */
+  .openbtn {
+    display: flex;
+  }
+
+  /* Adjust main content width */
+  #main {
+    width: 100% !important;
+  }
+
+  /* Better spacing for sections */
+  #main .section {
+    padding: var(--spacing-xl);
+  }
+
+  /* Skills layout */
+  .skills {
+    justify-content: center;
+  }
+
+  /* Project cards */
+  #portfolio .projects .project {
+    margin-bottom: var(--spacing-md);
+  }
+}
+
+/* Up to 850px - Tablets */
 @media (max-width: 850px) {
+  /* Testimonials */
   #testimonials .testimonials {
     grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
   }
+
+  /* About Section */
   .information {
     flex-direction: column;
-    gap: 10px;
+    gap: var(--spacing-lg);
   }
+
   #about .description {
     width: 100%;
   }
-  #skills .skills-group {
-    grid-template-columns: repeat(1, 1fr);
+
+  #about .summary {
+    width: 100%;
+    align-self: center;
   }
 
+  #about .summary img {
+    width: 300px;
+    height: 300px;
+  }
+
+  /* Skills */
+  #skills .skills-group {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+
+  /* Contact Form */
   form .form-inputs {
     flex-direction: column;
-    gap: 10px;
+    gap: var(--spacing-lg);
   }
+
   #contact .cards {
     grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
   }
+
   #contact .cards .card,
   #contact .cards .card form .form-inputs .form-input {
     width: 100%;
+  }
+
+  /* Resume CV button */
+  #resume a.cv-btn {
+    position: relative;
+    top: auto;
+    right: auto;
+    margin-bottom: var(--spacing-lg);
+    text-align: center;
   }
 }
 
@@ -1086,11 +1307,50 @@ footer.section {
   }
 }
 
-/* Above 1024px */
+/* Above 1024px - Desktop */
 @media (min-width: 1024px) {
   #services .services,
   #portfolio .projects {
     grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Mobile Landscape - Better handling */
+@media (max-width: 850px) and (orientation: landscape) {
+  #home.section {
+    padding: var(--spacing-lg) var(--spacing-2xl);
+  }
+
+  #home.section header {
+    gap: var(--spacing-xs);
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  #main .section {
+    padding: var(--spacing-lg);
+  }
+}
+
+/* Very Small Screens - Extra optimization */
+@media (max-width: 375px) {
+  #main .section {
+    padding: var(--spacing-md);
+  }
+
+  .section-title {
+    font-size: 1.25rem !important;
+  }
+
+  #about .summary img {
+    width: 120px;
+    height: 120px;
+  }
+
+  #portfolio .projects .project img {
+    height: 200px;
   }
 }
 

@@ -9,7 +9,7 @@ const portfolioData = {
     name: "Kamilia Ahmed",
     role: "Software Engineer | Full Stack Developer",
     image: "./images/Profile.jpg",
-    profileImage: "./images/Info-image.png",
+    profileImage: "./images/Profile.jpg",
     email: "kamiliaahmed01@gmail.com",
     phone: "(+20)1124529888",
     location: "Cairo, Egypt",

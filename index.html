@@ -2,7 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta
       name="description"
       content="Kamilia Ahmed - Software Engineer & Full Stack Developer building AI-powered social media listening tools at AIM Technologies. Specializing in React, Next.js, Angular, and data-driven web applications."
@@ -25,6 +28,9 @@
 
     <!-- Advanced Animations -->
     <link rel="stylesheet" href="animations.css" />
+
+    <!-- About Section Hover Styles -->
+    <link rel="stylesheet" href="about-hover.css" />
 
     <!-- Portfolio Data -->
     <script src="data.js"></script>
@@ -55,6 +61,14 @@
   </head>
 
   <body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+      <div class="loader">
+        <div class="spinner"></div>
+        <p class="loading-text">Loading...</p>
+      </div>
+    </div>
+
     <div id="main-container">
       <nav id="sidenav" class="sidenav hidden" aria-label="Side navigation">
         <div class="identity">
@@ -175,9 +189,7 @@
               <!-- Content rendered from data.js -->
             </div>
             <div class="summary">
-              <div>
-                <img src="./images/Info-image.png" alt="" />
-              </div>
+              <img src="./images/Profile.jpg" alt="Kamilia Ahmed" />
               <div class="info">
                 <ul>
                   <!-- Content rendered from data.js -->

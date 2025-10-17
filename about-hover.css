@@ -1,0 +1,327 @@
+/* About Section - Enhanced Image Hover Effect with Sliding Badges */
+
+/* Blur backdrop overlay - covers entire page */
+body::after {
+  content: "" !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  background: linear-gradient(
+    135deg,
+    rgba(26, 26, 46, 0.7),
+    rgba(15, 52, 96, 0.7)
+  ) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  z-index: 100 !important;
+}
+
+body.blur-active::after {
+  opacity: 1 !important;
+}
+
+/* Bring entire about section forward above blur */
+#about {
+  position: relative !important;
+  z-index: 101 !important;
+}
+
+/* Keep about section description sharp */
+#about .description {
+  position: relative !important;
+  z-index: 101 !important;
+  filter: none !important;
+  -webkit-filter: none !important;
+}
+
+/* Bring entire summary container forward */
+#about .summary {
+  position: relative !important;
+  z-index: 102 !important;
+}
+
+/* Keep image sharp with enhanced hover effect */
+#about .summary img {
+  position: relative !important;
+  z-index: 104 !important;
+  filter: none !important;
+  -webkit-filter: none !important;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+  cursor: pointer !important;
+}
+
+/* Add subtle pulse animation to hint interactivity */
+#about .summary img {
+  animation: subtle-pulse 3s ease-in-out infinite !important;
+}
+
+@keyframes subtle-pulse {
+  0%,
+  100% {
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1), 0 0 0 0 rgba(233, 69, 96, 0) !important;
+  }
+  50% {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15),
+      0 0 0 10px rgba(233, 69, 96, 0.1) !important;
+  }
+}
+
+/* Stop pulse on hover */
+#about .summary:hover img {
+  animation: none !important;
+  transform: scale(1.08) rotate(2deg) !important;
+  box-shadow: 0 20px 40px rgba(233, 69, 96, 0.3) !important;
+}
+
+/* Override default info styles - position on LEFT */
+#about .summary .info {
+  position: absolute !important;
+  left: -30px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  z-index: 103 !important;
+  pointer-events: none !important;
+  flex: none !important;
+  align-self: initial !important;
+  filter: none !important;
+  -webkit-filter: none !important;
+}
+
+#about .summary:hover .info {
+  pointer-events: auto !important;
+}
+
+#about .summary .info ul {
+  list-style-type: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: var(--spacing-md) !important;
+  flex-grow: 0 !important;
+  justify-content: initial !important;
+}
+
+#about .summary .info ul li {
+  margin: 0 !important;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
+/* Enhanced badge design with gradients and icons */
+#about .summary .info ul li div {
+  position: relative !important;
+  background: linear-gradient(
+    135deg,
+    rgba(26, 26, 46, 0.95),
+    rgba(22, 33, 62, 0.95)
+  ) !important;
+  color: var(--primary-light-color) !important;
+  padding: var(--spacing-md) var(--spacing-xl) !important;
+  padding-left: 3.5rem !important;
+  border-radius: var(--radius-full) !important;
+  font-size: var(--font-size-sm) !important;
+  font-weight: 500 !important;
+  text-align: left !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+  white-space: nowrap !important;
+  opacity: 0 !important;
+  transform: translateX(120px) scale(0.8) !important;
+  -webkit-transform: translateX(120px) scale(0.8) !important;
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+  -webkit-transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+  filter: none !important;
+  -webkit-filter: none !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  overflow: hidden !important;
+}
+
+/* Add icon placeholders using ::before pseudo-element */
+#about .summary .info ul li div::before {
+  content: "" !important;
+  position: absolute !important;
+  left: 1rem !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 32px !important;
+  height: 32px !important;
+  background: var(--gradient-primary) !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 14px !important;
+  transition: all 0.3s ease !important;
+}
+
+/* Add shine effect */
+#about .summary .info ul li div::after {
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: -100% !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  ) !important;
+  transition: left 0.5s ease !important;
+}
+
+/* Icon content for different badges */
+#about .summary .info ul li:nth-child(1) div::before {
+  content: "📱" !important;
+}
+
+#about .summary .info ul li:nth-child(2) div::before {
+  content: "📍" !important;
+}
+
+#about .summary .info ul li:nth-child(3) div::before {
+  content: "🎓" !important;
+}
+
+#about .summary .info ul li:nth-child(4) div::before {
+  content: "⭐" !important;
+}
+
+#about .summary .info ul li:nth-child(5) div::before {
+  content: "✉️" !important;
+}
+
+/* Slide badges with wave effect - more dynamic delays */
+#about .summary:hover .info ul li:nth-child(1) div {
+  opacity: 1 !important;
+  transform: translateX(0) scale(1) !important;
+  -webkit-transform: translateX(-200px) !important;
+  transition-delay: 0.05s !important;
+}
+
+#about .summary:hover .info ul li:nth-child(2) div {
+  opacity: 1 !important;
+  transform: translateX(0) scale(1) !important;
+  -webkit-transform: translateX(-225px) !important;
+  transition-delay: 0.1s !important;
+}
+
+#about .summary:hover .info ul li:nth-child(3) div {
+  opacity: 1 !important;
+  transform: translateX(0) scale(1) !important;
+  -webkit-transform: translateX(-250px) !important;
+  transition-delay: 0.15s !important;
+}
+
+#about .summary:hover .info ul li:nth-child(4) div {
+  opacity: 1 !important;
+  transform: translateX(0) scale(1) !important;
+  -webkit-transform: translateX(-225px) !important;
+  transition-delay: 0.2s !important;
+}
+
+#about .summary:hover .info ul li:nth-child(5) div {
+  opacity: 1 !important;
+  transform: translateX(0) scale(1) !important;
+  -webkit-transform: translateX(-200px) !important;
+  transition-delay: 0.25s !important;
+}
+
+/* Enhanced individual badge hover effect */
+#about .summary:hover .info ul li div:hover {
+  transform: translateX(-5px) scale(1.08) !important;
+  box-shadow: 0 12px 30px rgba(233, 69, 96, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+  background: var(--gradient-primary) !important;
+  border-color: rgba(233, 69, 96, 0.5) !important;
+}
+
+/* Trigger shine on hover */
+#about .summary:hover .info ul li div:hover::after {
+  left: 100% !important;
+}
+
+/* Icon animation on badge hover */
+#about .summary:hover .info ul li div:hover::before {
+  transform: translateY(-50%) scale(1.2) rotate(10deg) !important;
+}
+
+/* Mobile responsive styles */
+@media (max-width: 850px) {
+  #about .summary .info {
+    left: -15px !important;
+  }
+
+  #about .summary .info ul li div {
+    padding: var(--spacing-sm) var(--spacing-lg) !important;
+    padding-left: 3rem !important;
+    font-size: 0.8rem !important;
+  }
+
+  #about .summary .info ul li div::before {
+    width: 28px !important;
+    height: 28px !important;
+    left: 0.75rem !important;
+    font-size: 12px !important;
+  }
+
+  /* Reduce blur effect on mobile */
+  body::after {
+    backdrop-filter: blur(6px) !important;
+    -webkit-backdrop-filter: blur(6px) !important;
+  }
+
+  /* Reduce image rotation on mobile */
+  #about .summary:hover img {
+    transform: scale(1.05) !important;
+  }
+}
+
+@media (max-width: 600px) {
+  #about .summary .info {
+    left: -10px !important;
+  }
+
+  #about .summary .info ul {
+    gap: var(--spacing-sm) !important;
+  }
+
+  #about .summary .info ul li div {
+    padding: var(--spacing-sm) var(--spacing-md) !important;
+    padding-left: 2.5rem !important;
+    font-size: 0.75rem !important;
+  }
+
+  #about .summary .info ul li div::before {
+    width: 24px !important;
+    height: 24px !important;
+    left: 0.5rem !important;
+    font-size: 10px !important;
+  }
+
+  /* Even lighter blur on very small screens */
+  body::after {
+    backdrop-filter: blur(4px) !important;
+    -webkit-backdrop-filter: blur(4px) !important;
+  }
+
+  /* Disable rotation on very small screens */
+  #about .summary:hover img {
+    transform: scale(1.03) !important;
+  }
+
+  /* Simplify animations on mobile */
+  #about .summary .info ul li div {
+    transition: all 0.3s ease !important;
+  }
+}

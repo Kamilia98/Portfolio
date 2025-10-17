@@ -1,3 +1,37 @@
+/**
+ * Initialize Loading Animation
+ */
+function initLoadingAnimation() {
+  const loadingScreen = document.getElementById("loading-screen");
+
+  if (!loadingScreen) return;
+
+  // Hide loading screen when page is fully loaded
+  window.addEventListener("load", () => {
+    setTimeout(() => {
+      loadingScreen.classList.add("fade-out");
+
+      // Remove the element from DOM after fade out completes
+      setTimeout(() => {
+        loadingScreen.style.display = "none";
+      }, 500);
+    }, 300); // Small delay to ensure smooth transition
+  });
+
+  // Fallback: Hide loading screen after 3 seconds even if page isn't fully loaded
+  setTimeout(() => {
+    if (loadingScreen && !loadingScreen.classList.contains("fade-out")) {
+      loadingScreen.classList.add("fade-out");
+      setTimeout(() => {
+        loadingScreen.style.display = "none";
+      }, 500);
+    }
+  }, 3000);
+}
+
+// Initialize loading animation immediately
+initLoadingAnimation();
+
 document.addEventListener("DOMContentLoaded", () => {
   // Initialize portfolio with data
   if (
@@ -268,6 +302,86 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("resize", adjustLayout);
 
   /**
+   * Mobile-specific enhancements
+   */
+  function initMobileEnhancements() {
+    // Close sidebar when clicking outside on mobile
+    if (window.innerWidth <= 750) {
+      document.addEventListener("click", (e) => {
+        if (
+          sidenav &&
+          !sidenav.classList.contains("hidden") &&
+          !sidenav.contains(e.target) &&
+          !openbtn.contains(e.target)
+        ) {
+          toggleNav();
+        }
+      });
+
+      // Prevent body scroll when sidebar is open
+      const observer = new MutationObserver(() => {
+        if (sidenav && !sidenav.classList.contains("hidden")) {
+          document.body.style.overflow = "hidden";
+        } else {
+          document.body.style.overflow = "";
+        }
+      });
+
+      if (sidenav) {
+        observer.observe(sidenav, {
+          attributes: true,
+          attributeFilter: ["class"],
+        });
+      }
+
+      // Add touch swipe to close sidebar
+      let touchStartX = 0;
+      let touchEndX = 0;
+
+      sidenav?.addEventListener(
+        "touchstart",
+        (e) => {
+          touchStartX = e.changedTouches[0].screenX;
+        },
+        { passive: true }
+      );
+
+      sidenav?.addEventListener(
+        "touchend",
+        (e) => {
+          touchEndX = e.changedTouches[0].screenX;
+          if (touchStartX - touchEndX > 50) {
+            // Swipe left
+            if (!sidenav.classList.contains("hidden")) {
+              toggleNav();
+            }
+          }
+        },
+        { passive: true }
+      );
+    }
+  }
+
+  // Initialize mobile enhancements
+  initMobileEnhancements();
+
+  /**
+   * About Section - Blur Background Effect
+   */
+  function initAboutBlurEffect() {
+    const aboutSummary = document.querySelector("#about .summary");
+    if (!aboutSummary) return;
+
+    aboutSummary.addEventListener("mouseenter", () => {
+      document.body.classList.add("blur-active");
+    });
+
+    aboutSummary.addEventListener("mouseleave", () => {
+      document.body.classList.remove("blur-active");
+    });
+  }
+
+  /**
    * Add Smooth Scroll to Navigation Links
    */
   function initSmoothScroll() {
@@ -308,6 +422,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initScrollFadeEffect();
   initSmoothScroll();
   initParallaxEffect();
+  initAboutBlurEffect();
   adjustLayout();
   handleContactForm();
   handleProjectFiltering();
