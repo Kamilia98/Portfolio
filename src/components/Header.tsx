@@ -1,0 +1,19 @@
+import { profile } from '../content'
+import { cvHref } from '../lib/links'
+import styles from './Header.module.css'
+
+export function Header() {
+  return (
+    <header className={styles.header}>
+      <h1 className={styles.name}>{profile.name}</h1>
+      <p className={styles.role}>{profile.role}</p>
+      <p className={styles.location}>{profile.location}</p>
+      <div className={styles.links}>
+        <a className={`${styles.button} ${styles.primary}`} href={cvHref} download>Download CV</a>
+        <a className={styles.button} href={`mailto:${profile.email}`}>Email</a>
+        <a className={styles.button} href={profile.linkedin}>LinkedIn</a>
+        <a className={styles.button} href={profile.github}>GitHub</a>
+      </div>
+    </header>
+  )
+}

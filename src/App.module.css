@@ -1,0 +1,21 @@
+.page {
+  min-height: 100vh;
+}
+
+.main {
+  max-width: 920px;
+  padding: calc(var(--space) * 3) 20px 60vh;
+}
+
+@media (min-width: 1024px) {
+  .page {
+    display: grid;
+    grid-template-columns: 220px minmax(0, 920px);
+    gap: 64px;
+    padding: 48px;
+  }
+
+  .main {
+    padding: 0 0 60vh;
+  }
+}
