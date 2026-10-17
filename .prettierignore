@@ -1,0 +1,8 @@
+dist
+test-results
+playwright-report
+package-lock.json
+docs
+.superpowers
+.impeccable
+*.md

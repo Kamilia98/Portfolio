@@ -8,6 +8,7 @@ The personal portfolio of Kamilia Ahmed, a full-stack engineer (React + Node). L
 - `npm test` runs the unit tests (Vitest).
 - `npm run e2e` runs the browser tests (Playwright). It builds the site and the CV first.
 - `npm run cv` builds the site and writes the CV to `dist/kamilia-ahmed-hamed.pdf`.
+- `npm run lint` runs ESLint; `npm run format` formats the code with Prettier.
 
 ## Content
 
@@ -15,7 +16,7 @@ All text and numbers live in `src/content/`. Edit them there; the site and the C
 
 ## Deploys
 
-Every push to `main` runs `.github/workflows/deploy.yml` on GitHub Actions. It installs, runs the tests, prints the CV, runs the browser tests and publishes `dist` to GitHub Pages at `/Portfolio/`.
+Every push to `main` runs `.github/workflows/deploy.yml` on GitHub Actions. It installs, lints, runs the tests, prints the CV, runs the browser tests and publishes `dist` to GitHub Pages at `/Portfolio/`.
 
 ### Releasing the redesign
 
