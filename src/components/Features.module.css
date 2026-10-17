@@ -1,0 +1,25 @@
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  max-width: var(--measure);
+}
+
+.row {
+  padding: calc(var(--space) * 1.5) 0;
+  border-top: var(--rule-hair) solid var(--ink);
+}
+
+.row:last-child {
+  border-bottom: var(--rule-hair) solid var(--ink);
+}
+
+.title {
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.result {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}

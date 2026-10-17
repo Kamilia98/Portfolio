@@ -1,0 +1,32 @@
+.list {
+  margin: 0;
+  max-width: var(--measure);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 8rem 1fr;
+  gap: var(--space);
+  padding: var(--space) 0;
+  border-top: var(--rule-hair) solid var(--ink);
+}
+
+.row:last-child {
+  border-bottom: var(--rule-hair) solid var(--ink);
+}
+
+.term {
+  font-weight: 800;
+}
+
+.value {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 639px) {
+  .row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
