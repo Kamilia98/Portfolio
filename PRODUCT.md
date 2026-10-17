@@ -16,15 +16,15 @@ HTML/CSS/JS site in this repo.
 
 1. **Recruiters and talent partners** at remote-staffing firms and the UK/EU companies they hire for (first:
    Palm Outsourcing). They arrive from a CV, an application form or LinkedIn, skim for about 30 seconds and
-   decide whether to shortlist: role, level, stack, proof, how to reach her.
+   decide whether to shortlist: role, level, stack, proof, how to reach Kamilia.
 2. **Hiring engineers** reviewing a shortlist. They open one or two case studies and the GitHub repo to judge
-   depth: what she actually built, the trade-offs, the results.
+   depth: what Kamilia actually built, the trade-offs, the results.
 
 ## Product Purpose
 
 Present Kamilia Ahmed as a mid-level full-stack engineer (React + Node) who owns features end to end, so that
-she gets shortlisted for remote full-stack and frontend roles. Success: a reader can say in one sentence what
-she does and point to one result, and the CV downloaded from the site matches the site.
+Kamilia gets shortlisted for remote full-stack and frontend roles. Success: a reader can say in one sentence
+what Kamilia does and point to one result, and the CV downloaded from the site matches the site.
 
 ## Positioning
 
@@ -53,7 +53,7 @@ specific, measured work across the whole chain, not a list of technologies.
 
 ## Evidence on Hand
 
-Lead work at AIM (all chosen by Kamilia as mainly hers):
+Lead work at AIM (all chosen by Kamilia as mainly their own work):
 
 1. **Ask your data** — users ask about their data in plain English and get an answer with checked numbers and
    a chart. Two phases (an LLM compiles the question to a structured intent; code fetches and checks the
@@ -62,9 +62,9 @@ Lead work at AIM (all chosen by Kamilia as mainly hers):
    of about 180 questions. React + Node + Portkey. Status: built and ready for a pilot; not yet live for
    clients, so never describe it as shipped to customers.
 2. **Chart speed** — charts broken down by tags asked Elasticsearch to rebuild the same breakdown once per
-   tab; she made them ask once. Slowest chart 63 s → 4.3 s and fifteen heavy charts 262 s → 50 s on a test
+   tab; Kamilia made them ask once. Slowest chart 63 s → 4.3 s and fifteen heavy charts 262 s → 50 s on a test
    environment, with identical numbers; a replay of 10 days of production requests confirmed the gains. NestJS + Elasticsearch.
-3. **AI cost dashboard** — internal tool she built alone (React 19, TypeScript, Vite, TanStack Query,
+3. **AI cost dashboard** — internal tool Kamilia built alone (React 19, TypeScript, Vite, TanStack Query,
    Recharts + a NestJS API on MongoDB): AI cost and usage across five AI features, per user and per request, with
    provider billing from OpenAI, Anthropic and OpenRouter.
 4. **UI consistency overhaul** — the app's confirmations (43 on five components) became one dialog
@@ -74,7 +74,7 @@ Lead work at AIM (all chosen by Kamilia as mainly hers):
 
 Also true, usable as supporting lines: frontend image build 89 s → 52 s; site speed fix (gzip, trimmed theme
 CSS) with 17 production errors resolved; AI summaries in the PDF/PowerPoint report exports; about 4,400
-commits across 15 services since July 2025.
+commits across 16 repositories since July 2025.
 
 Education and earlier work: B.Sc. Computer and Systems Engineering, Zagazig University (2019–2024), Excellent
 with honours, 92.47%, ranked 3rd; ITI 9-month Web & UI Development program (Oct 2024 – Jul 2025). Earlier
@@ -88,7 +88,7 @@ about the AIM work, screenshots of AIM Insights.
 ## Product Principles
 
 1. Proof before claims: every case study leads with a result someone could check.
-2. Say what she owned, end to end, in plain words.
+2. Say what Kamilia owned, end to end, in plain words.
 3. Respect a 30-second skim: role, level, stack and one result visible without scrolling.
 4. One source of truth: the site and the PDF CV never disagree.
 

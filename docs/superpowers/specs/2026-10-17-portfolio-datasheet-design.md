@@ -5,8 +5,8 @@
 ## Goal
 
 Replace the current template portfolio with one that gets Kamilia shortlisted for remote full-stack (React +
-Node) roles. A recruiter skimming for 30 seconds sees her role, level, stack, one measured result and how to
-reach her without scrolling. An engineer opening a case study sees what she built, how it works and what it
+Node) roles. A recruiter skimming for 30 seconds sees Kamilia's role, level, stack, one measured result and how to
+reach them without scrolling. An engineer opening a case study sees what Kamilia built, how it works and what it
 measured. The PDF CV comes out of the same content, so the two never disagree.
 
 ## Direction
@@ -28,8 +28,8 @@ has its own anchor, so a case study can be linked directly (`#5-2-chart-speed`).
 |---|---|---|
 | — | Header | Name; "Full-stack engineer. React + Node, end to end."; Cairo, works UK hours; Download CV, Email, LinkedIn, GitHub |
 | 1 | Features | Four results, one line each, each linking to its case study |
-| 2 | Description | Three sentences: what she does, where (AIM Insights at AIM Technologies since July 2025), how she works |
-| 3 | Pin configuration | A chip diagram; each pin is a technology she works across (React, TypeScript, Node.js, NestJS, Elasticsearch, MongoDB, LLMs, Jest/Playwright) |
+| 2 | Description | Three sentences: what Kamilia does, where (AIM Insights at AIM Technologies since July 2025), how they work |
+| 3 | Pin configuration | A chip diagram; each pin is a technology Kamilia works across (React, TypeScript, Node.js, NestJS, Elasticsearch, MongoDB, LLMs, Jest/Playwright) |
 | 4 | Typical performance characteristics | Before/after bars from the measured numbers, % change computed in code |
 | 5 | Detailed description | Case studies 5.1–5.4 (below) |
 | 6 | Related parts | Earlier work as a compact table: name, what it was, stack, link |
@@ -51,22 +51,22 @@ measured result → stack**. Diagrams are drawn in code from data; no screenshot
   *Diagram:* question → compile (LLM) → claim check → plan → query (Elasticsearch) → facts → narrate (LLM) →
   number check → answer + chart.
 - **5.2 Chart speed.** Charts broken down by tags asked Elasticsearch to rebuild the same breakdown once per
-  tab. She made sibling tabs share one breakdown and matched hand-picked posts with one `terms` clause.
+  tab. Kamilia made sibling tabs share one breakdown and matched hand-picked posts with one `terms` clause.
   Slowest chart 63 s → 4.3 s and fifteen heavy charts 262 s → 50 s on a test environment, with identical
   numbers; a replay of 10 days of production requests confirmed the gains. *Stack:* NestJS, Elasticsearch.
   *Diagram:* the same chart's query before (7 tabs × full breakdown) and after (one shared breakdown).
-- **5.3 AI cost dashboard.** An internal tool she built alone: AI cost and usage across five AI features, per
+- **5.3 AI cost dashboard.** An internal tool Kamilia built alone: AI cost and usage across five AI features, per
   user and per request, with provider billing from OpenAI, Anthropic and OpenRouter. *Stack:* React 19,
   TypeScript, Vite, TanStack Query, Recharts; NestJS API on MongoDB.
   *Diagram:* LLM gateway logs + provider billing → ingestion API → dashboard (feature / user / request).
-- **5.4 One interface.** The app's 43 confirmation dialogs ran on five different components; she moved them
+- **5.4 One interface.** The app's 43 confirmation dialogs ran on five different components; Kamilia moved them
   to one dialog in two sizes. 19 large modals with 12 widths became one frame in three sizes; 242 direct toast
   calls and 22 success modals became one feedback mechanism with written copy rules; six list types became one
   collapsible row. Each rule is enforced by ESLint. *Stack:* React, TypeScript, Ant Design, ESLint.
   *Diagram:* many → one, per pattern (5 → 1 dialogs, 12 widths → 3 sizes, 2 mechanisms → 1, 6 lists → 1).
 
 Supporting lines (Features or Description, not case studies): frontend image build 89 s → 52 s; site speed
-fix with 17 production errors resolved; about 4,400 commits across 15 services since July 2025.
+fix with 17 production errors resolved; about 4,400 commits across 16 repositories since July 2025.
 
 ## Signature interaction
 

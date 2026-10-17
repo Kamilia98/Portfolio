@@ -14,14 +14,14 @@ for 30 seconds, then hiring engineers reading one case study. Action: download t
 ## Direction contract
 
 THESIS: The engineer documented as a component datasheet: numbered sections, measured characteristics, a pin
-diagram of the stack she works across. It refuses the developer-portfolio default: hero greeting, skill
+diagram of the stack Kamilia works across. It refuses the developer-portfolio default: hero greeting, skill
 pills, screenshot cards.
 
 OWN-WORLD: White datasheet paper, near-black ink, one datasheet blue for the header rule, "after" bars and
 the active pin; hairline tables with grey header fills; Archivo condensed for headings, tabular figures for
 every number; hierarchy from rule weight and type size only, no cards, shadows or rounded boxes.
 
-STORY: The visitor learns in one screen that she ships features from the React screen to the Elasticsearch
+STORY: The visitor learns in one screen that Kamilia ships features from the React screen to the Elasticsearch
 query, sees four measured results, and can download the CV; a reader who selects a pin sees one technology
 run through every case study.
 
