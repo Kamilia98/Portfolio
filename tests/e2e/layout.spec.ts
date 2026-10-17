@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test'
+import { test, expect, type Page } from '@playwright/test'
 
 for (const [width, height] of [[320, 800], [390, 844], [1440, 900]]) {
   test(`no horizontal scroll at ${width} px`, async ({ page }) => {
@@ -19,6 +19,39 @@ for (const [width, height, minY] of [[390, 844, 56], [1440, 900, 0]]) {
     await expect.poll(async () => (await heading.boundingBox())!.y).toBeLessThan(240)
   })
 }
+
+/** Hold Archivo back, so the page lays out in the fallback font first and reflows when it lands. */
+async function slowFont(page: Page) {
+  await page.route('**/*.woff2', async (route) => {
+    await new Promise((resolve) => setTimeout(resolve, 1500))
+    await route.continue()
+  })
+}
+
+test('a deep link lands on the case study heading when the font arrives late', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 })
+  await slowFont(page)
+  await page.goto('#5-2-chart-speed')
+  await page.evaluate(() => document.fonts.ready)
+  // The case study itself, not its heading: its top must clear the 56 px bar, as scroll-margin-top intends.
+  const study = page.locator('[id="5-2-chart-speed"]')
+  await expect.poll(async () => (await study.boundingBox())!.y).toBeGreaterThanOrEqual(56)
+  await expect.poll(async () => (await study.boundingBox())!.y).toBeLessThan(240)
+})
+
+test('a reader who scrolls before the late font arrives is not pulled back', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 })
+  await slowFont(page)
+  await page.goto('#5-2-chart-speed')
+  const heading = page.getByRole('heading', { name: /5\.2 Chart speed/ })
+  await expect(heading).toBeInViewport()
+  await page.mouse.move(200, 400)
+  await page.mouse.wheel(0, 1200)
+  await expect.poll(async () => (await heading.boundingBox())!.y).toBeLessThan(0)
+  await page.evaluate(() => document.fonts.ready)
+  await page.evaluate(() => new Promise(requestAnimationFrame))
+  expect((await heading.boundingBox())!.y).toBeLessThan(0)
+})
 
 test('a malformed hash does not break the page', async ({ page }) => {
   const errors: Error[] = []
