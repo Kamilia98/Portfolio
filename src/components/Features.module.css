@@ -10,6 +10,12 @@
   border-top: var(--rule-hair) solid var(--ink);
 }
 
+/* The section heading's rule already sits above the first row. */
+.row:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
 .row:last-child {
   border-bottom: var(--rule-hair) solid var(--ink);
 }
@@ -19,7 +25,9 @@
   color: var(--ink);
 }
 
+/* The measured result reads as its own line, the same in every row that has one. */
 .result {
+  display: block;
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }

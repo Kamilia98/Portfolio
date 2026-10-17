@@ -19,7 +19,8 @@ export function BlockDiagram({ diagram }: { diagram: Diagram }) {
                   data-active={isActive(block.pins) ? 'true' : undefined}
                   data-dimmed={isDimmed(block.pins) ? 'true' : undefined}
                 >
-                  {block.label}
+                  {/* A no-break space after the dot: a wrapping label breaks before "· Elasticsearch", not after the dot. */}
+                  {block.label.replaceAll(' · ', ' · ')}
                 </li>
               ))}
             </ul>

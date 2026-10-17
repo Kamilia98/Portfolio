@@ -1,5 +1,6 @@
+/* svh: on a phone 100vh is the height with the URL bar hidden, taller than what is visible. */
 .page {
-  min-height: 100vh;
+  min-height: 100svh;
 }
 
 .main {

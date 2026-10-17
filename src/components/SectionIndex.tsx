@@ -1,23 +1,42 @@
+import { useEffect, useRef } from 'react'
 import { sections } from '../content'
 import { useActiveSection } from '../lib/useActiveSection'
 import styles from './SectionIndex.module.css'
 
 export function SectionIndex() {
   const active = useActiveSection(sections.map((s) => s.id))
+  const navRef = useRef<HTMLElement>(null)
+
+  // On a phone the index is a sideways-scrolling bar: keep the marked section in sight.
+  useEffect(() => {
+    const nav = navRef.current
+    const link = nav?.querySelector<HTMLElement>('[aria-current="location"]')
+    if (!nav || !link || nav.scrollWidth <= nav.clientWidth) return
+    const start = link.offsetLeft
+    const end = start + link.offsetWidth
+    if (start < nav.scrollLeft || end > nav.scrollLeft + nav.clientWidth) {
+      nav.scrollTo({ left: start - (nav.clientWidth - link.offsetWidth) / 2 })
+    }
+  }, [active])
+
   return (
-    <nav aria-label="Sections" className={styles.nav}>
+    <nav ref={navRef} aria-label="Sections" className={styles.nav}>
       <ol className={styles.list}>
-        {sections.map((s) => (
-          <li key={s.id} className={styles.item}>
-            <a
-              href={`#${s.id}`}
-              className={styles.link}
-              aria-current={active === s.id ? 'location' : undefined}
-            >
-              {`${s.number} ${s.title}`}
-            </a>
-          </li>
-        ))}
+        {sections.map((s) => {
+          const label = `${s.number} ${s.title}`
+          return (
+            <li key={s.id} className={styles.item}>
+              <a
+                href={`#${s.id}`}
+                className={styles.link}
+                data-label={label}
+                aria-current={active === s.id ? 'location' : undefined}
+              >
+                {label}
+              </a>
+            </li>
+          )
+        })}
       </ol>
     </nav>
   )

@@ -33,6 +33,14 @@ describe('RelatedParts', () => {
     expect(live.getAttribute('href')).toBe('https://bloogy-ashy.vercel.app')
     expect(live.getAttribute('rel')).toBe('noopener noreferrer')
   })
+
+  // The accessible name itself ("Code for Bloogy") is checked in a real browser in e2e/shell.spec.ts:
+  // jsdom's name computation drops the space at the start of the hidden text.
+  it('carries the part name inside each link', () => {
+    render(<RelatedParts />)
+    const bloogy = screen.getAllByRole('row').find((r) => r.textContent?.includes('Bloogy'))!
+    expect(within(bloogy).getAllByRole('link').map((a) => a.textContent)).toEqual(['Code for Bloogy', 'Live site for Bloogy'])
+  })
 })
 
 describe('RevisionHistory', () => {

@@ -14,7 +14,7 @@ export function RevisionHistory() {
       <tbody>
         {history.map((h) => (
           <tr key={h.period + h.title}>
-            <td data-label="Period">{h.period}</td>
+            <td data-label="Period" className={styles.period}>{h.period}</td>
             <td data-label="Title"><strong>{h.title}</strong></td>
             <td data-label="Detail">{h.detail}</td>
           </tr>

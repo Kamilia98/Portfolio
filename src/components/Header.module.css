@@ -41,10 +41,8 @@
   color: var(--ink);
   font-weight: 700;
   text-decoration: none;
-}
-
-.button:hover {
-  background: var(--fill);
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .primary {
@@ -52,7 +50,22 @@
   color: var(--paper);
 }
 
-.primary:hover {
+@media (hover: hover) and (pointer: fine) {
+  .button:hover {
+    background: var(--fill);
+  }
+
+  .primary:hover {
+    background: var(--ink);
+    text-decoration: underline;
+  }
+}
+
+.button:active {
+  background: var(--fill);
+}
+
+.primary:active {
   background: var(--ink);
   text-decoration: underline;
 }

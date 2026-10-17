@@ -30,9 +30,25 @@ describe('CaseStudy', () => {
   it('highlights matching blocks and dims other studies for the selected pin', async () => {
     setup()
     await userEvent.setup().click(screen.getByRole('button', { name: 'Elasticsearch' }))
-    expect(document.querySelectorAll('[data-active="true"]').length).toBe(3)
+    expect(document.querySelectorAll('figure [data-active="true"]').length).toBe(3)
     expect(byId('5-3-ai-cost-dashboard')).toHaveAttribute('data-dimmed', 'true')
     expect(byId('5-4-one-interface')).toHaveAttribute('data-dimmed', 'true')
     expect(byId('5-1-ask-your-data')).not.toHaveAttribute('data-dimmed')
+  })
+
+  it('marks the studies that use the selected pin and the pin in their stack line', async () => {
+    setup()
+    await userEvent.setup().click(screen.getByRole('button', { name: 'Elasticsearch' }))
+    const marked = [...document.querySelectorAll('article[data-active="true"]')].map((a) => a.id)
+    expect(marked).toEqual(['5-1-ask-your-data', '5-2-chart-speed'])
+    const stack = byId('5-2-chart-speed').querySelector(':scope > p:last-child')!
+    expect(stack.textContent).toBe('NestJS, TypeScript, Elasticsearch')
+    expect([...stack.querySelectorAll('[data-active="true"]')].map((s) => s.textContent)).toEqual(['Elasticsearch'])
+  })
+
+  it('keeps the status out of the heading', () => {
+    setup()
+    expect(screen.getByRole('heading', { level: 3, name: '5.2 Chart speed' })).toBeInTheDocument()
+    expect(screen.getByText('Merged; awaiting release', { selector: '[id="5-2-chart-speed"] p' })).toBeInTheDocument()
   })
 })

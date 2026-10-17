@@ -47,3 +47,37 @@ test('table and contact links use ink, not the browser default blue', async ({ p
     expect(color).toBe('rgb(18, 20, 23)')
   }
 })
+
+test('related-part links are named after their part for screen readers', async ({ page }) => {
+  await page.goto('')
+  const table = page.locator('[id="6-related-parts"]')
+  await expect(table.getByRole('link', { name: 'Code for Bloogy', exact: true })).toHaveCount(1)
+  await expect(table.getByRole('link', { name: 'Live site for Bloogy', exact: true })).toHaveCount(1)
+  await expect(table.getByRole('link', { name: 'Code', exact: true })).toHaveCount(0)
+  await expect(table.getByRole('link', { name: 'Code for Bloogy' })).toHaveText('Code for Bloogy')
+})
+
+test('marking a section does not change the width of its link in the phone bar', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 })
+  await page.goto('')
+  // Measure in Archivo, not the fallback font it replaces.
+  await page.evaluate(() => document.fonts.ready)
+  const links = page.locator('nav[aria-label="Sections"] a')
+  const before = await links.evaluateAll((els) => els.map((el) => el.getBoundingClientRect().width))
+  await page.evaluate(() => document.getElementById('2-description')!.scrollIntoView())
+  await expect(page.locator('nav[aria-label="Sections"] [aria-current="location"]')).toHaveCount(1)
+  const after = await links.evaluateAll((els) => els.map((el) => el.getBoundingClientRect().width))
+  expect(after).toEqual(before)
+})
+
+test('the phone bar scrolls the marked section into sight', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 })
+  await page.goto('')
+  await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight))
+  const link = page.locator('nav[aria-label="Sections"] a[href="#8-ordering-information"]')
+  await expect(link).toHaveAttribute('aria-current', 'location')
+  await expect.poll(async () => {
+    const box = (await link.boundingBox())!
+    return box.x >= 0 && box.x + box.width <= 390
+  }).toBe(true)
+})

@@ -11,6 +11,7 @@ body {
 
 .sheet {
   width: 210mm;
+  max-width: 100%;
   min-height: 297mm;
   margin: 0 auto;
   padding: 14mm;
@@ -106,6 +107,20 @@ li {
 .ruled li:first-child {
   border-top: 0;
   padding-top: 0;
+}
+
+/* On a phone the screen view is a page of text, not a sheet to scroll sideways; print stays A4. */
+@media screen and (max-width: 640px) {
+  .sheet {
+    min-height: 0;
+    padding: 24px 16px;
+    overflow-wrap: anywhere;
+  }
+
+  .period {
+    float: none;
+    display: block;
+  }
 }
 
 @media print {

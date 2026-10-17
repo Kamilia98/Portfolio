@@ -26,8 +26,23 @@
   font-variant-numeric: tabular-nums;
 }
 
+.links,
+.period {
+  white-space: nowrap;
+}
+
 .links a + a {
   margin-inline-start: var(--space);
+}
+
+/* Read by screen readers only: "Code for Bloogy", not six links all called "Code". */
+.hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 @media (max-width: 639px) {

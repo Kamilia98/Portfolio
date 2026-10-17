@@ -27,3 +27,20 @@ test('a malformed hash does not break the page', async ({ page }) => {
   await expect(page.getByRole('heading', { level: 1 })).toBeVisible()
   expect(errors).toEqual([])
 })
+
+for (const width of [390, 768, 1024, 1280, 1440]) {
+  test(`diagram blocks keep room for their words at ${width} px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 900 })
+    await page.goto('')
+    const widths = await page.locator('figure li li').evaluateAll((els) => els.map((el) => el.getBoundingClientRect().width))
+    expect(widths.length).toBeGreaterThan(0)
+    expect(Math.min(...widths)).toBeGreaterThanOrEqual(120)
+  })
+}
+
+test('the CV page has no sideways scroll on a phone', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 })
+  await page.goto('cv.html')
+  await expect(page.getByRole('heading', { level: 1 })).toBeVisible()
+  expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(390)
+})

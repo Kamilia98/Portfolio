@@ -1,5 +1,6 @@
 .figure {
   margin: 0 0 calc(var(--space) * 3);
+  container-type: inline-size;
 }
 .caption {
   margin-bottom: calc(var(--space) * 1.5);
@@ -13,6 +14,7 @@
   display: flex;
   flex-direction: column;
   gap: 32px;
+  max-width: 30rem;
 }
 .stage {
   position: relative;
@@ -50,27 +52,57 @@
   overflow-wrap: anywhere;
   transition: color 150ms, border-color 150ms;
 }
+/* The heavier frame is an inset outline: it takes no space, so selecting a pin never reflows the diagram. */
 .block[data-active='true'] {
   border-color: var(--accent);
+  outline: 3px solid var(--accent);
+  outline-offset: -3px;
   color: var(--accent);
-  font-weight: 700;
 }
 .block[data-dimmed='true'] {
   border-color: var(--muted);
   color: var(--muted);
-  font-weight: 400;
 }
 
-@media (min-width: 768px) {
-  .stages {
-    flex-direction: row;
-    gap: 40px;
-    align-items: stretch;
+/* A row only when every stage gets about 140px: up to 3 stages from 500px, up to 5 from 860px.
+   Longer pipelines stay a column at every width. */
+@container (min-width: 500px) {
+  .stages:not(:has(> :nth-child(4))) {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
+    gap: 0 40px;
+    max-width: none;
   }
-  .stage {
-    flex: 1 1 0;
+  .stages:not(:has(> :nth-child(4))) > .stage {
+    display: grid;
+    grid-row: span 2;
+    grid-template-rows: subgrid;
   }
-  .stage + .stage::before {
+  .stages:not(:has(> :nth-child(4))) > .stage + .stage::before {
+    content: '→';
+    top: 50%;
+    left: -28px;
+    width: 16px;
+    text-align: center;
+  }
+}
+@container (min-width: 860px) {
+  .stages:not(:has(> :nth-child(6))) {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
+    gap: 0 40px;
+    max-width: none;
+  }
+  .stages:not(:has(> :nth-child(6))) > .stage {
+    display: grid;
+    grid-row: span 2;
+    grid-template-rows: subgrid;
+  }
+  .stages:not(:has(> :nth-child(6))) > .stage + .stage::before {
     content: '→';
     top: 50%;
     left: -28px;

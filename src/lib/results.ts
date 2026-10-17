@@ -4,8 +4,10 @@ export function percentChange(before: number, after: number): number {
   return Math.round(((after - before) / before) * 100)
 }
 
+const number = new Intl.NumberFormat('en-GB')
+
 export function formatValue(n: number, unit: Result['unit']): string {
-  return unit ? `${String(n)} ${unit}` : String(n)
+  return unit ? `${number.format(n)} ${unit}` : number.format(n)
 }
 
 export function formatResult(r: Result): string {

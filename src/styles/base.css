@@ -4,12 +4,39 @@
   box-sizing: border-box;
 }
 
+/* Paper only: no dark mode, so browser parts (scrollbars, selection handles) stay light too. */
+:root {
+  color-scheme: only light;
+}
+
+html {
+  /* The pins and links draw their own state; the grey tap flash fights it. */
+  -webkit-tap-highlight-color: transparent;
+  /* No font inflation in landscape on iOS. */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
 body {
   margin: 0;
   background: var(--paper);
   color: var(--ink);
   font: var(--size-body)/var(--line-body) var(--font);
   font-variant-numeric: tabular-nums;
+}
+
+:where(h1, h2, h3) {
+  text-wrap: balance;
+}
+
+/* No one-word last lines in prose. */
+:where(p, li, dd) {
+  text-wrap: pretty;
+}
+
+::selection {
+  background: var(--ink);
+  color: var(--paper);
 }
 
 :where(a) {
@@ -19,7 +46,19 @@ body {
   text-underline-offset: 3px;
 }
 
-:where(a:hover) {
+/* No 300 ms double-tap wait on links and pins. */
+:where(a, button) {
+  touch-action: manipulation;
+}
+
+/* Hover only where a pointer can hover: a tap must not leave a link stuck in its hover colour. */
+@media (hover: hover) and (pointer: fine) {
+  :where(a:hover) {
+    color: var(--accent);
+  }
+}
+
+:where(a:active) {
   color: var(--accent);
 }
 
