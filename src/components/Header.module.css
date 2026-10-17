@@ -75,3 +75,14 @@
   background: var(--ink);
   text-decoration: underline;
 }
+
+/* On a phone the header gives back some height, so the first Features row fits the first screen. */
+@media (max-width: 639px) {
+  .header {
+    padding-bottom: calc(var(--space) * 3);
+  }
+
+  .links {
+    margin-top: calc(var(--space) * 2);
+  }
+}

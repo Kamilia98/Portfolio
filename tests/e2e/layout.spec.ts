@@ -53,6 +53,15 @@ test('a reader who scrolls before the late font arrives is not pulled back', asy
   expect((await heading.boundingBox())!.y).toBeLessThan(0)
 })
 
+test('on a 375 × 667 phone the first Features row ends inside the first screen', async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 667 })
+  await page.goto('')
+  await page.evaluate(() => document.fonts.ready)
+  const figure = page.locator('[id="1-features"] li').first().locator('strong')
+  await expect(figure).toHaveText(/\S/)
+  expect((await figure.boundingBox())!.y + (await figure.boundingBox())!.height).toBeLessThanOrEqual(667)
+})
+
 test('a malformed hash does not break the page', async ({ page }) => {
   const errors: Error[] = []
   page.on('pageerror', (e) => errors.push(e))

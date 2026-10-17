@@ -12,3 +12,10 @@
   font-stretch: 90%;
   line-height: 1.1;
 }
+
+/* On a phone section 1 starts closer to the header rule, so its first row shows in the first screen. */
+@media (max-width: 639px) {
+  .section:first-of-type {
+    margin-top: calc(var(--space) * 5);
+  }
+}
