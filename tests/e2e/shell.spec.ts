@@ -39,3 +39,11 @@ test('focus ring on a link in the mobile bar is not clipped', async ({ page }) =
   expect(box!.y - 5).toBeGreaterThanOrEqual(nav!.y)
   expect(box!.y + box!.height + 5).toBeLessThanOrEqual(nav!.y + nav!.height)
 })
+
+test('table and contact links use ink, not the browser default blue', async ({ page }) => {
+  await page.goto('')
+  for (const sel of ['[id="6-related-parts"] a', '[id="8-ordering-information"] a']) {
+    const color = await page.locator(sel).first().evaluate((el) => getComputedStyle(el).color)
+    expect(color).toBe('rgb(18, 20, 23)')
+  }
+})
