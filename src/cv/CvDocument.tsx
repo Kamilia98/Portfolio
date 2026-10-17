@@ -27,9 +27,10 @@ function resultsSentence(study: CaseStudy): string {
 }
 
 export function CvDocument() {
-  const [current, ...rest] = history
-  const freelance = rest.filter((h) => h.title.startsWith('Freelance'))
-  const education = rest.filter((h) => !h.title.startsWith('Freelance'))
+  // History runs newest first, so the first job is the current one.
+  const [current] = history.filter((h) => h.kind === 'work')
+  const education = history.filter((h) => h.kind === 'education')
+  const freelance = history.filter((h) => h.kind === 'freelance')
 
   return (
     <main className="sheet">

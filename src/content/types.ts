@@ -67,6 +67,8 @@ export interface EarlierWork {
   live?: string
 }
 export interface HistoryEntry {
+  /** Where the CV lists it: the job heading, Education or Freelance. */
+  kind: 'work' | 'education' | 'freelance'
   period: string
   /** Where, when it is worth saying: shown after the period on the CV. */
   place?: string

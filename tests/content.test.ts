@@ -1,5 +1,5 @@
 import * as content from '../src/content'
-import { pins, caseStudies, sections, resultById } from '../src/content'
+import { pins, caseStudies, sections, resultById, history } from '../src/content'
 
 test('pin ids referenced by case studies and blocks exist', () => {
   const ids = new Set(pins.map((p) => p.id))
@@ -77,4 +77,8 @@ test('case studies claim only what happened', () => {
   expect(kept.blocks.map((b) => b.label)).toContain('end-to-end test changes · Playwright')
   // The slowest chart took 63 s.
   expect(study('chart-speed').problem).toContain('took over a minute')
+})
+
+test("the CV's current job is the newest work entry and still runs", () => {
+  expect(history.find((h) => h.kind === 'work')!.period).toMatch(/– now$/)
 })
