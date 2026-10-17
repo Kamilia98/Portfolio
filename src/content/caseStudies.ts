@@ -59,7 +59,7 @@ export const caseStudies: CaseStudy[] = [
     cv: 'Tag breakdowns sent to Elasticsearch once instead of once per tab.',
     headlineResult: 'slowest-chart',
     status: 'Merged; awaiting release',
-    problem: 'Charts that split results into tabs and break them down by tags took up to a minute to load, and some timed out during Excel export.',
+    problem: 'Charts that split results into tabs and break them down by tags took over a minute to load, and some timed out during Excel export.',
     built: [
       "Measured where the time went with Elasticsearch's profiler: each tab rebuilt the full tag breakdown, so a seven-tab chart did the same heavy work seven times.",
       "Changed the query builder so tabs that share a breakdown send it once, and matched a tag's hand-picked posts with one terms clause instead of one clause per post.",
@@ -142,7 +142,7 @@ export const caseStudies: CaseStudy[] = [
       'One dialog component in two sizes for all 43 confirmations, and one frame in three sizes for the 19 large modals.',
       'One feedback mechanism for 242 toast calls and 22 success pop-ups, with written rules for what every message says.',
       'One collapsible row for six lists.',
-      'An ESLint rule for each pattern, so the old way cannot come back, plus the matching end-to-end test changes.',
+      'An ESLint rule for each pattern, so the old way is flagged, plus the matching end-to-end test changes.',
     ],
     diagrams: [
       {
@@ -170,7 +170,7 @@ export const caseStudies: CaseStudy[] = [
             title: 'Kept',
             blocks: [
               { id: 'ui-kept-eslint', label: 'ESLint rules', pins: ['typescript'] },
-              { id: 'ui-kept-e2e', label: 'end-to-end tests · Playwright', pins: ['testing'] },
+              { id: 'ui-kept-e2e', label: 'end-to-end test changes · Playwright', pins: ['testing'] },
             ],
           },
         ],

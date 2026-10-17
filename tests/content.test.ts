@@ -53,3 +53,16 @@ test('no banned client or account names anywhere in the content', () => {
     else expect(name).toBe('resultById')
   }
 })
+
+test('case studies claim only what happened', () => {
+  const study = (id: string) => caseStudies.find((c) => c.id === id)!
+  const text = (v: unknown) => JSON.stringify(v)
+  // A lint rule flags the old way; it cannot stop it coming back.
+  expect(text(study('one-interface'))).not.toContain('cannot come back')
+  expect(study('one-interface').built).toContain('An ESLint rule for each pattern, so the old way is flagged, plus the matching end-to-end test changes.')
+  // The e2e work was changes to existing tests, not new tests.
+  const kept = study('one-interface').diagrams[0].stages.find((s) => s.title === 'Kept')!
+  expect(kept.blocks.map((b) => b.label)).toContain('end-to-end test changes · Playwright')
+  // The slowest chart took 63 s.
+  expect(study('chart-speed').problem).toContain('took over a minute')
+})
