@@ -30,7 +30,6 @@
   align-content: center;
   height: 100%;
   padding: 0 calc(var(--space) * 2);
-  border-left: 3px solid transparent;
   color: var(--ink);
   font-size: var(--size-small);
   font-weight: 600;
@@ -55,9 +54,13 @@
   }
 }
 
+/* Phone bar: accent, bold and a 2px accent underline. */
 .link[aria-current='location'] {
-  border-left-color: var(--accent);
+  color: var(--accent);
   font-weight: 800;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
 }
 
 @media (min-width: 1024px) {
@@ -76,7 +79,12 @@
 
   .link {
     height: auto;
-    padding: var(--space) calc(var(--space) * 1.5);
+    padding: var(--space) 0;
     white-space: normal;
+  }
+
+  /* Index column: accent and bold only. */
+  .link[aria-current='location'] {
+    text-decoration: none;
   }
 }

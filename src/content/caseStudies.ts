@@ -7,6 +7,7 @@ export const caseStudies: CaseStudy[] = [
     anchor: '5-1-ask-your-data',
     title: 'Ask your data',
     summary: 'Plain-English questions answered with checked numbers and a chart.',
+    figure: 'tested against about 180 questions',
     cv: 'Plain-English questions answered with checked numbers and a chart. One LLM call compiles the question into a plan; the numbers come from code and are checked before a second call phrases them. Ready for a pilot.',
     status: 'Built; ready for a pilot',
     problem: 'Analysts wanted to ask a dashboard a question in their own words, but a language model that writes the answer can also invent the numbers.',
@@ -92,6 +93,7 @@ export const caseStudies: CaseStudy[] = [
     anchor: '5-3-ai-cost-dashboard',
     title: 'AI cost dashboard',
     summary: 'AI spend per feature, user and request, in a tool I built alone.',
+    figure: '5 AI features, billing from 3 providers',
     cv: 'AI spend per feature, user and request, built alone with React, TanStack Query and Recharts on a NestJS and MongoDB API.',
     status: 'Internal tool, built alone',
     problem: 'The company runs five AI features on several model providers, and nobody could see what each feature, user or request cost.',
@@ -132,14 +134,14 @@ export const caseStudies: CaseStudy[] = [
     title: 'One interface',
     summary: 'Four UI patterns, each brought down to one component and kept there by lint rules.',
     cv: 'Four UI patterns brought down to one component each (one dialog in two sizes, one large-modal frame in three sizes instead of twelve widths, one feedback mechanism, one list row), kept there by ESLint rules.',
-    headlineResult: 'dialog-components',
+    figure: '43 confirmations, 5 components → 1',
     status: 'Merged; awaiting release',
     problem: 'The app said the same things in different ways: confirmations on five components, large modals in twelve widths, success messages as toasts or as pop-ups, and six kinds of expandable list.',
     built: [
       'One dialog component in two sizes for all 43 confirmations, and one frame in three sizes for the 19 large modals.',
       'One feedback mechanism for 242 toast calls and 22 success pop-ups, with written rules for what every message says.',
       'One collapsible row for six lists.',
-      'An ESLint rule for each pattern, so the old way cannot come back, and the end-to-end tests updated to match.',
+      'An ESLint rule for each pattern, so the old way cannot come back, plus the matching end-to-end test changes.',
     ],
     diagrams: [
       {

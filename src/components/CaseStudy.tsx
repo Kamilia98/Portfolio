@@ -1,6 +1,6 @@
 import { pins as allPins, resultById } from '../content'
 import type { CaseStudy as CaseStudyData } from '../content/types'
-import { formatPercent, formatResult, percentChange } from '../lib/results'
+import { formatMeasured } from '../lib/results'
 import { usePinSelection } from '../state/pinSelection'
 import { BlockDiagram } from './BlockDiagram'
 import styles from './CaseStudy.module.css'
@@ -37,7 +37,7 @@ export function CaseStudy({ study }: { study: CaseStudyData }) {
             return (
               <li key={id}>
                 {`${r.label}: `}
-                <span className={styles.value}>{`${formatResult(r)} (${formatPercent(percentChange(r.before, r.after))})`}</span>
+                <span className={styles.value}>{formatMeasured(r)}</span>
               </li>
             )
           })}

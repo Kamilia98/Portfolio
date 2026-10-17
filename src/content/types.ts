@@ -12,7 +12,10 @@ export interface CaseStudy {
   title: string
   summary: string
   cv: string
+  /** A measured result, shown with its computed change on the Features row. */
   headlineResult?: string
+  /** A checkable figure for the Features row when the study has no headline result. */
+  figure?: string
   status: string
   problem: string
   built: string[]

@@ -70,7 +70,8 @@ Lead work at AIM (all chosen by Kamilia as mainly their own work):
 4. **UI consistency overhaul** — the app's confirmations (43 on five components) became one dialog
    component in two sizes; 19 large modals with 12 different widths became one frame in three sizes; 242
    direct toast calls and 22 success modals became one feedback mechanism with written copy rules; six
-   list types became one collapsible row. Each enforced by an ESLint rule.
+   list types became one collapsible row. Each enforced by an ESLint rule, plus the matching end-to-end
+   test changes.
 
 Also true, usable as supporting lines: frontend image build 89 s → 52 s; site speed fix (gzip, trimmed theme
 CSS) with 17 production errors resolved; AI summaries in the PDF/PowerPoint report exports; about 4,400
@@ -80,7 +81,8 @@ Education and earlier work: B.Sc. Computer and Systems Engineering, Zagazig Univ
 with honours, 92.47%, ranked 3rd; ITI 9-month Web & UI Development program (Oct 2024 – Jul 2025). Earlier
 projects for a compact list: no-code website builder (graduation project, GrapesJS + TypeScript), furniture
 e-commerce (Angular + Node, Stripe), its Vue admin dashboard, blog app (React + NestJS), oncology management
-system (React + Node). Freelance on Fiverr since 2023.
+system (React + Node), examination system (JavaScript: online exams with sign-up, eligibility and
+instant results). Freelance on Fiverr since 2023.
 
 Absent, never to be invented: client names, user counts, revenue or business-impact figures, testimonials
 about the AIM work, screenshots of AIM Insights.

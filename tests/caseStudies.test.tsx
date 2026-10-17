@@ -52,3 +52,18 @@ describe('CaseStudy', () => {
     expect(screen.getByText('Merged; awaiting release', { selector: '[id="5-2-chart-speed"] p' })).toBeInTheDocument()
   })
 })
+
+describe('BlockDiagram', () => {
+  it('puts the technology on its own line and keeps one-part labels whole', () => {
+    setup()
+    const blocks = [...byId('5-1-ask-your-data').querySelectorAll('figure li li')]
+    const parts = blocks.map((b) => [...b.children].map((c) => c.textContent))
+    expect(parts[0]).toEqual(['question'])
+    expect(parts).toContainEqual(['query', 'Elasticsearch'])
+  })
+
+  it('draws the connectors instead of typing arrow glyphs', () => {
+    setup()
+    for (const fig of document.querySelectorAll('figure')) expect(fig.textContent).not.toMatch(/[→↓]/)
+  })
+})

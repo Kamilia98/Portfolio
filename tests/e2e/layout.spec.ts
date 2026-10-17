@@ -44,3 +44,19 @@ test('the CV page has no sideways scroll on a phone', async ({ page }) => {
   await expect(page.getByRole('heading', { level: 1 })).toBeVisible()
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(390)
 })
+
+for (const [width, axis] of [[1440, 'row'], [390, 'column']] as const) {
+  test(`stage connectors are drawn lines in the ${axis} layout at ${width} px`, async ({ page }) => {
+    await page.setViewportSize({ width, height: 900 })
+    await page.goto('')
+    const stage = page.locator('[id="5-1-ask-your-data"] figure ol > li').nth(1)
+    const line = await stage.evaluate((el) => {
+      const s = getComputedStyle(el, '::before')
+      return { width: s.width, height: s.height, background: s.backgroundColor, content: s.content }
+    })
+    expect(line.content).toBe('""')
+    expect(line.background).toBe('rgb(18, 20, 23)')
+    expect(axis === 'row' ? line.width : line.height).toBe('22px')
+    expect(axis === 'row' ? line.height : line.width).toBe('1.5px')
+  })
+}

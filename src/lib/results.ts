@@ -17,3 +17,8 @@ export function formatResult(r: Result): string {
 export function formatPercent(p: number): string {
   return p < 0 ? `−${Math.abs(p)}%` : `+${p}%`
 }
+
+/** "63 s → 4.3 s (−93%)". A count without a unit shows no percentage: "5 → 1". */
+export function formatMeasured(r: Result): string {
+  return r.unit ? `${formatResult(r)} (${formatPercent(percentChange(r.before, r.after))})` : formatResult(r)
+}

@@ -25,9 +25,8 @@
   color: var(--ink);
 }
 
-/* The measured result reads as its own line, the same in every row that has one. */
+/* Every row ends with its checkable figure on a line of its own. */
 .result {
   display: block;
   font-variant-numeric: tabular-nums;
-  white-space: nowrap;
 }

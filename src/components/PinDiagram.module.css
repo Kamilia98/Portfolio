@@ -70,6 +70,10 @@
   color: var(--muted);
   font-size: var(--size-small);
 }
+/* A study's number and title stay together when the readout wraps. */
+.hint a {
+  white-space: nowrap;
+}
 
 @media (min-width: 640px) {
   .diagram {

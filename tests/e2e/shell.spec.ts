@@ -81,3 +81,25 @@ test('the phone bar scrolls the marked section into sight', async ({ page }) => 
     return box.x >= 0 && box.x + box.width <= 390
   }).toBe(true)
 })
+
+test('at the top of the page the first section is marked, in accent and bold, with no side stripe', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 })
+  await page.goto('')
+  const link = page.locator('nav[aria-label="Sections"] a[href="#1-features"]')
+  await expect(link).toHaveAttribute('aria-current', 'location')
+  await expect(link).toHaveCSS('color', 'rgb(29, 95, 191)')
+  await expect(link).toHaveCSS('font-weight', '800')
+  await expect(link).toHaveCSS('border-left-width', '0px')
+  await expect(link).toHaveCSS('text-decoration-line', 'none')
+})
+
+test('in the phone bar the marked section is also underlined in accent', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 })
+  await page.goto('')
+  const link = page.locator('nav[aria-label="Sections"] a[href="#1-features"]')
+  await expect(link).toHaveAttribute('aria-current', 'location')
+  await expect(link).toHaveCSS('text-decoration-line', 'underline')
+  await expect(link).toHaveCSS('text-decoration-thickness', '2px')
+  await expect(link).toHaveCSS('color', 'rgb(29, 95, 191)')
+  await expect(link).toHaveCSS('border-left-width', '0px')
+})

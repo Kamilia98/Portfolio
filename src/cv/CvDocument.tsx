@@ -1,14 +1,9 @@
 import { caseStudies, cvHighlights, cvSkills, earlierWork, history, profile, resultById } from '../content'
-import { formatPercent, formatResult, percentChange } from '../lib/results'
-
-function withPercent(id: string): string {
-  const r = resultById(id)
-  return `${formatResult(r)} (${formatPercent(percentChange(r.before, r.after))})`
-}
+import { formatMeasured } from '../lib/results'
 
 function studyResults(ids: string[]): string {
   return ids
-    .map((id) => `${resultById(id).label} ${withPercent(id)}`)
+    .map((id) => `${resultById(id).label} ${formatMeasured(resultById(id))}`)
     .join('; ')
 }
 
@@ -51,7 +46,7 @@ export function CvDocument() {
               {c.resultIds.length > 0 && ` ${studyResults(c.resultIds)}.`}
             </li>
           ))}
-          <li>{resultById('frontend-build').label} {withPercent('frontend-build')}.</li>
+          <li>{resultById('frontend-build').label} {formatMeasured(resultById('frontend-build'))}.</li>
           {cvHighlights.map((h) => (
             <li key={h}>{h}</li>
           ))}
@@ -60,7 +55,7 @@ export function CvDocument() {
 
       <section>
         <h2>Skills</h2>
-        <ul className="plain">
+        <ul className="plain skills">
           {cvSkills.map((sk) => (
             <li key={sk.label}>
               <strong>{sk.label}:</strong> {sk.items}
@@ -80,31 +75,34 @@ export function CvDocument() {
         </ul>
       </section>
 
-      <section>
-        <h2>Education</h2>
-        <ul className="plain ruled">
-          {education.map((h) => (
-            <li key={h.title}>
-              <strong>{h.title}</strong> <span className="period">{h.period}</span>
-              <br />
-              {h.detail}
-            </li>
-          ))}
-        </ul>
-      </section>
+      {/* Education and freelance share one row, so the CV fits one A4 page. */}
+      <div className="pair">
+        <section>
+          <h2>Education</h2>
+          <ul className="plain ruled">
+            {education.map((h) => (
+              <li key={h.title}>
+                <strong>{h.title}</strong>
+                <span className="when">{h.period}</span>
+                <span className="detail">{h.detail}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
 
-      <section>
-        <h2>Freelance</h2>
-        <ul className="plain ruled">
-          {freelance.map((h) => (
-            <li key={h.title}>
-              <strong>{h.title}</strong> <span className="period">{h.period}</span>
-              <br />
-              {h.detail}
-            </li>
-          ))}
-        </ul>
-      </section>
+        <section>
+          <h2>Freelance</h2>
+          <ul className="plain ruled">
+            {freelance.map((h) => (
+              <li key={h.title}>
+                <strong>{h.title}</strong>
+                <span className="when">{h.period}</span>
+                <span className="detail">{h.detail}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      </div>
     </main>
   )
 }

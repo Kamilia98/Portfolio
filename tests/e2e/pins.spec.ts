@@ -45,3 +45,13 @@ test('selecting a pin marks the studies that use it without moving the page', as
   expect(await height()).toBe(h0)
   expect(await blocks()).toEqual(b0)
 })
+
+test('the readout under the chip links the studies that use the selected pin', async ({ page }) => {
+  await page.goto('')
+  await page.getByRole('button', { name: 'Elasticsearch', exact: true }).click()
+  const readout = page.locator('[id="3-pin-configuration"] [aria-live="polite"]')
+  await expect(readout).toHaveText('Elasticsearch is used in 5.1 Ask your data · 5.2 Chart speed')
+  await readout.getByRole('link', { name: '5.2 Chart speed' }).click()
+  await expect(page).toHaveURL(/#5-2-chart-speed$/)
+  await expect(page.getByRole('heading', { level: 3, name: '5.2 Chart speed' })).toBeInViewport()
+})

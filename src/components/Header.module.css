@@ -25,6 +25,12 @@
   color: var(--muted);
 }
 
+.stack {
+  margin: calc(var(--space) / 2) 0 0;
+  color: var(--muted);
+  font-size: var(--size-small);
+}
+
 .links {
   display: flex;
   flex-wrap: wrap;

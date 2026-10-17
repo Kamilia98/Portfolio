@@ -52,3 +52,22 @@ test('atPageBottom is true within 2px of the end only', () => {
   expect(atPageBottom(998, 700, 1700)).toBe(true)
   expect(atPageBottom(900, 700, 1700)).toBe(false)
 })
+
+import { pins, profile } from '../src/content'
+
+test('the header lists the stack from the pin labels', () => {
+  render(<App />)
+  const header = screen.getByRole('banner')
+  const line = within(header).getByText(/^React · /)
+  expect(line.textContent!.replace(/ /g, ' ')).toBe(pins.map((p) => p.label).join(' · '))
+})
+
+test('the role keeps "React + Node" on one line', () => {
+  expect(profile.role).toContain('React + Node')
+})
+
+test('the first section is marked before any section reaches the reading band', () => {
+  render(<App />)
+  const nav = screen.getByRole('navigation', { name: 'Sections' })
+  expect(within(nav).getByRole('link', { name: '1 Features' })).toHaveAttribute('aria-current', 'location')
+})

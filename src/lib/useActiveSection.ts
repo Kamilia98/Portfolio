@@ -4,8 +4,9 @@ export function atPageBottom(scrollY: number, innerHeight: number, scrollHeight:
   return scrollY + innerHeight >= scrollHeight - 2
 }
 
-export function useActiveSection(ids: string[]): string | null {
-  const [active, setActive] = useState<string | null>(null)
+/** The section in the reading band; the first section until another one reaches it. */
+export function useActiveSection(ids: string[]): string {
+  const [active, setActive] = useState(ids[0])
   const key = ids.join('|')
 
   useEffect(() => {

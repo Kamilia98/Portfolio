@@ -40,7 +40,31 @@ export function PinDiagram() {
           {pins.slice(half).map((p) => <PinItem key={p.id} pin={p} />)}
         </ul>
       </div>
-      <p className={styles.hint}>Select a pin to see where it is used.</p>
+      <Readout />
     </div>
+  )
+}
+
+/** Under the chip: where the selected pin is used, or how to select one. Announced when it changes. */
+function Readout() {
+  const { activePin } = usePinSelection()
+  const pin = pins.find((p) => p.id === activePin)
+  const studies = pin ? caseStudies.filter((c) => c.pins.includes(pin.id)) : []
+  return (
+    <p className={styles.hint} aria-live="polite">
+      {pin ? (
+        <>
+          {`${pin.label} is used in `}
+          {studies.map((c, i) => (
+            <span key={c.id}>
+              {i > 0 && ' · '}
+              <a href={`#${c.anchor}`}>{`${c.number} ${c.title}`}</a>
+            </span>
+          ))}
+        </>
+      ) : (
+        'Select a pin to see where it is used.'
+      )}
+    </p>
   )
 }

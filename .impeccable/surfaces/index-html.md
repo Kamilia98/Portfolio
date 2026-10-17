@@ -25,9 +25,11 @@ STORY: The visitor learns in one screen that Kamilia ships features from the Rea
 query, sees four measured results, and can download the CV; a reader who selects a pin sees one technology
 run through every case study.
 
-FIRST VIEWPORT: Left index column of numbered sections. Main column: name in large condensed type, the
-role line beneath, a thick blue rule, then section 1 Features (four result lines) beside the start of
-section 3's chip diagram; Download CV and Email sit directly under the role line.
+FIRST VIEWPORT: One column, as on the canvas Kamilia approved on 2026-10-18 (not the two-column decision
+sketch). Left index column of numbered sections (a sticky top bar on phones). Main column: the name in
+large condensed type, the role line, the location, a muted stack line (the pin labels joined with " · "),
+then Download CV, Email, LinkedIn and GitHub, the 6px accent rule, then 1 Features: four rows, each ending
+in a checkable figure.
 
 FORM: Component datasheet, position 1 on the ordered list (chosen as the pick card), seed:e9916a33c66ef4f1.
 Signature interaction: selecting a pin highlights every diagram block and case study that uses it.

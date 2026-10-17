@@ -9,7 +9,7 @@
   --rule-hair: 1px;
   --rule-section: 2px;
   --rule-header: 6px;
-  --size-name: clamp(3rem, 8vw, 7.5rem);
+  --size-name: clamp(3rem, 8vw, 6rem);
   --size-h2: 1.625rem;
   --size-h3: 1.25rem;
   --size-body: 1.0625rem;

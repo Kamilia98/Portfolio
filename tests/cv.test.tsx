@@ -25,7 +25,7 @@ describe('CvDocument', () => {
 
   it('writes the other computed bullets', () => {
     render(<CvDocument />)
-    expect(screen.getByText(/ESLint rules\. Dialog components 5 → 1 \(−80%\)\.$/)).toBeInTheDocument()
+    expect(screen.getByText(/ESLint rules\. Dialog components 5 → 1\.$/)).toBeInTheDocument()
     expect(screen.getByText('Frontend image build 89 s → 52 s (−42%).')).toBeInTheDocument()
   })
 
@@ -39,4 +39,9 @@ describe('CvDocument', () => {
     expect(screen.getByText('Jul 2025 – now · Cairo')).toBeInTheDocument()
     expect(screen.getByText(/^Full-stack engineer, AIM Technologies/)).toBeInTheDocument()
   })
+})
+
+test('a count without a unit carries no percentage', () => {
+  const { container } = render(<CvDocument />)
+  expect(container.textContent).not.toContain('−80%')
 })

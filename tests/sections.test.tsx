@@ -6,12 +6,17 @@ import { RevisionHistory } from '../src/components/RevisionHistory'
 import { OrderingInfo } from '../src/components/OrderingInfo'
 
 describe('Features', () => {
-  it('links the four case studies and shows headline results', () => {
+  it('links the four case studies and ends every row with a checkable figure', () => {
     const { container } = render(<Features />)
     const hrefs = within(container).getAllByRole('link').map((a) => a.getAttribute('href'))
     expect(hrefs).toEqual(['#5-1-ask-your-data', '#5-2-chart-speed', '#5-3-ai-cost-dashboard', '#5-4-one-interface'])
-    expect(container.textContent).toContain('63 s → 4.3 s (−93%)')
-    expect(container.textContent).toContain('5 → 1 (−80%)')
+    const figures = [...container.querySelectorAll('li')].map((li) => li.lastElementChild!.textContent)
+    expect(figures).toEqual([
+      'tested against about 180 questions',
+      '63 s → 4.3 s (−93%)',
+      '5 AI features, billing from 3 providers',
+      '43 confirmations, 5 components → 1',
+    ])
   })
 })
 
