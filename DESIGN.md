@@ -148,9 +148,9 @@ A paper-and-ink palette with a single blue and one grey fill.
 
 ## Layout
 
-One column of content with a numbered index. From 1024px: a 220px sticky index column and a main column up to 920px, 64px apart, 48px page padding. Below that: a 56px sticky top bar of section links (horizontally scrollable) over a single column with 20px side padding. Sections are separated by 64px (8 units); anchor targets clear the bar with `scroll-margin-top: 88px`.
+One column of content with a numbered index. From 1024px: a 220px sticky index column and a main column up to 920px, 64px apart, 48px page padding. Below that: a 56px sticky top bar of section links (horizontally scrollable) over a single column with 20px side padding. Sections are separated by 64px (8 units); below 640px section 1 starts 40px under the header rule and the header keeps 24px under its buttons, so the first Features row fits a 375 × 667 screen. Anchor targets clear the bar with `scroll-margin-top: 88px`.
 
-Spacing is a single 8px unit, used in multiples (8, 12, 16, 24, 32, 64). Prose is capped at `68ch`. Tables collapse below 640px into stacked records with a muted label above each value; the pin diagram collapses from three columns (240px chip between two pin columns) to one list below 640px. Block diagrams are container-queried: a row of up to 3 stages from 500px, up to 5 from 860px, otherwise a column with drawn connectors.
+Spacing is a single 8px unit, used in multiples (8, 12, 16, 24, 32, 64). Prose is capped at `68ch`. Tables collapse below 640px into stacked records with a muted label above each value; the pin diagram collapses from three columns (240px chip between two pin columns) to two columns of pins, four in each, with no chip or leads, below 640px. Block diagrams are container-queried: a row of up to 3 stages from 500px, up to 5 from 860px, otherwise a column with drawn connectors.
 
 ## Elevation & Depth
 
@@ -174,7 +174,7 @@ Square. Every corner is 0: buttons, blocks, chip, bars, tables. The form languag
 Hairline datasheet tables: 1px ink rule under every row, Fill Grey header with 800 weight, 8px by 12px cells, tabular figures, small type. Links and periods do not wrap. Below 640px each row becomes a record with the header visually hidden and muted `data-label` captions.
 
 ### Pin diagram (signature)
-A package chip (240 by 260px, 3px ink frame, condensed uppercase name) between two columns of pin buttons joined to it by 28px leads. Selected pin: blue, underlined 2px, blue lead. Others dim to grey with a hairline lead. A count in muted small type sits under each label and a hint line reads out the matching studies. On phones the chip and leads disappear and the pins form one list.
+A package chip (240 by 260px, 3px ink frame, condensed uppercase name) between two columns of pin buttons joined to it by 28px leads. Selected pin: blue, underlined 2px, blue lead. Others dim to grey with a hairline lead. A count in muted small type sits under each label and a hint line reads out the matching studies. On phones the chip and leads disappear and the pins sit in two columns of four, 16px apart.
 
 ### Block diagram
 Staged pipeline of 1.5px ink-framed blocks (what in ink, technology in muted small). Stage titles are small uppercase labels. An active block takes a blue frame, a 3px inset blue outline and blue text; non-matching blocks dim to grey.

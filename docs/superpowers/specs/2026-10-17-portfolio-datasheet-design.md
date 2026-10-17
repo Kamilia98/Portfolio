@@ -65,8 +65,9 @@ measured result → stack**. Diagrams are drawn in code from data; no screenshot
   collapsible row. Each rule is enforced by ESLint. *Stack:* React, TypeScript, Ant Design, ESLint.
   *Diagram:* many → one, per pattern (5 → 1 dialogs, 12 widths → 3 sizes, 2 mechanisms → 1, 6 lists → 1).
 
-Supporting lines (Features or Description, not case studies): frontend image build 89 s → 52 s; site speed
-fix with 17 production errors resolved; about 4,400 commits across 16 repositories since July 2025.
+Supporting lines (not case studies): frontend image build 89 s → 52 s (section 4's bars and the CV); about
+4,400 commits across 16 repositories since July 2025 (Description and the CV); site speed fix with 17
+production errors resolved (the CV only, not the site).
 
 ## Signature interaction
 
