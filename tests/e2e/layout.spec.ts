@@ -19,3 +19,11 @@ for (const [width, height, minY] of [[390, 844, 56], [1440, 900, 0]]) {
     await expect.poll(async () => (await heading.boundingBox())!.y).toBeLessThan(240)
   })
 }
+
+test('a malformed hash does not break the page', async ({ page }) => {
+  const errors: Error[] = []
+  page.on('pageerror', (e) => errors.push(e))
+  await page.goto('#%E0%A4%A')
+  await expect(page.getByRole('heading', { level: 1 })).toBeVisible()
+  expect(errors).toEqual([])
+})

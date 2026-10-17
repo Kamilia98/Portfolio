@@ -26,7 +26,7 @@ const bodies: Record<string, ReactNode> = {
 export default function App() {
   // The page renders after load, so the browser has no target to scroll to for a shared #anchor.
   useEffect(() => {
-    document.getElementById(decodeURIComponent(window.location.hash.slice(1)))?.scrollIntoView()
+    document.getElementById(window.location.hash.slice(1))?.scrollIntoView()
   }, [])
   return (
     <PinSelectionProvider>
