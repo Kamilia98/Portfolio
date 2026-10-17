@@ -7,6 +7,7 @@ export { results } from './results'
 export { caseStudies } from './caseStudies'
 export { earlierWork } from './earlierWork'
 export { history } from './history'
+export { cvSkills, cvHighlights } from './cv'
 export { sections } from './sections'
 
 export function resultById(id: string): Result {

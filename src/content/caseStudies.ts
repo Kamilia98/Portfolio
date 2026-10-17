@@ -7,6 +7,7 @@ export const caseStudies: CaseStudy[] = [
     anchor: '5-1-ask-your-data',
     title: 'Ask your data',
     summary: 'Plain-English questions answered with checked numbers and a chart.',
+    cv: 'Plain-English questions answered with checked numbers and a chart. One LLM call compiles the question into a plan; the numbers come from code and are checked before a second call phrases them. Ready for a pilot.',
     status: 'Built; ready for a pilot',
     problem: 'Analysts wanted to ask a dashboard a question in their own words, but a language model that writes the answer can also invent the numbers.',
     built: [
@@ -54,6 +55,7 @@ export const caseStudies: CaseStudy[] = [
     anchor: '5-2-chart-speed',
     title: 'Chart speed',
     summary: 'Tag breakdowns sent to Elasticsearch once instead of once per tab.',
+    cv: 'Tag breakdowns sent to Elasticsearch once instead of once per tab.',
     headlineResult: 'slowest-chart',
     status: 'Merged; awaiting release',
     problem: 'Charts that split results into tabs and break them down by tags took up to a minute to load, and some timed out during Excel export.',
@@ -90,6 +92,7 @@ export const caseStudies: CaseStudy[] = [
     anchor: '5-3-ai-cost-dashboard',
     title: 'AI cost dashboard',
     summary: 'AI spend per feature, user and request, in a tool I built alone.',
+    cv: 'AI spend per feature, user and request, built alone with React, TanStack Query and Recharts on a NestJS and MongoDB API.',
     status: 'Internal tool, built alone',
     problem: 'The company runs five AI features on several model providers, and nobody could see what each feature, user or request cost.',
     built: [
@@ -128,6 +131,7 @@ export const caseStudies: CaseStudy[] = [
     anchor: '5-4-one-interface',
     title: 'One interface',
     summary: 'Four UI patterns, each brought down to one component and kept there by lint rules.',
+    cv: 'Four UI patterns brought down to one component each (one dialog in two sizes, one large-modal frame in three sizes instead of twelve widths, one feedback mechanism, one list row), kept there by ESLint rules.',
     headlineResult: 'dialog-components',
     status: 'Merged; awaiting release',
     problem: 'The app said the same things in different ways: confirmations on five components, large modals in twelve widths, success messages as toasts or as pop-ups, and six kinds of expandable list.',

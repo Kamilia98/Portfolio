@@ -1,17 +1,15 @@
-import { caseStudies, earlierWork, history, profile, resultById } from '../content'
+import { caseStudies, cvHighlights, cvSkills, earlierWork, history, profile, resultById } from '../content'
 import { formatPercent, formatResult, percentChange } from '../lib/results'
-
-const skills: [string, string][] = [
-  ['Core', 'React, TypeScript, Node.js, NestJS'],
-  ['Data', 'Elasticsearch, MongoDB'],
-  ['AI', 'LLM features via Portkey'],
-  ['Testing', 'Jest, Playwright'],
-  ['Also used', 'Next.js, Angular, Vue, Ant Design, Tailwind CSS, Material UI'],
-]
 
 function withPercent(id: string): string {
   const r = resultById(id)
   return `${formatResult(r)} (${formatPercent(percentChange(r.before, r.after))})`
+}
+
+function studyResults(ids: string[]): string {
+  return ids
+    .map((id) => `${resultById(id).label} ${withPercent(id)}`)
+    .join('; ')
 }
 
 export function CvDocument() {
@@ -36,7 +34,7 @@ export function CvDocument() {
 
       <section>
         <h2>Summary</h2>
-        {profile.description.map((p) => (
+        {profile.description.slice(0, 2).map((p) => (
           <p key={p}>{p}</p>
         ))}
       </section>
@@ -44,27 +42,28 @@ export function CvDocument() {
       <section>
         <h2>Experience</h2>
         <h3>
-          AIM Technologies — Full-stack engineer, <span className="period">{current.period}</span>
+          {current.title} <span className="period">{current.period} · Cairo</span>
         </h3>
         <ul>
           {caseStudies.map((c) => (
             <li key={c.id}>
-              <strong>{c.title}:</strong> {c.summary}
-              {c.headlineResult && <> <strong>{withPercent(c.headlineResult)}</strong></>}
+              <strong>{c.title}:</strong> {c.cv}
+              {c.resultIds.length > 0 && ` ${studyResults(c.resultIds)}.`}
             </li>
           ))}
-          <li>Frontend image build {withPercent('frontend-build')}.</li>
-          <li>Site speed fix (gzip, trimmed CSS) with 17 production errors resolved.</li>
-          <li>About 4,400 commits across 16 repositories by October 2026.</li>
+          <li>{resultById('frontend-build').label} {withPercent('frontend-build')}.</li>
+          {cvHighlights.map((h) => (
+            <li key={h}>{h}</li>
+          ))}
         </ul>
       </section>
 
       <section>
         <h2>Skills</h2>
         <ul className="plain">
-          {skills.map(([label, items]) => (
-            <li key={label}>
-              <strong>{label}:</strong> {items}
+          {cvSkills.map((sk) => (
+            <li key={sk.label}>
+              <strong>{sk.label}:</strong> {sk.items}
             </li>
           ))}
         </ul>

@@ -1,9 +1,10 @@
 import { preview } from 'vite'
 import { chromium } from '@playwright/test'
 
-const server = await preview({ preview: { port: 4174, strictPort: true } })
+let server
 let browser
 try {
+  server = await preview({ preview: { port: 4174, strictPort: true } })
   const base = server.resolvedUrls.local[0]
   browser = await chromium.launch()
   const page = await browser.newPage()
@@ -20,5 +21,5 @@ try {
   process.exitCode = 1
 } finally {
   if (browser) await browser.close()
-  await new Promise((resolve) => server.httpServer.close(resolve))
+  if (server) await new Promise((resolve) => server.httpServer.close(resolve))
 }

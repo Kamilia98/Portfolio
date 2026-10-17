@@ -11,6 +11,7 @@ export interface CaseStudy {
   anchor: string
   title: string
   summary: string
+  cv: string
   headlineResult?: string
   status: string
   problem: string
@@ -36,3 +37,4 @@ export interface Profile {
 export interface EarlierWork { name: string; what: string; stack: string; url: string; live?: string }
 export interface HistoryEntry { period: string; title: string; detail: string }
 export interface SectionInfo { id: string; number: number; title: string }
+export interface CvSkill { label: string; items: string }

@@ -120,7 +120,3 @@ li {
     padding: 0;
   }
 }
-
-section {
-  break-inside: avoid;
-}
