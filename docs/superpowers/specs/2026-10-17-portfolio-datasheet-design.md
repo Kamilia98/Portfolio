@@ -120,7 +120,8 @@ always matches the site.
 ## Removed from the old site
 
 Anime hero GIF, loading screen, sidebar template, skill-pill cloud, contact form (replaced by email and
-links), Fiverr testimonials, email-template projects, Font Awesome, the "available for freelance" line, the
+links), the Fiverr testimonial quotes and the email-template project cards (the one-line Fiverr entry in the
+revision history stays), Font Awesome, the "available for freelance" line, the
 profile photo (a datasheet has none; LinkedIn has it).
 
 ## Quality bar and checks

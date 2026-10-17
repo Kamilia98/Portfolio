@@ -82,7 +82,8 @@ with honours, 92.47%, ranked 3rd; ITI 9-month Web & UI Development program (Oct 
 projects for a compact list: no-code website builder (graduation project, GrapesJS + TypeScript), furniture
 e-commerce (Angular + Node, Stripe), its Vue admin dashboard, blog app (React + NestJS), oncology management
 system (React + Node), examination system (JavaScript: online exams with sign-up, eligibility and
-instant results). Freelance on Fiverr since 2023.
+instant results). Freelance on Fiverr since 2023: Kamilia's own CV states responsive email templates for
+Fiverr clients since 2023, with 5-star client reviews, which is why that one line stays in the revision history.
 
 Absent, never to be invented: client names, user counts, revenue or business-impact figures, testimonials
 about the AIM work, screenshots of AIM Insights.

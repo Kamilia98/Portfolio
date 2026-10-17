@@ -12,7 +12,7 @@ describe('Features', () => {
     expect(hrefs).toEqual(['#5-1-ask-your-data', '#5-2-chart-speed', '#5-3-ai-cost-dashboard', '#5-4-one-interface'])
     const figures = [...container.querySelectorAll('li')].map((li) => li.lastElementChild!.textContent)
     expect(figures).toEqual([
-      'tested against about 180 questions',
+      'About 180 test questions',
       '63 s → 4.3 s (−93%)',
       '5 AI features, billing from 3 providers',
       '43 confirmations, 5 components → 1',

@@ -7,7 +7,7 @@ export const caseStudies: CaseStudy[] = [
     anchor: '5-1-ask-your-data',
     title: 'Ask your data',
     summary: 'Plain-English questions answered with checked numbers and a chart.',
-    figure: 'tested against about 180 questions',
+    figure: 'About 180 test questions',
     cv: 'Plain-English questions answered with checked numbers and a chart. One LLM call compiles the question into a plan; the numbers come from code and are checked before a second call phrases them. Ready for a pilot.',
     status: 'Built; ready for a pilot',
     problem: 'Analysts wanted to ask a dashboard a question in their own words, but a language model that writes the answer can also invent the numbers.',
