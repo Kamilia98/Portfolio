@@ -1,4 +1,5 @@
-import { caseStudies, cvHighlights, cvSkills, earlierWork, history, profile, resultById } from '../content'
+import { caseStudies, earlierWork, history, profile, resultById } from '../content'
+import { cvHighlights, cvPhone, cvSkills } from '../content/cv'
 import type { CaseStudy, HistoryEntry, Result } from '../content/types'
 import { formatMeasured } from '../lib/results'
 
@@ -40,7 +41,7 @@ export function CvDocument() {
         <p className="contact">
           <span>{profile.location}</span>
           <a href={`mailto:${profile.email}`}>{profile.email}</a>
-          <span>{profile.phone}</span>
+          <span>{cvPhone}</span>
           <a href={profile.linkedin}>{shortUrl(profile.linkedin)}</a>
           <a href={profile.github}>{shortUrl(profile.github)}</a>
           <a href={profile.site}>{shortUrl(profile.site)}</a>

@@ -1,5 +1,10 @@
 import type { CvSkill } from './types'
 
+// CV-only content. The site never imports this module, so none of it reaches the site's scripts.
+
+/** On the CV only, never on the site. */
+export const cvPhone = '+20 112 452 9888'
+
 export const cvSkills: CvSkill[] = [
   { label: 'Core', items: 'React, TypeScript, Node.js, NestJS' },
   { label: 'Data', items: 'Elasticsearch, MongoDB' },

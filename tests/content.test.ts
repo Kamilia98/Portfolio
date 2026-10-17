@@ -1,4 +1,5 @@
 import * as content from '../src/content'
+import * as cvContent from '../src/content/cv'
 import { pins, caseStudies, sections, resultById, history } from '../src/content'
 
 test('pin ids referenced by case studies and blocks exist', () => {
@@ -62,6 +63,7 @@ test('no banned client or account names anywhere in the content', () => {
     if (typeof value !== 'function') walk(value)
     else expect(name).toBe('resultById')
   }
+  walk(Object.values(cvContent))
 })
 
 test('case studies claim only what happened', () => {

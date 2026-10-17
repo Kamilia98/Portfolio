@@ -52,7 +52,6 @@ export interface Profile {
   role: string
   location: string
   email: string
-  phone: string
   linkedin: string
   github: string
   site: string
