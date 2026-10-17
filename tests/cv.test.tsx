@@ -44,6 +44,12 @@ describe('CvDocument', () => {
     expect(screen.getByText('Frontend image build: 89 s → 52 s (−42%).')).toBeInTheDocument()
   })
 
+  it('shows a place after the period only where the history entry names one', () => {
+    render(<CvDocument />)
+    expect(screen.getByText('Jul 2025 – now · Cairo')).toBeInTheDocument()
+    expect(screen.getByText('Oct 2024 – Jul 2025')).toBeInTheDocument()
+  })
+
   it('mentions the commit count once', () => {
     const { container } = render(<CvDocument />)
     expect(container.textContent!.match(/4,400/g)).toHaveLength(1)

@@ -1,10 +1,15 @@
 import { caseStudies, cvHighlights, cvSkills, earlierWork, history, profile, resultById } from '../content'
-import type { CaseStudy, Result } from '../content/types'
+import type { CaseStudy, HistoryEntry, Result } from '../content/types'
 import { formatMeasured } from '../lib/results'
 
 /** The link text on the sheet: "linkedin.com/in/kamiliaahmed"; the href keeps the full URL. */
 function shortUrl(url: string): string {
   return url.replace(/^https:\/\/(www\.)?/, '').replace(/\/$/, '')
+}
+
+/** "Jul 2025 – now · Cairo", or the period alone when the entry names no place. */
+function when(h: HistoryEntry): string {
+  return h.place ? `${h.period} · ${h.place}` : h.period
 }
 
 /** "Slowest chart load: 63 s → 4.3 s (−93%)"; a later result in the same sentence starts in lower case. */
@@ -52,7 +57,7 @@ export function CvDocument() {
         <h2>Experience</h2>
         <h3 className="job">
           <span>{current.title}</span>
-          <span className="period">{current.period} · Cairo</span>
+          <span className="period">{when(current)}</span>
         </h3>
         <ul>
           {caseStudies.map((c) => (
@@ -98,7 +103,7 @@ export function CvDocument() {
             {education.map((h) => (
               <li key={h.title}>
                 <strong>{h.title}</strong>
-                <span className="when">{h.period}</span>
+                <span className="when">{when(h)}</span>
                 <span className="detail">{h.detail}</span>
               </li>
             ))}
@@ -111,7 +116,7 @@ export function CvDocument() {
             {freelance.map((h) => (
               <li key={h.title}>
                 <strong>{h.title}</strong>
-                <span className="when">{h.period}</span>
+                <span className="when">{when(h)}</span>
                 <span className="detail">{h.detail}</span>
               </li>
             ))}

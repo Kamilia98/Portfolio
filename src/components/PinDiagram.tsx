@@ -1,4 +1,4 @@
-import { caseStudies, pins } from '../content'
+import { caseStudies, pins, profile } from '../content'
 import type { Pin } from '../content/types'
 import { usePinSelection } from '../state/pinSelection'
 import styles from './PinDiagram.module.css'
@@ -35,7 +35,7 @@ export function PinDiagram() {
         <ul className={`${styles.side} ${styles.left}`}>
           {pins.slice(0, half).map((p) => <PinItem key={p.id} pin={p} />)}
         </ul>
-        <div className={styles.chip} aria-hidden="true">Kamilia Ahmed</div>
+        <div className={styles.chip} aria-hidden="true">{profile.name}</div>
         <ul className={`${styles.side} ${styles.right}`}>
           {pins.slice(half).map((p) => <PinItem key={p.id} pin={p} />)}
         </ul>

@@ -2,7 +2,7 @@ import { render, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { PinSelectionProvider } from '../src/state/pinSelection'
 import { PinDiagram } from '../src/components/PinDiagram'
-import { pins } from '../src/content'
+import { pins, profile } from '../src/content'
 
 function setup() {
   render(
@@ -37,6 +37,17 @@ describe('PinDiagram', () => {
     expect(screen.getByRole('button', { name: 'Elasticsearch' })).toHaveAccessibleDescription('in 2 case studies')
     expect(screen.getAllByText('in 1 case study').length).toBeGreaterThan(0)
     expect(screen.getByText('Select a pin to see where it is used.')).toBeTruthy()
+  })
+})
+
+describe('Chip', () => {
+  it('carries the name from the profile', () => {
+    const { container } = render(
+      <PinSelectionProvider>
+        <PinDiagram />
+      </PinSelectionProvider>,
+    )
+    expect(container.querySelector('div[aria-hidden="true"]')!.textContent).toBe(profile.name)
   })
 })
 

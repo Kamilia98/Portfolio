@@ -40,6 +40,12 @@ export interface Profile {
   description: string[]
 }
 export interface EarlierWork { name: string; what: string; stack: string; url: string; live?: string }
-export interface HistoryEntry { period: string; title: string; detail: string }
+export interface HistoryEntry {
+  period: string
+  /** Where, when it is worth saying: shown after the period on the CV. */
+  place?: string
+  title: string
+  detail: string
+}
 export interface SectionInfo { id: string; number: number; title: string }
 export interface CvSkill { label: string; items: string }
