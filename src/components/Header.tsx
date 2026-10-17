@@ -9,7 +9,7 @@ export function Header() {
       <p className={styles.role}>{profile.role}</p>
       <p className={styles.location}>{profile.location}</p>
       {/* No-break spaces inside a label, so the line wraps only between technologies. */}
-      <p className={styles.stack}>{pins.map((p) => p.label.replaceAll(' ', ' ')).join(' · ')}</p>
+      <p className={styles.stack}>{pins.map((p) => p.label.replaceAll(' ', '\u00A0')).join(' · ')}</p>
       <div className={styles.links}>
         <a className={`${styles.button} ${styles.primary}`} href={cvHref} download>Download CV</a>
         <a className={styles.button} href={`mailto:${profile.email}`}>Email</a>

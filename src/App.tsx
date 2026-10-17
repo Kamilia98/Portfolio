@@ -1,5 +1,6 @@
 import { useEffect, type ReactNode } from 'react'
 import { sections, caseStudies } from './content'
+import type { SectionId } from './content/types'
 import { Header } from './components/Header'
 import { Section } from './components/Section'
 import { SectionIndex } from './components/SectionIndex'
@@ -14,11 +15,11 @@ import { PinDiagram } from './components/PinDiagram'
 import { PinSelectionProvider } from './state/pinSelection'
 import styles from './App.module.css'
 
-const bodies: Record<string, ReactNode> = {
+const bodies: Record<SectionId, ReactNode> = {
   '1-features': <Features />,
   '2-description': <Description />,
-  '4-typical-performance': <PerformanceBars />,
   '3-pin-configuration': <PinDiagram />,
+  '4-typical-performance': <PerformanceBars />,
   '5-detailed-description': caseStudies.map((c) => <CaseStudy key={c.id} study={c} />),
   '6-related-parts': <RelatedParts />,
   '7-revision-history': <RevisionHistory />,
@@ -50,17 +51,17 @@ export default function App() {
   }, [])
   return (
     <PinSelectionProvider>
-    <div className={styles.page}>
-      <SectionIndex />
-      <main className={styles.main}>
-        <Header />
-        {sections.map((info) => (
-          <Section key={info.id} info={info}>
-            {bodies[info.id] ?? null}
-          </Section>
-        ))}
-      </main>
-    </div>
+      <div className={styles.page}>
+        <SectionIndex />
+        <main className={styles.main}>
+          <Header />
+          {sections.map((info) => (
+            <Section key={info.id} info={info}>
+              {bodies[info.id]}
+            </Section>
+          ))}
+        </main>
+      </div>
     </PinSelectionProvider>
   )
 }

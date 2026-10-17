@@ -47,5 +47,14 @@ export interface HistoryEntry {
   title: string
   detail: string
 }
-export interface SectionInfo { id: string; number: number; title: string }
+export type SectionId =
+  | '1-features'
+  | '2-description'
+  | '3-pin-configuration'
+  | '4-typical-performance'
+  | '5-detailed-description'
+  | '6-related-parts'
+  | '7-revision-history'
+  | '8-ordering-information'
+export interface SectionInfo { id: SectionId; number: number; title: string }
 export interface CvSkill { label: string; items: string }

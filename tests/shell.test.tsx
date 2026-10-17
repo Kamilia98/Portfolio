@@ -1,5 +1,7 @@
 import { render, screen, within } from '@testing-library/react'
 import App from '../src/App'
+import { pins, profile } from '../src/content'
+import { atPageBottom } from '../src/lib/useActiveSection'
 
 const titles = [
   '1 Features',
@@ -45,25 +47,21 @@ test('the phone number is not on the page', () => {
   expect(container.textContent).not.toContain('112 452')
 })
 
-import { atPageBottom } from '../src/lib/useActiveSection'
-
 test('atPageBottom is true within 2px of the end only', () => {
   expect(atPageBottom(1000, 700, 1700)).toBe(true)
   expect(atPageBottom(998, 700, 1700)).toBe(true)
   expect(atPageBottom(900, 700, 1700)).toBe(false)
 })
 
-import { pins, profile } from '../src/content'
-
 test('the header lists the stack from the pin labels', () => {
   render(<App />)
   const header = screen.getByRole('banner')
   const line = within(header).getByText(/^React · /)
-  expect(line.textContent!.replace(/ /g, ' ')).toBe(pins.map((p) => p.label).join(' · '))
+  expect(line.textContent!.replace(/\u00A0/g, ' ')).toBe(pins.map((p) => p.label).join(' · '))
 })
 
 test('the role keeps "React + Node" on one line', () => {
-  expect(profile.role).toContain('React + Node')
+  expect(profile.role).toContain('React\u00A0+\u00A0Node')
 })
 
 test('the first section is marked before any section reaches the reading band', () => {

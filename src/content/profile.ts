@@ -3,7 +3,7 @@ import type { Profile } from './types'
 export const profile: Profile = {
   name: 'Kamilia Ahmed', fullName: 'Kamilia Ahmed Hamed',
   // No-break spaces keep "React + Node" on one line.
-  role: 'Full-stack engineer. React + Node, end to end.',
+  role: 'Full-stack engineer. React\u00A0+\u00A0Node, end to end.',
   location: 'Cairo, Egypt · works UK hours',
   email: 'kamiliaahmed01@gmail.com', phone: '+20 112 452 9888',
   linkedin: 'https://www.linkedin.com/in/kamiliaahmed/', github: 'https://github.com/Kamilia98',
