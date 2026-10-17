@@ -84,8 +84,16 @@ li {
   break-inside: avoid;
 }
 
+/* Name, then dates: in source order, so text pulled from the PDF reads the same way. */
+.job {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  column-gap: 4mm;
+}
+
 .period {
-  float: right;
   font-weight: 400;
   color: var(--muted);
 }
@@ -136,11 +144,6 @@ li {
     min-height: 0;
     padding: 24px 16px;
     overflow-wrap: anywhere;
-  }
-
-  .period {
-    float: none;
-    display: block;
   }
 
   .skills {

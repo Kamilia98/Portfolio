@@ -49,10 +49,10 @@ describe('CvDocument', () => {
     expect(container.textContent!.match(/4,400/g)).toHaveLength(1)
   })
 
-  it('heads the experience from the history entry', () => {
+  it('heads the experience from the history entry, the job before its period', () => {
     render(<CvDocument />)
-    expect(screen.getByText('Jul 2025 – now · Cairo')).toBeInTheDocument()
-    expect(screen.getByText(/^Full-stack engineer, AIM Technologies/)).toBeInTheDocument()
+    const job = screen.getByRole('heading', { level: 3 })
+    expect([...job.children].map((c) => c.textContent)).toEqual(['Full-stack engineer, AIM Technologies', 'Jul 2025 – now · Cairo'])
   })
 })
 

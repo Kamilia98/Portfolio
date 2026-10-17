@@ -41,3 +41,17 @@ test('the PDF links the site and the email on page 1', async () => {
   expect(uris).toContain(profile.linkedin)
   expect(uris).toContain(profile.github)
 })
+
+test('the job heading puts its period at the right of the same line, with no float', async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 900 })
+  await page.goto('cv.html')
+  const job = page.getByRole('heading', { level: 3 })
+  const title = job.locator('span').first()
+  const period = job.locator('span').last()
+  await expect(period).toHaveText(/^Jul 2025/)
+  await expect(period).toHaveCSS('float', 'none')
+  const [t, p, h] = [(await title.boundingBox())!, (await period.boundingBox())!, (await job.boundingBox())!]
+  expect(p.x).toBeGreaterThan(t.x + t.width)
+  expect(Math.abs(p.x + p.width - (h.x + h.width))).toBeLessThan(1)
+  expect(Math.abs(p.y - t.y)).toBeLessThan(4)
+})

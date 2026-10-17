@@ -50,8 +50,9 @@ export function CvDocument() {
 
       <section>
         <h2>Experience</h2>
-        <h3>
-          {current.title} <span className="period">{current.period} · Cairo</span>
+        <h3 className="job">
+          <span>{current.title}</span>
+          <span className="period">{current.period} · Cairo</span>
         </h3>
         <ul>
           {caseStudies.map((c) => (
