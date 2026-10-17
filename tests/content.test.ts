@@ -82,3 +82,7 @@ test('case studies claim only what happened', () => {
 test("the CV's current job is the newest work entry and still runs", () => {
   expect(history.find((h) => h.kind === 'work')!.period).toMatch(/– now$/)
 })
+
+test('every case study has a figure for its Features row', () => {
+  for (const cs of caseStudies) expect(Boolean(cs.headlineResult || cs.figure)).toBe(true)
+})
