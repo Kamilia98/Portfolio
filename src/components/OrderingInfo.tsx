@@ -14,7 +14,9 @@ export function OrderingInfo() {
       {rows.map((r) => (
         <div key={r.term} className={styles.row}>
           <dt className={styles.term}>{r.term}</dt>
-          <dd className={styles.value}><a href={r.href}>{r.text}</a></dd>
+          <dd className={styles.value}>
+            <a href={r.href}>{r.text}</a>
+          </dd>
         </div>
       ))}
     </dl>

@@ -11,10 +11,18 @@ export function Header() {
       {/* No-break spaces inside a label, so the line wraps only between technologies. */}
       <p className={styles.stack}>{pins.map((p) => p.label.replaceAll(' ', '\u00A0')).join(' · ')}</p>
       <div className={styles.links}>
-        <a className={`${styles.button} ${styles.primary}`} href={cvHref} download>Download CV</a>
-        <a className={styles.button} href={`mailto:${profile.email}`}>Email</a>
-        <a className={styles.button} href={profile.linkedin}>LinkedIn</a>
-        <a className={styles.button} href={profile.github}>GitHub</a>
+        <a className={`${styles.button} ${styles.primary}`} href={cvHref} download>
+          Download CV
+        </a>
+        <a className={styles.button} href={`mailto:${profile.email}`}>
+          Email
+        </a>
+        <a className={styles.button} href={profile.linkedin}>
+          LinkedIn
+        </a>
+        <a className={styles.button} href={profile.github}>
+          GitHub
+        </a>
       </div>
     </header>
   )

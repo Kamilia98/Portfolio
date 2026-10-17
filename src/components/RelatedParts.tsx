@@ -21,8 +21,14 @@ export function RelatedParts() {
             <td data-label="What it is">{w.what}</td>
             <td data-label="Stack">{w.stack}</td>
             <td data-label="Links" className={styles.links}>
-              <a href={w.url} {...external}>Code<span className={styles.hidden}> for {w.name}</span></a>
-              {w.live && <a href={w.live} {...external}>Live<span className={styles.hidden}> site for {w.name}</span></a>}
+              <a href={w.url} {...external}>
+                Code<span className={styles.hidden}> for {w.name}</span>
+              </a>
+              {w.live && (
+                <a href={w.live} {...external}>
+                  Live<span className={styles.hidden}> site for {w.name}</span>
+                </a>
+              )}
             </td>
           </tr>
         ))}

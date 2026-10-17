@@ -1,10 +1,30 @@
 export type PinId = 'react' | 'typescript' | 'node' | 'nestjs' | 'elasticsearch' | 'mongodb' | 'llm' | 'testing'
-export interface Pin { id: PinId; label: string }
+export interface Pin {
+  id: PinId
+  label: string
+}
 export type CaseStudyId = 'ask-your-data' | 'chart-speed' | 'ai-cost-dashboard' | 'one-interface'
-export interface Result { id: string; label: string; before: number; after: number; unit: 's' | ''; caseStudy?: CaseStudyId }
-export interface DiagramBlock { id: string; label: string; pins: PinId[] }
-export interface DiagramStage { title: string; blocks: DiagramBlock[] }
-export interface Diagram { caption: string; stages: DiagramStage[] }
+export interface Result {
+  id: string
+  label: string
+  before: number
+  after: number
+  unit: 's' | ''
+  caseStudy?: CaseStudyId
+}
+export interface DiagramBlock {
+  id: string
+  label: string
+  pins: PinId[]
+}
+export interface DiagramStage {
+  title: string
+  blocks: DiagramBlock[]
+}
+export interface Diagram {
+  caption: string
+  stages: DiagramStage[]
+}
 export interface CaseStudy {
   id: CaseStudyId
   number: string
@@ -39,7 +59,13 @@ export interface Profile {
   cvFile: string
   description: string[]
 }
-export interface EarlierWork { name: string; what: string; stack: string; url: string; live?: string }
+export interface EarlierWork {
+  name: string
+  what: string
+  stack: string
+  url: string
+  live?: string
+}
 export interface HistoryEntry {
   period: string
   /** Where, when it is worth saying: shown after the period on the CV. */
@@ -56,5 +82,12 @@ export type SectionId =
   | '6-related-parts'
   | '7-revision-history'
   | '8-ordering-information'
-export interface SectionInfo { id: SectionId; number: number; title: string }
-export interface CvSkill { label: string; items: string }
+export interface SectionInfo {
+  id: SectionId
+  number: number
+  title: string
+}
+export interface CvSkill {
+  label: string
+  items: string
+}

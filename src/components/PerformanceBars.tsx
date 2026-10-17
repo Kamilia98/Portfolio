@@ -15,7 +15,7 @@ export function PerformanceBars() {
         const change = formatPercent(percentChange(r.before, r.after))
         const before = formatValue(r.before, r.unit)
         const after = formatValue(r.after, r.unit)
-        const finalWidth = `${(r.after / r.before * 100).toFixed(2)}%`
+        const finalWidth = `${((r.after / r.before) * 100).toFixed(2)}%`
         const width = reduced || inView ? finalWidth : '100%'
         return (
           <div key={r.id} className={styles.row}>

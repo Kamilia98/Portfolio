@@ -1,7 +1,12 @@
 import { percentChange, formatResult, formatPercent, formatValue, formatMeasured } from '../src/lib/results'
 import { resultById } from '../src/content'
 
-test.each([[63, 4.3, -93], [262, 50, -81], [89, 52, -42], [5, 1, -80]])('percentChange(%d, %d) = %d', (b, a, p) => {
+test.each([
+  [63, 4.3, -93],
+  [262, 50, -81],
+  [89, 52, -42],
+  [5, 1, -80],
+])('percentChange(%d, %d) = %d', (b, a, p) => {
   expect(percentChange(b, a)).toBe(p)
 })
 test('formats', () => {

@@ -8,7 +8,9 @@ import { OrderingInfo } from '../src/components/OrderingInfo'
 describe('Features', () => {
   it('links the four case studies and ends every row with a checkable figure', () => {
     const { container } = render(<Features />)
-    const hrefs = within(container).getAllByRole('link').map((a) => a.getAttribute('href'))
+    const hrefs = within(container)
+      .getAllByRole('link')
+      .map((a) => a.getAttribute('href'))
     expect(hrefs).toEqual(['#5-1-ask-your-data', '#5-2-chart-speed', '#5-3-ai-cost-dashboard', '#5-4-one-interface'])
     const figures = [...container.querySelectorAll('li')].map((li) => li.lastElementChild!.textContent)
     expect(figures).toEqual([
@@ -44,7 +46,11 @@ describe('RelatedParts', () => {
   it('carries the part name inside each link', () => {
     render(<RelatedParts />)
     const bloogy = screen.getAllByRole('row').find((r) => r.textContent?.includes('Bloogy'))!
-    expect(within(bloogy).getAllByRole('link').map((a) => a.textContent)).toEqual(['Code for Bloogy', 'Live site for Bloogy'])
+    expect(
+      within(bloogy)
+        .getAllByRole('link')
+        .map((a) => a.textContent),
+    ).toEqual(['Code for Bloogy', 'Live site for Bloogy'])
   })
 })
 
@@ -59,6 +65,8 @@ describe('RevisionHistory', () => {
 describe('OrderingInfo', () => {
   it('links the CV under the base path', () => {
     render(<OrderingInfo />)
-    expect(screen.getByRole('link', { name: /CV|kamilia-ahmed-hamed/i }).getAttribute('href')).toBe('/Portfolio/kamilia-ahmed-hamed.pdf')
+    expect(screen.getByRole('link', { name: /CV|kamilia-ahmed-hamed/i }).getAttribute('href')).toBe(
+      '/Portfolio/kamilia-ahmed-hamed.pdf',
+    )
   })
 })

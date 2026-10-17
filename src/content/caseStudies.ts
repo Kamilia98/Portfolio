@@ -10,7 +10,8 @@ export const caseStudies: CaseStudy[] = [
     figure: 'About 180 test questions',
     cv: 'Plain-English questions answered with checked numbers and a chart. One LLM call compiles the question into a plan; the numbers come from code and are checked before a second call phrases them. Ready for a pilot.',
     status: 'Built; ready for a pilot',
-    problem: 'Analysts wanted to ask a dashboard a question in their own words, but a language model that writes the answer can also invent the numbers.',
+    problem:
+      'Analysts wanted to ask a dashboard a question in their own words, but a language model that writes the answer can also invent the numbers.',
     built: [
       'A two-phase design: when the widget is created, one LLM call compiles the question into a structured plan; when it opens, the plan runs as ordinary code.',
       'Every claim the question takes for granted, such as a ranking or a rise, is checked in code before an answer is written, or the question is refused with a reason.',
@@ -59,7 +60,8 @@ export const caseStudies: CaseStudy[] = [
     cv: 'Tag breakdowns sent to Elasticsearch once instead of once per tab.',
     headlineResult: 'slowest-chart',
     status: 'Merged; awaiting release',
-    problem: 'Charts that split results into tabs and break them down by tags took over a minute to load, and some timed out during Excel export.',
+    problem:
+      'Charts that split results into tabs and break them down by tags took over a minute to load, and some timed out during Excel export.',
     built: [
       "Measured where the time went with Elasticsearch's profiler: each tab rebuilt the full tag breakdown, so a seven-tab chart did the same heavy work seven times.",
       "Changed the query builder so tabs that share a breakdown send it once, and matched a tag's hand-picked posts with one terms clause instead of one clause per post.",
@@ -69,22 +71,49 @@ export const caseStudies: CaseStudy[] = [
       {
         caption: 'Before',
         stages: [
-          { title: 'Request', blocks: [{ id: 'speed-before-request', label: 'chart with 7 tabs · NestJS', pins: ['nestjs', 'typescript'] }] },
-          { title: 'Query', blocks: [{ id: 'speed-before-query', label: '7 copies of the tag breakdown · Elasticsearch', pins: ['elasticsearch'] }] },
+          {
+            title: 'Request',
+            blocks: [
+              { id: 'speed-before-request', label: 'chart with 7 tabs · NestJS', pins: ['nestjs', 'typescript'] },
+            ],
+          },
+          {
+            title: 'Query',
+            blocks: [
+              {
+                id: 'speed-before-query',
+                label: '7 copies of the tag breakdown · Elasticsearch',
+                pins: ['elasticsearch'],
+              },
+            ],
+          },
           { title: 'Result', blocks: [{ id: 'speed-before-result', label: '63 s', pins: [] }] },
         ],
       },
       {
         caption: 'After',
         stages: [
-          { title: 'Request', blocks: [{ id: 'speed-after-request', label: 'same chart · NestJS', pins: ['nestjs', 'typescript'] }] },
-          { title: 'Query', blocks: [{ id: 'speed-after-query', label: '1 shared breakdown + 1 terms clause · Elasticsearch', pins: ['elasticsearch'] }] },
+          {
+            title: 'Request',
+            blocks: [{ id: 'speed-after-request', label: 'same chart · NestJS', pins: ['nestjs', 'typescript'] }],
+          },
+          {
+            title: 'Query',
+            blocks: [
+              {
+                id: 'speed-after-query',
+                label: '1 shared breakdown + 1 terms clause · Elasticsearch',
+                pins: ['elasticsearch'],
+              },
+            ],
+          },
           { title: 'Result', blocks: [{ id: 'speed-after-result', label: '4.3 s, same numbers', pins: [] }] },
         ],
       },
     ],
     resultIds: ['slowest-chart', 'heavy-charts'],
-    resultNote: 'Measured on a test environment with identical numbers; a replay of 10 days of production requests confirmed the gains.',
+    resultNote:
+      'Measured on a test environment with identical numbers; a replay of 10 days of production requests confirmed the gains.',
     cvResultNote: 'on a test environment, confirmed by a production replay',
     pins: ['nestjs', 'typescript', 'elasticsearch'],
   },
@@ -97,7 +126,8 @@ export const caseStudies: CaseStudy[] = [
     figure: '5 AI features, billing from 3 providers',
     cv: 'AI spend per feature, user and request, built alone with React, TanStack Query and Recharts on a NestJS and MongoDB API.',
     status: 'Internal tool, built alone',
-    problem: 'The company runs five AI features on several model providers, and nobody could see what each feature, user or request cost.',
+    problem:
+      'The company runs five AI features on several model providers, and nobody could see what each feature, user or request cost.',
     built: [
       "A NestJS service that ingests the LLM gateway's logs and the providers' own billing from OpenAI, Anthropic and OpenRouter into MongoDB.",
       "A React dashboard on TanStack Query and Recharts: cost over time, cost per feature, top users, and each request's cost down to its sub-calls.",
@@ -121,7 +151,16 @@ export const caseStudies: CaseStudy[] = [
               { id: 'cost-store', label: 'store · MongoDB', pins: ['mongodb'] },
             ],
           },
-          { title: 'Read', blocks: [{ id: 'cost-dashboard', label: 'dashboard · React: feature, user, request', pins: ['react', 'typescript'] }] },
+          {
+            title: 'Read',
+            blocks: [
+              {
+                id: 'cost-dashboard',
+                label: 'dashboard · React: feature, user, request',
+                pins: ['react', 'typescript'],
+              },
+            ],
+          },
         ],
       },
     ],
@@ -137,7 +176,8 @@ export const caseStudies: CaseStudy[] = [
     cv: 'Four UI patterns brought down to one component each (one dialog in two sizes, one large-modal frame in three sizes instead of twelve widths, one feedback mechanism, one list row), kept there by ESLint rules.',
     figure: '43 confirmations, 5 components → 1',
     status: 'Merged; awaiting release',
-    problem: 'The app said the same things in different ways: confirmations on five components, large modals in twelve widths, success messages as toasts or as pop-ups, and six kinds of expandable list.',
+    problem:
+      'The app said the same things in different ways: confirmations on five components, large modals in twelve widths, success messages as toasts or as pop-ups, and six kinds of expandable list.',
     built: [
       'One dialog component in two sizes for all 43 confirmations, and one frame in three sizes for the 19 large modals.',
       'One feedback mechanism for 242 toast calls and 22 success pop-ups, with written rules for what every message says.',

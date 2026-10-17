@@ -58,7 +58,10 @@ describe('CvDocument', () => {
   it('heads the experience from the history entry, the job before its period', () => {
     render(<CvDocument />)
     const job = screen.getByRole('heading', { level: 3 })
-    expect([...job.children].map((c) => c.textContent)).toEqual(['Full-stack engineer, AIM Technologies', 'Jul 2025 – now · Cairo'])
+    expect([...job.children].map((c) => c.textContent)).toEqual([
+      'Full-stack engineer, AIM Technologies',
+      'Jul 2025 – now · Cairo',
+    ])
   })
 })
 

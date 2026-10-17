@@ -5,13 +5,17 @@ test('pin ids referenced by case studies and blocks exist', () => {
   const ids = new Set(pins.map((p) => p.id))
   for (const cs of caseStudies) {
     cs.pins.forEach((p) => expect(ids.has(p)).toBe(true))
-    cs.diagrams.forEach((d) => d.stages.forEach((s) => s.blocks.forEach((b) => b.pins.forEach((p) => expect(ids.has(p)).toBe(true)))))
+    cs.diagrams.forEach((d) =>
+      d.stages.forEach((s) => s.blocks.forEach((b) => b.pins.forEach((p) => expect(ids.has(p)).toBe(true)))),
+    )
   }
 })
 
 test("every block's pins are a subset of its case study's pins", () => {
   for (const cs of caseStudies) {
-    cs.diagrams.forEach((d) => d.stages.forEach((s) => s.blocks.forEach((b) => b.pins.forEach((p) => expect(cs.pins).toContain(p)))))
+    cs.diagrams.forEach((d) =>
+      d.stages.forEach((s) => s.blocks.forEach((b) => b.pins.forEach((p) => expect(cs.pins).toContain(p)))),
+    )
   }
 })
 
@@ -35,8 +39,14 @@ test('anchors are unique, well formed, numbered 5.1 to 5.4 in order', () => {
 
 test('sections are the eight datasheet sections', () => {
   expect(sections.map((s) => s.id)).toEqual([
-    '1-features', '2-description', '3-pin-configuration', '4-typical-performance',
-    '5-detailed-description', '6-related-parts', '7-revision-history', '8-ordering-information',
+    '1-features',
+    '2-description',
+    '3-pin-configuration',
+    '4-typical-performance',
+    '5-detailed-description',
+    '6-related-parts',
+    '7-revision-history',
+    '8-ordering-information',
   ])
   expect(sections.map((s) => s.number)).toEqual([1, 2, 3, 4, 5, 6, 7, 8])
 })
@@ -59,7 +69,9 @@ test('case studies claim only what happened', () => {
   const text = (v: unknown) => JSON.stringify(v)
   // A lint rule flags the old way; it cannot stop it coming back.
   expect(text(study('one-interface'))).not.toContain('cannot come back')
-  expect(study('one-interface').built).toContain('An ESLint rule for each pattern, so the old way is flagged, plus the matching end-to-end test changes.')
+  expect(study('one-interface').built).toContain(
+    'An ESLint rule for each pattern, so the old way is flagged, plus the matching end-to-end test changes.',
+  )
   // The e2e work was changes to existing tests, not new tests.
   const kept = study('one-interface').diagrams[0].stages.find((s) => s.title === 'Kept')!
   expect(kept.blocks.map((b) => b.label)).toContain('end-to-end test changes · Playwright')

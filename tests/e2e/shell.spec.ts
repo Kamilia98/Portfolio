@@ -16,14 +16,20 @@ test('the index marks the section in view', async ({ page }) => {
     const el = document.getElementById('7-revision-history')!
     window.scrollTo(0, el.getBoundingClientRect().top + window.scrollY - window.innerHeight * 0.35)
   })
-  await expect(page.locator('nav[aria-label="Sections"] a[href="#7-revision-history"]')).toHaveAttribute('aria-current', 'location')
+  await expect(page.locator('nav[aria-label="Sections"] a[href="#7-revision-history"]')).toHaveAttribute(
+    'aria-current',
+    'location',
+  )
 })
 
 test('at the bottom of the page the last section is marked', async ({ page }) => {
   await page.setViewportSize({ width: 1280, height: 400 })
   await page.goto('')
   await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight))
-  await expect(page.locator('nav[aria-label="Sections"] a[href="#8-ordering-information"]')).toHaveAttribute('aria-current', 'location')
+  await expect(page.locator('nav[aria-label="Sections"] a[href="#8-ordering-information"]')).toHaveAttribute(
+    'aria-current',
+    'location',
+  )
 })
 
 test('focus ring on a link in the mobile bar is not clipped', async ({ page }) => {
@@ -31,10 +37,7 @@ test('focus ring on a link in the mobile bar is not clipped', async ({ page }) =
   await page.goto('')
   const link = page.locator('nav[aria-label="Sections"] a').first()
   await link.focus()
-  const [nav, box] = await Promise.all([
-    page.locator('nav[aria-label="Sections"]').boundingBox(),
-    link.boundingBox(),
-  ])
+  const [nav, box] = await Promise.all([page.locator('nav[aria-label="Sections"]').boundingBox(), link.boundingBox()])
   // outline 3px + offset 2px must fit inside the bar
   expect(box!.y - 5).toBeGreaterThanOrEqual(nav!.y)
   expect(box!.y + box!.height + 5).toBeLessThanOrEqual(nav!.y + nav!.height)
@@ -43,7 +46,10 @@ test('focus ring on a link in the mobile bar is not clipped', async ({ page }) =
 test('table and contact links use ink, not the browser default blue', async ({ page }) => {
   await page.goto('')
   for (const sel of ['[id="6-related-parts"] a', '[id="8-ordering-information"] a']) {
-    const color = await page.locator(sel).first().evaluate((el) => getComputedStyle(el).color)
+    const color = await page
+      .locator(sel)
+      .first()
+      .evaluate((el) => getComputedStyle(el).color)
     expect(color).toBe('rgb(18, 20, 23)')
   }
 })
@@ -76,13 +82,17 @@ test('the phone bar scrolls the marked section into sight', async ({ page }) => 
   await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight))
   const link = page.locator('nav[aria-label="Sections"] a[href="#8-ordering-information"]')
   await expect(link).toHaveAttribute('aria-current', 'location')
-  await expect.poll(async () => {
-    const box = (await link.boundingBox())!
-    return box.x >= 0 && box.x + box.width <= 390
-  }).toBe(true)
+  await expect
+    .poll(async () => {
+      const box = (await link.boundingBox())!
+      return box.x >= 0 && box.x + box.width <= 390
+    })
+    .toBe(true)
 })
 
-test('at the top of the page the first section is marked, in accent and bold, with no side stripe', async ({ page }) => {
+test('at the top of the page the first section is marked, in accent and bold, with no side stripe', async ({
+  page,
+}) => {
   await page.setViewportSize({ width: 1440, height: 900 })
   await page.goto('')
   const link = page.locator('nav[aria-label="Sections"] a[href="#1-features"]')

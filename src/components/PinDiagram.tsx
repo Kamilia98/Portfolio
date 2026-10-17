@@ -18,10 +18,18 @@ function PinItem({ pin }: { pin: Pin }) {
     <li className={cls}>
       <span className={styles.lead} aria-hidden="true" />
       <span className={styles.label}>
-        <button type="button" className={styles.button} aria-pressed={active} aria-describedby={countId} onClick={() => togglePin(pin.id)}>
+        <button
+          type="button"
+          className={styles.button}
+          aria-pressed={active}
+          aria-describedby={countId}
+          onClick={() => togglePin(pin.id)}
+        >
           {pin.label}
         </button>
-        <span id={countId} className={styles.count}>{countText(count)}</span>
+        <span id={countId} className={styles.count}>
+          {countText(count)}
+        </span>
       </span>
     </li>
   )
@@ -33,11 +41,17 @@ export function PinDiagram() {
     <div>
       <div className={styles.diagram}>
         <ul className={`${styles.side} ${styles.left}`}>
-          {pins.slice(0, half).map((p) => <PinItem key={p.id} pin={p} />)}
+          {pins.slice(0, half).map((p) => (
+            <PinItem key={p.id} pin={p} />
+          ))}
         </ul>
-        <div className={styles.chip} aria-hidden="true">{profile.name}</div>
+        <div className={styles.chip} aria-hidden="true">
+          {profile.name}
+        </div>
         <ul className={`${styles.side} ${styles.right}`}>
-          {pins.slice(half).map((p) => <PinItem key={p.id} pin={p} />)}
+          {pins.slice(half).map((p) => (
+            <PinItem key={p.id} pin={p} />
+          ))}
         </ul>
       </div>
       <Readout />

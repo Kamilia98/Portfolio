@@ -9,7 +9,9 @@ function setup() {
   return render(
     <PinSelectionProvider>
       <PinDiagram />
-      {caseStudies.map((c) => <CaseStudy key={c.id} study={c} />)}
+      {caseStudies.map((c) => (
+        <CaseStudy key={c.id} study={c} />
+      ))}
     </PinSelectionProvider>,
   )
 }

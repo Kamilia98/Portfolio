@@ -11,7 +11,9 @@
   flex-direction: column;
   gap: 16px;
 }
-.chip { display: none; }
+.chip {
+  display: none;
+}
 .pin {
   display: flex;
   align-items: flex-start;
@@ -59,8 +61,12 @@
   text-decoration-thickness: 2px;
   text-underline-offset: 4px;
 }
-.active .lead { background: var(--accent); }
-.dimmed .button { color: var(--muted); }
+.active .lead {
+  background: var(--accent);
+}
+.dimmed .button {
+  color: var(--muted);
+}
 .dimmed .lead {
   --lead: var(--rule-hair);
   background: var(--muted);
@@ -96,11 +102,27 @@
     text-align: center;
     padding: 0 16px;
   }
-  .side { gap: 24px; }
-  .lead { display: block; }
-  .left .pin { flex-direction: row-reverse; justify-content: flex-start; }
-  .left .label { align-items: flex-end; }
-  .left .button { text-align: end; }
-  .right .label { align-items: flex-start; }
-  .left .pin, .right .pin { width: 100%; }
+  .side {
+    gap: 24px;
+  }
+  .lead {
+    display: block;
+  }
+  .left .pin {
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+  }
+  .left .label {
+    align-items: flex-end;
+  }
+  .left .button {
+    text-align: end;
+  }
+  .right .label {
+    align-items: flex-start;
+  }
+  .left .pin,
+  .right .pin {
+    width: 100%;
+  }
 }

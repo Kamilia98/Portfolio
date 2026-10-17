@@ -59,7 +59,11 @@ describe('Pin readout', () => {
     expect(readout).toHaveAttribute('aria-live', 'polite')
     await user.click(screen.getByRole('button', { name: 'Elasticsearch' }))
     expect(readout.textContent).toBe('Elasticsearch is used in 5.1 Ask your data · 5.2 Chart speed')
-    expect(within(readout).getAllByRole('link').map((a) => a.getAttribute('href'))).toEqual(['#5-1-ask-your-data', '#5-2-chart-speed'])
+    expect(
+      within(readout)
+        .getAllByRole('link')
+        .map((a) => a.getAttribute('href')),
+    ).toEqual(['#5-1-ask-your-data', '#5-2-chart-speed'])
     await user.click(screen.getByRole('button', { name: 'Elasticsearch' }))
     expect(readout.textContent).toBe('Select a pin to see where it is used.')
   })

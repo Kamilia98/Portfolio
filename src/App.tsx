@@ -39,7 +39,9 @@ export default function App() {
       readerScrolled = true
     }
     // From the next frame on, so the scroll event of the jump above is not taken for the reader's.
-    const frame = requestAnimationFrame(() => window.addEventListener('scroll', onScroll, { once: true, passive: true }))
+    const frame = requestAnimationFrame(() =>
+      window.addEventListener('scroll', onScroll, { once: true, passive: true }),
+    )
     document.fonts.ready.then(() => {
       if (!cancelled && !readerScrolled) target.scrollIntoView()
     })

@@ -1,6 +1,10 @@
 import { test, expect, type Page } from '@playwright/test'
 
-for (const [width, height] of [[320, 800], [390, 844], [1440, 900]]) {
+for (const [width, height] of [
+  [320, 800],
+  [390, 844],
+  [1440, 900],
+]) {
   test(`no horizontal scroll at ${width} px`, async ({ page }) => {
     await page.setViewportSize({ width, height })
     await page.goto('')
@@ -9,7 +13,10 @@ for (const [width, height] of [[320, 800], [390, 844], [1440, 900]]) {
   })
 }
 
-for (const [width, height, minY] of [[390, 844, 56], [1440, 900, 0]]) {
+for (const [width, height, minY] of [
+  [390, 844, 56],
+  [1440, 900, 0],
+]) {
   test(`deep link shows the case study heading at ${width} px`, async ({ page }) => {
     await page.setViewportSize({ width, height })
     await page.goto('#5-2-chart-speed')
@@ -74,7 +81,9 @@ for (const width of [390, 768, 1024, 1280, 1440]) {
   test(`diagram blocks keep room for their words at ${width} px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 })
     await page.goto('')
-    const widths = await page.locator('figure li li').evaluateAll((els) => els.map((el) => el.getBoundingClientRect().width))
+    const widths = await page
+      .locator('figure li li')
+      .evaluateAll((els) => els.map((el) => el.getBoundingClientRect().width))
     expect(widths.length).toBeGreaterThan(0)
     expect(Math.min(...widths)).toBeGreaterThanOrEqual(120)
   })
@@ -87,7 +96,10 @@ test('the CV page has no sideways scroll on a phone', async ({ page }) => {
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(390)
 })
 
-for (const [width, axis] of [[1440, 'row'], [390, 'column']] as const) {
+for (const [width, axis] of [
+  [1440, 'row'],
+  [390, 'column'],
+] as const) {
   test(`stage connectors are drawn lines in the ${axis} layout at ${width} px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 })
     await page.goto('')

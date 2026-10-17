@@ -23,10 +23,14 @@ export function CaseStudy({ study }: { study: CaseStudyData }) {
       <p className={styles.text}>{study.problem}</p>
       <h4 className={styles.part}>What I built</h4>
       <ul className={styles.built}>
-        {study.built.map((b) => <li key={b}>{b}</li>)}
+        {study.built.map((b) => (
+          <li key={b}>{b}</li>
+        ))}
       </ul>
       <h4 className={styles.part}>How it works</h4>
-      {study.diagrams.map((d) => <BlockDiagram key={d.caption} diagram={d} />)}
+      {study.diagrams.map((d) => (
+        <BlockDiagram key={d.caption} diagram={d} />
+      ))}
       <h4 className={styles.part}>Result</h4>
       {study.resultIds.length === 0 ? (
         <p className={styles.text}>{study.summary}</p>
@@ -49,7 +53,9 @@ export function CaseStudy({ study }: { study: CaseStudyData }) {
         {stack.map((p, i) => (
           <span key={p.id}>
             {i > 0 && ', '}
-            <span className={styles.stackItem} data-active={p.id === activePin ? 'true' : undefined}>{p.label}</span>
+            <span className={styles.stackItem} data-active={p.id === activePin ? 'true' : undefined}>
+              {p.label}
+            </span>
           </span>
         ))}
       </p>

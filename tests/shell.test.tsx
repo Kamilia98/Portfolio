@@ -38,7 +38,10 @@ test('the section index links to every section', () => {
 
 test('header links', () => {
   render(<App />)
-  expect(screen.getByRole('link', { name: 'Download CV' })).toHaveAttribute('href', '/Portfolio/kamilia-ahmed-hamed.pdf')
+  expect(screen.getByRole('link', { name: 'Download CV' })).toHaveAttribute(
+    'href',
+    '/Portfolio/kamilia-ahmed-hamed.pdf',
+  )
   expect(screen.getByRole('link', { name: 'Email' })).toHaveAttribute('href', 'mailto:kamiliaahmed01@gmail.com')
 })
 

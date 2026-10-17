@@ -6,11 +6,16 @@ function stubs(reduced: boolean) {
   class InView {
     constructor(private cb: IntersectionObserverCallback) {}
     observe(el: Element) {
-      this.cb([{ isIntersecting: true, target: el } as IntersectionObserverEntry], this as unknown as IntersectionObserver)
+      this.cb(
+        [{ isIntersecting: true, target: el } as IntersectionObserverEntry],
+        this as unknown as IntersectionObserver,
+      )
     }
     unobserve() {}
     disconnect() {}
-    takeRecords() { return [] }
+    takeRecords() {
+      return []
+    }
   }
   vi.stubGlobal('IntersectionObserver', InView)
   vi.stubGlobal('matchMedia', (query: string) => ({
@@ -53,7 +58,17 @@ describe('PerformanceBars', () => {
 describe('PerformanceBars with reduced motion', () => {
   it('has the final width from the first render and does not animate', () => {
     stubs(true)
-    vi.stubGlobal('IntersectionObserver', class { observe() {} unobserve() {} disconnect() {} takeRecords() { return [] } })
+    vi.stubGlobal(
+      'IntersectionObserver',
+      class {
+        observe() {}
+        unobserve() {}
+        disconnect() {}
+        takeRecords() {
+          return []
+        }
+      },
+    )
     render(<PerformanceBars />)
     const after = screen.getAllByTestId('after-bar')[0]
     expect(after).toHaveAttribute('data-animated', 'false')

@@ -11,11 +11,8 @@ export function useActiveSection(ids: string[]): string {
 
   useEffect(() => {
     const list = key.split('|')
-    const elements = list
-      .map((id) => document.getElementById(id))
-      .filter((el): el is HTMLElement => el !== null)
-    const bottom = () =>
-      atPageBottom(window.scrollY, window.innerHeight, document.documentElement.scrollHeight)
+    const elements = list.map((id) => document.getElementById(id)).filter((el): el is HTMLElement => el !== null)
+    const bottom = () => atPageBottom(window.scrollY, window.innerHeight, document.documentElement.scrollHeight)
     const observer = new IntersectionObserver(
       (entries) => {
         const hit = entries.find((e) => e.isIntersecting)
