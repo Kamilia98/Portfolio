@@ -1,0 +1,126 @@
+@page {
+  size: A4;
+  margin: 14mm;
+}
+
+body {
+  font-size: 10pt;
+  line-height: 1.4;
+  background: var(--fill);
+}
+
+.sheet {
+  width: 210mm;
+  min-height: 297mm;
+  margin: 0 auto;
+  padding: 14mm;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.head {
+  border-bottom: var(--rule-header) solid var(--accent);
+  padding-bottom: 3mm;
+  margin-bottom: 4mm;
+}
+
+h1 {
+  margin: 0;
+  font-size: 30pt;
+  line-height: 1.05;
+  font-weight: 800;
+  font-stretch: 75%;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+}
+
+.role {
+  margin: 1mm 0 2mm;
+  font-size: 12pt;
+  font-weight: 600;
+}
+
+.contact {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 4mm;
+  font-size: 9pt;
+  color: var(--muted);
+}
+
+h2 {
+  margin: 4.5mm 0 1.5mm;
+  padding-bottom: 0.8mm;
+  border-bottom: var(--rule-section) solid var(--ink);
+  font-size: 12pt;
+  font-weight: 800;
+  font-stretch: 75%;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  break-after: avoid;
+}
+
+h3 {
+  margin: 1.5mm 0 1mm;
+  font-size: 10.5pt;
+  font-weight: 700;
+  break-after: avoid;
+}
+
+p {
+  margin: 0 0 1.5mm;
+}
+
+ul {
+  margin: 0;
+  padding: 0 0 0 4.5mm;
+}
+
+li {
+  margin: 0 0 1mm;
+  break-inside: avoid;
+}
+
+.period {
+  float: right;
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.stack {
+  color: var(--muted);
+}
+
+.plain {
+  list-style: none;
+  padding: 0;
+}
+
+.ruled li {
+  margin: 0;
+  padding: 1mm 0;
+  border-top: var(--rule-hair) solid var(--fill);
+}
+
+.ruled li:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+@media print {
+  body {
+    background: var(--paper);
+  }
+
+  .sheet {
+    width: auto;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+section {
+  break-inside: avoid;
+}

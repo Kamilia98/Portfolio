@@ -5,6 +5,9 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   base: '/Portfolio/',
   plugins: [react()],
+  build: {
+    rolldownOptions: { input: { main: 'index.html', cv: 'cv.html' } },
+  },
   test: {
     environment: 'jsdom',
     globals: true,

@@ -5,7 +5,7 @@ export default defineConfig({
   projects: [{ name: 'chromium', use: { ...devices['Desktop Chrome'] } }],
   use: { baseURL: 'http://localhost:4173/Portfolio/' },
   webServer: {
-    command: 'npm run build && npm run preview -- --port 4173 --strictPort',
+    command: 'npm run cv && npm run preview -- --port 4173 --strictPort',
     url: 'http://localhost:4173/Portfolio/',
     reuseExistingServer: !process.env.CI,
     timeout: 120000,
