@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import { CvDocument } from '../src/cv/CvDocument'
-import { caseStudies } from '../src/content'
+import { caseStudies, profile } from '../src/content'
 
 describe('CvDocument', () => {
   it('shows the name, the phone and the education', () => {
@@ -8,6 +8,15 @@ describe('CvDocument', () => {
     expect(screen.getByRole('heading', { level: 1, name: 'Kamilia Ahmed Hamed' })).toBeInTheDocument()
     expect(screen.getByText('+20 112 452 9888')).toBeInTheDocument()
     expect(screen.getByText(/Zagazig University/)).toBeInTheDocument()
+  })
+
+  it('links the email, LinkedIn, GitHub and the site by their full URLs', () => {
+    render(<CvDocument />)
+    const href = (name: string) => screen.getByRole('link', { name }).getAttribute('href')
+    expect(href(profile.email)).toBe(`mailto:${profile.email}`)
+    expect(href('linkedin.com/in/kamiliaahmed')).toBe(profile.linkedin)
+    expect(href('github.com/Kamilia98')).toBe(profile.github)
+    expect(href('kamilia98.github.io/Portfolio')).toBe(profile.site)
   })
 
   it('lists every case study', () => {

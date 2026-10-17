@@ -1,8 +1,20 @@
 import { readFileSync } from 'node:fs'
 import { test, expect } from '@playwright/test'
-import { PDFDocument } from 'pdf-lib'
+import { PDFDict, PDFDocument, PDFHexString, PDFName, PDFString } from 'pdf-lib'
+import { profile } from '../../src/content'
 
 const pdfPath = 'dist/kamilia-ahmed-hamed.pdf'
+
+/** The URI of every link annotation on one page of the PDF. */
+function linkUris(doc: PDFDocument, pageIndex: number): string[] {
+  const annots = doc.getPage(pageIndex).node.Annots()
+  if (!annots) return []
+  return annots.asArray().flatMap((_, i) => {
+    const action = annots.lookup(i, PDFDict).lookupMaybe(PDFName.of('A'), PDFDict)
+    const uri = action?.lookupMaybe(PDFName.of('URI'), PDFString, PDFHexString)
+    return uri ? [uri.decodeText()] : []
+  })
+}
 
 test('the Download CV link serves the PDF under the base path', async ({ page, request }) => {
   await page.goto('')
@@ -19,4 +31,13 @@ test('the PDF runs to at most two pages', async () => {
 
 test('the PDF embeds Archivo', () => {
   expect(readFileSync(pdfPath).toString('latin1')).toContain('Archivo')
+})
+
+test('the PDF links the site and the email on page 1', async () => {
+  const doc = await PDFDocument.load(readFileSync(pdfPath))
+  const uris = linkUris(doc, 0)
+  expect(uris).toContain(profile.site)
+  expect(uris).toContain(`mailto:${profile.email}`)
+  expect(uris).toContain(profile.linkedin)
+  expect(uris).toContain(profile.github)
 })

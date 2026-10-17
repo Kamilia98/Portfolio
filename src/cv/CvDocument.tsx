@@ -1,6 +1,11 @@
 import { caseStudies, cvHighlights, cvSkills, earlierWork, history, profile, resultById } from '../content'
 import { formatMeasured } from '../lib/results'
 
+/** The link text on the sheet: "linkedin.com/in/kamiliaahmed"; the href keeps the full URL. */
+function shortUrl(url: string): string {
+  return url.replace(/^https:\/\/(www\.)?/, '').replace(/\/$/, '')
+}
+
 function studyResults(ids: string[]): string {
   return ids
     .map((id) => `${resultById(id).label} ${formatMeasured(resultById(id))}`)
@@ -19,11 +24,11 @@ export function CvDocument() {
         <p className="role">{profile.role}</p>
         <p className="contact">
           <span>{profile.location}</span>
-          <span>{profile.email}</span>
+          <a href={`mailto:${profile.email}`}>{profile.email}</a>
           <span>{profile.phone}</span>
-          <span>{profile.linkedin.replace('https://www.', '')}</span>
-          <span>{profile.github.replace('https://', '')}</span>
-          <span>{profile.site.replace('https://', '')}</span>
+          <a href={profile.linkedin}>{shortUrl(profile.linkedin)}</a>
+          <a href={profile.github}>{shortUrl(profile.github)}</a>
+          <a href={profile.site}>{shortUrl(profile.site)}</a>
         </p>
       </header>
 
