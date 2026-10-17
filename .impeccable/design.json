@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-18T00:00:00Z",
+  "title": "Design System: Kamilia's Portfolio (Datasheet)",
+  "extensions": {
+    "colorMeta": {
+      "paper": { "role": "neutral", "displayName": "Paper White", "canonical": "#ffffff", "tonalRamp": ["#121417", "#2b2f36", "#4a5160", "#7a8190", "#a9aeb9", "#cfd3da", "#eef0f3", "#ffffff"] },
+      "ink": { "role": "neutral", "displayName": "Ink Black", "canonical": "#121417", "tonalRamp": ["#000000", "#121417", "#1f2328", "#2b2f36", "#3a3f48", "#4a5160", "#5f6675", "#7a8190"] },
+      "muted": { "role": "neutral", "displayName": "Pencil Grey", "canonical": "#4a5160", "tonalRamp": ["#121417", "#2b2f36", "#3a3f48", "#4a5160", "#6a7080", "#8a909c", "#b3b7bf", "#dadde2"] },
+      "accent": { "role": "primary", "displayName": "Datasheet Blue", "canonical": "#1d5fbf", "tonalRamp": ["#0b2552", "#113a7c", "#174b9c", "#1d5fbf", "#4a82d1", "#7aa3dd", "#aac3ea", "#dae5f6"] },
+      "fill": { "role": "neutral", "displayName": "Fill Grey", "canonical": "#eef0f3", "tonalRamp": ["#4a5160", "#7a8190", "#a9aeb9", "#cfd3da", "#dfe2e7", "#eef0f3", "#f5f6f8", "#ffffff"] }
+    },
+    "typographyMeta": {
+      "name": { "displayName": "Name", "purpose": "The page name only; Archivo at 72% width, 850 weight." },
+      "role": { "displayName": "Role", "purpose": "Role line under the name; 90% width." },
+      "h2": { "displayName": "Section heading", "purpose": "Numbered sections on a 2px ink rule." },
+      "h3": { "displayName": "Case-study title", "purpose": "Titles of case studies; turn blue when their pin is active." },
+      "body": { "displayName": "Body", "purpose": "Prose at normal width, held to 68ch." },
+      "small": { "displayName": "Small", "purpose": "Tables, captions, stack line, index links." },
+      "label": { "displayName": "Label", "purpose": "Uppercase stage titles in diagrams." }
+    },
+    "shadows": [],
+    "motion": [
+      { "name": "colour-fade", "value": "150ms", "purpose": "Colour and border-colour changes when a pin selects or dims blocks and studies." },
+      { "name": "bar-grow", "value": "width 900ms ease-out", "purpose": "The after bar grows to its final length when it enters view; none under reduced motion." }
+    ],
+    "breakpoints": [
+      { "name": "table-and-pins", "value": "640px" },
+      { "name": "index-column", "value": "1024px" },
+      { "name": "diagram-row-3", "value": "500px (container)" },
+      { "name": "diagram-row-5", "value": "860px (container)" }
+    ],
+    "rules": [
+      { "name": "hair", "value": "1px", "purpose": "Rows, tables, case-study separators." },
+      { "name": "section", "value": "2px", "purpose": "Under section headings, button borders, CV section titles." },
+      { "name": "header", "value": "6px accent", "purpose": "Under the page header and the CV header." },
+      { "name": "diagram", "value": "1.5px", "purpose": "Diagram block frames and connectors." },
+      { "name": "chip", "value": "3px", "purpose": "The pin diagram package chip and the focus ring." }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Download CV: ink fill, paper text, underline on hover.",
+      "html": "<a class=\"ds-btn ds-btn-primary\" href=\"#\">Download CV</a>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; border: 2px solid var(--ink, #121417); color: var(--ink, #121417); font-weight: 700; text-decoration: none; font-family: 'Archivo Variable', Arial, sans-serif; } .ds-btn-primary { background: var(--ink, #121417); color: var(--paper, #fff); } .ds-btn-primary:hover { text-decoration: underline; } .ds-btn:focus-visible { outline: 3px solid var(--accent, #1d5fbf); outline-offset: 2px; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Email, LinkedIn, GitHub: paper face, ink border, grey fill on hover.",
+      "html": "<a class=\"ds-btn ds-btn-secondary\" href=\"#\">Email</a>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; border: 2px solid var(--ink, #121417); color: var(--ink, #121417); font-weight: 700; text-decoration: none; font-family: 'Archivo Variable', Arial, sans-serif; } .ds-btn-secondary:hover { background: var(--fill, #eef0f3); } .ds-btn:focus-visible { outline: 3px solid var(--accent, #1d5fbf); outline-offset: 2px; }"
+    },
+    {
+      "name": "Datasheet Table",
+      "kind": "custom",
+      "refersTo": "table-header",
+      "description": "Hairline table with grey header fill and tabular figures.",
+      "html": "<table class=\"ds-table\"><thead><tr><th>Project</th><th>Period</th></tr></thead><tbody><tr><th>Bloogy</th><td>2024</td></tr></tbody></table>",
+      "css": ".ds-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; text-align: start; font-family: 'Archivo Variable', Arial, sans-serif; } .ds-table th, .ds-table td { padding: 8px 12px; text-align: start; vertical-align: top; border-bottom: 1px solid var(--ink, #121417); } .ds-table thead th { background: var(--fill, #eef0f3); font-weight: 800; } .ds-table tbody th { font-weight: 800; } .ds-table td { font-variant-numeric: tabular-nums; }"
+    },
+    {
+      "name": "Pin",
+      "kind": "custom",
+      "refersTo": "block-active",
+      "description": "Pin button with a 28px lead; active is blue and underlined, dimmed is grey.",
+      "html": "<ul class=\"ds-pins\"><li class=\"ds-pin ds-active\"><span class=\"ds-lead\"></span><button class=\"ds-pinbtn\">Elasticsearch</button></li><li class=\"ds-pin ds-dimmed\"><span class=\"ds-lead\"></span><button class=\"ds-pinbtn\">React</button></li></ul>",
+      "css": ".ds-pins { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 16px; font-family: 'Archivo Variable', Arial, sans-serif; } .ds-pin { display: flex; align-items: flex-start; } .ds-lead { flex: none; width: 28px; height: 3px; margin-top: 15px; background: var(--ink, #121417); } .ds-pinbtn { appearance: none; border: 0; background: none; padding: 4px 0; font: inherit; font-weight: 600; color: var(--ink, #121417); cursor: pointer; min-height: 24px; } .ds-active .ds-pinbtn { color: var(--accent, #1d5fbf); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; } .ds-active .ds-lead { background: var(--accent, #1d5fbf); } .ds-dimmed .ds-pinbtn { color: var(--muted, #4a5160); } .ds-dimmed .ds-lead { height: 1px; background: var(--muted, #4a5160); } .ds-pinbtn:focus-visible { outline: 3px solid var(--accent, #1d5fbf); outline-offset: 2px; }"
+    },
+    {
+      "name": "Diagram Block",
+      "kind": "custom",
+      "refersTo": "block",
+      "description": "Ink-framed block in a stage pipeline; active takes a blue frame, dimmed goes grey.",
+      "html": "<div class=\"ds-blocks\"><div class=\"ds-block\">Search query<span class=\"ds-tech\">Elasticsearch</span></div><div class=\"ds-block ds-on\">Chart screen<span class=\"ds-tech\">React</span></div></div>",
+      "css": ".ds-blocks { display: flex; flex-direction: column; gap: 8px; max-width: 16rem; font-family: 'Archivo Variable', Arial, sans-serif; } .ds-block { border: 1.5px solid var(--ink, #121417); padding: 8px 12px; font-size: 0.875rem; line-height: 1.4; } .ds-tech { display: block; color: var(--muted, #4a5160); font-size: 0.8125rem; } .ds-on { border-color: var(--accent, #1d5fbf); outline: 3px solid var(--accent, #1d5fbf); outline-offset: -3px; color: var(--accent, #1d5fbf); } .ds-on .ds-tech { color: var(--accent, #1d5fbf); }"
+    },
+    {
+      "name": "Performance Bars",
+      "kind": "custom",
+      "refersTo": "bar-after",
+      "description": "Before (ink) and after (blue over grey track) bars on one scale with a bold change figure.",
+      "html": "<div class=\"ds-bars\"><div class=\"ds-line\"><span class=\"ds-val\">12.0 s</span><span class=\"ds-before\"></span></div><div class=\"ds-line\"><span class=\"ds-val\">1.5 s</span><span class=\"ds-track\"><span class=\"ds-after\" style=\"width:12.5%\"></span></span></div></div>",
+      "css": ".ds-bars { display: flex; flex-direction: column; gap: 6px; max-width: 28rem; font-family: 'Archivo Variable', Arial, sans-serif; } .ds-line { display: flex; align-items: center; gap: 8px; } .ds-val { flex: none; width: 4.5em; text-align: right; font-size: 0.875rem; font-variant-numeric: tabular-nums; } .ds-before { flex: 1; height: 14px; background: var(--ink, #121417); } .ds-track { flex: 1; height: 14px; background: var(--fill, #eef0f3); display: block; } .ds-after { display: block; height: 14px; background: var(--accent, #1d5fbf); transition: width 900ms ease-out; }"
+    },
+    {
+      "name": "Section Heading",
+      "kind": "nav",
+      "refersTo": "h2",
+      "description": "Numbered section heading on a 2px ink rule, condensed to 90% width.",
+      "html": "<h2 class=\"ds-h2\">1 Features</h2>",
+      "css": ".ds-h2 { margin: 0 0 24px; padding-bottom: 8px; border-bottom: 2px solid var(--ink, #121417); font-family: 'Archivo Variable', Arial, sans-serif; font-size: 1.625rem; font-weight: 800; font-stretch: 90%; line-height: 1.1; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Component Datasheet",
+    "overview": "The engineer is documented the way a part is: numbered sections, a pin diagram of the stack, measured characteristics, a revision history and ordering information. White paper, near-black ink, one datasheet blue. Hierarchy comes from rule weight and type size only. The page reads as a printed sheet that happens to scroll; it has no dark mode (color-scheme: only light) because a datasheet is paper.\n\nDensity is calm and information-first: one reading column (max 920px) beside a quiet numbered index, prose held to 68ch, every number in tabular figures so results can be checked by eye. The one interactive idea is the pin: selecting a technology in the pin diagram recolours every diagram block and case study that uses it, and dims the rest.\n\nThe CV is the same world on A4: the same tokens, a 6px blue rule under the header, 9.5pt body, one page.",
+    "keyCharacteristics": [
+      "Five colours in total; blue appears only where something is selected, measured or heads the page.",
+      "Rule weight is the hierarchy: 1px hairline, 2px section, 6px header, 1.5px diagram frame, 3px chip.",
+      "No cards, no shadows, no gradients, no rounded corners anywhere.",
+      "One variable family (Archivo) with width as the second voice: condensed for headings, normal for prose.",
+      "Motion is limited to 150ms colour changes and one 900ms bar-length transition."
+    ],
+    "rules": [
+      { "name": "The One Blue Rule", "body": "Blue means \"this one\": selected, measured, or the header. It never fills a surface and never decorates.", "section": "colors" },
+      { "name": "The Ink Rule", "body": "Every rule line that carries structure is ink at a stated weight. Grey is for text and fills (the only grey rules are the CV's hairlines between list items, drawn in Fill Grey).", "section": "colors" },
+      { "name": "The Figure Rule", "body": "Every number is tabular. Results are bold, never wrap their value (nowrap), and each feature row ends in one checkable figure on its own line.", "section": "typography" },
+      { "name": "The Width Rule", "body": "Condensed width is for headings and the name only; prose stays at normal width.", "section": "typography" },
+      { "name": "The Flat Paper Rule", "body": "If something needs to stand out, give it a heavier rule or a colour change, never a lift.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do build hierarchy from rule weight and type size: 1px, 2px, 6px rules; the type ramp above.",
+      "Do keep blue to selection, measured results and the header rule.",
+      "Do set every number in tabular figures and end each result claim in a checkable figure.",
+      "Do keep every corner square and every surface flat.",
+      "Do keep a visible 3px blue focus ring with 2px offset, and 44px minimum hit height on buttons.",
+      "Do gate hover styles to (hover: hover) and (pointer: fine) and honour prefers-reduced-motion."
+    ],
+    "donts": [
+      "Don't add cards, shadows, gradients, rounded boxes, pills or icon decoration.",
+      "Don't add a dark mode or a second accent; the sheet is paper.",
+      "Don't use condensed width for prose.",
+      "Don't let selection reflow layout; use inset outlines and fixed widths.",
+      "Don't open with a greeting hero or a skill-pill cloud."
+    ]
+  }
+}
