@@ -24,9 +24,9 @@ test('the Download CV link serves the PDF under the base path', async ({ page, r
   expect(res.headers()['content-type']).toContain('application/pdf')
 })
 
-test('the PDF runs to at most two pages', async () => {
+test('the PDF is one page', async () => {
   const doc = await PDFDocument.load(readFileSync(pdfPath))
-  expect([1, 2]).toContain(doc.getPageCount())
+  expect(doc.getPageCount()).toBe(1)
 })
 
 test('the PDF embeds Archivo', () => {

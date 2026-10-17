@@ -9,6 +9,8 @@ try {
   browser = await chromium.launch()
   const page = await browser.newPage()
   await page.goto(new URL('cv.html', base).href)
+  // The CV renders after load: wait for it, then for the fonts its text asked for.
+  await page.locator('h1').waitFor({ state: 'visible' })
   await page.evaluate(() => document.fonts.ready)
   await page.pdf({
     path: 'dist/kamilia-ahmed-hamed.pdf',
