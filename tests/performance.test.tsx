@@ -47,6 +47,12 @@ describe('PerformanceBars', () => {
     for (const t of ['−93%', '−81%', '−42%']) expect(screen.getByText(t)).toBeInTheDocument()
   })
 
+  it('hides the visible percentage from screen readers, since the group label already says it', () => {
+    render(<PerformanceBars />)
+    expect(screen.getByText('−93%')).toHaveAttribute('aria-hidden', 'true')
+    expect(screen.getByRole('img', { name: /−93%$/ })).toBeInTheDocument()
+  })
+
   it('sizes the after bar from the measured values once in view', () => {
     render(<PerformanceBars />)
     const after = screen.getAllByTestId('after-bar')[0]

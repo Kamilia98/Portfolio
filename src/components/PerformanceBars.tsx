@@ -39,7 +39,9 @@ export function PerformanceBars() {
                 </span>
               </div>
             </div>
-            <div className={styles.change}>{change}</div>
+            <div className={styles.change} aria-hidden="true">
+              {change}
+            </div>
           </div>
         )
       })}
