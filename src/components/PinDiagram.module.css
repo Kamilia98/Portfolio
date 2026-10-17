@@ -16,7 +16,6 @@
   display: flex;
   align-items: center;
   min-width: 0;
-  transition: opacity 150ms;
 }
 .lead {
   display: none;
@@ -53,7 +52,8 @@
 }
 .active .button { color: var(--accent); }
 .active .lead { background: var(--accent); }
-.dimmed { opacity: 0.45; }
+.dimmed .button { color: var(--muted); }
+.dimmed .lead { background: var(--muted); }
 .hint {
   margin: 16px 0 0;
   color: var(--muted);
