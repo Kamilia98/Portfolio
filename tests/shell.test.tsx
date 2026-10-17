@@ -44,3 +44,11 @@ test('the phone number is not on the page', () => {
   const { container } = render(<App />)
   expect(container.textContent).not.toContain('112 452')
 })
+
+import { atPageBottom } from '../src/lib/useActiveSection'
+
+test('atPageBottom is true within 2px of the end only', () => {
+  expect(atPageBottom(1000, 700, 1700)).toBe(true)
+  expect(atPageBottom(998, 700, 1700)).toBe(true)
+  expect(atPageBottom(900, 700, 1700)).toBe(false)
+})

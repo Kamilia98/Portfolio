@@ -4,7 +4,7 @@
 
 .main {
   max-width: 920px;
-  padding: calc(var(--space) * 3) 20px 60vh;
+  padding: calc(var(--space) * 3) 20px calc(var(--space) * 12);
 }
 
 @media (min-width: 1024px) {
@@ -16,6 +16,6 @@
   }
 
   .main {
-    padding: 0 0 60vh;
+    padding: 0 0 calc(var(--space) * 12);
   }
 }

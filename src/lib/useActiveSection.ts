@@ -1,23 +1,40 @@
 import { useEffect, useState } from 'react'
 
+export function atPageBottom(scrollY: number, innerHeight: number, scrollHeight: number): boolean {
+  return scrollY + innerHeight >= scrollHeight - 2
+}
+
 export function useActiveSection(ids: string[]): string | null {
   const [active, setActive] = useState<string | null>(null)
   const key = ids.join('|')
 
   useEffect(() => {
-    const elements = key
-      .split('|')
+    const list = key.split('|')
+    const elements = list
       .map((id) => document.getElementById(id))
       .filter((el): el is HTMLElement => el !== null)
+    const bottom = () =>
+      atPageBottom(window.scrollY, window.innerHeight, document.documentElement.scrollHeight)
     const observer = new IntersectionObserver(
       (entries) => {
         const hit = entries.find((e) => e.isIntersecting)
-        if (hit) setActive(hit.target.id)
+        if (hit && !bottom()) setActive(hit.target.id)
       },
       { rootMargin: '-30% 0px -60% 0px' },
     )
     elements.forEach((el) => observer.observe(el))
-    return () => observer.disconnect()
+
+    const onScroll = () => {
+      if (bottom()) {
+        setActive(list[list.length - 1])
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+
+    return () => {
+      observer.disconnect()
+      window.removeEventListener('scroll', onScroll)
+    }
   }, [key])
 
   return active
