@@ -22,6 +22,8 @@ export interface CaseStudy {
   diagrams: Diagram[]
   resultIds: string[]
   resultNote?: string
+  /** Said after the results on the CV bullet: where they were measured. */
+  cvResultNote?: string
   pins: PinId[]
 }
 export interface Profile {

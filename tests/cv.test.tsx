@@ -24,18 +24,24 @@ describe('CvDocument', () => {
     for (const c of caseStudies) expect(screen.getByText(`${c.title}:`)).toBeInTheDocument()
   })
 
-  it('writes the chart speed bullet with both computed results', () => {
+  it('writes the chart speed bullet with both computed results and where they were measured', () => {
     render(<CvDocument />)
     const li = screen.getByText('Chart speed:').closest('li')!
     expect(li.textContent).toBe(
-      'Chart speed: Tag breakdowns sent to Elasticsearch once instead of once per tab. Slowest chart load 63 s → 4.3 s (−93%); Fifteen heavy charts, together 262 s → 50 s (−81%).',
+      'Chart speed: Tag breakdowns sent to Elasticsearch once instead of once per tab. Slowest chart load: 63 s → 4.3 s (−93%); fifteen heavy charts, together: 262 s → 50 s (−81%), on a test environment, confirmed by a production replay.',
     )
   })
 
-  it('writes the other computed bullets', () => {
+  it('appends only timed results, so a count is not repeated on the CV', () => {
     render(<CvDocument />)
-    expect(screen.getByText(/ESLint rules\. Dialog components 5 → 1\.$/)).toBeInTheDocument()
-    expect(screen.getByText('Frontend image build 89 s → 52 s (−42%).')).toBeInTheDocument()
+    const li = screen.getByText('One interface:').closest('li')!
+    expect(li.textContent).toMatch(/kept there by ESLint rules\.$/)
+    expect(li.textContent).not.toContain('Dialog components')
+  })
+
+  it('writes the frontend build bullet as label: value (change)', () => {
+    render(<CvDocument />)
+    expect(screen.getByText('Frontend image build: 89 s → 52 s (−42%).')).toBeInTheDocument()
   })
 
   it('mentions the commit count once', () => {

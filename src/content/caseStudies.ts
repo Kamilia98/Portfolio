@@ -85,6 +85,7 @@ export const caseStudies: CaseStudy[] = [
     ],
     resultIds: ['slowest-chart', 'heavy-charts'],
     resultNote: 'Measured on a test environment with identical numbers; a replay of 10 days of production requests confirmed the gains.',
+    cvResultNote: 'on a test environment, confirmed by a production replay',
     pins: ['nestjs', 'typescript', 'elasticsearch'],
   },
   {
