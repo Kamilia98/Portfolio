@@ -1,6 +1,13 @@
+/* The one blue surface: the page heads itself with a solid band, name and links in paper. */
 .header {
-  padding-bottom: calc(var(--space) * 4);
-  border-bottom: var(--rule-header) solid var(--accent);
+  padding: calc(var(--space) * 4);
+  background: var(--accent);
+  color: var(--paper);
+}
+
+/* Blue on blue would hide the focus ring. */
+.header :focus-visible {
+  outline-color: var(--paper);
 }
 
 .name {
@@ -22,12 +29,12 @@
 
 .location {
   margin: var(--space) 0 0;
-  color: var(--muted);
+  color: var(--on-accent-muted);
 }
 
 .stack {
   margin: calc(var(--space) / 2) 0 0;
-  color: var(--muted);
+  color: var(--on-accent-muted);
   font-size: var(--size-small);
 }
 
@@ -43,8 +50,8 @@
   align-items: center;
   min-height: 44px;
   padding: 0 calc(var(--space) * 2.5);
-  border: 2px solid var(--ink);
-  color: var(--ink);
+  border: 2px solid var(--paper);
+  color: var(--paper);
   font-weight: 700;
   text-decoration: none;
   -webkit-user-select: none;
@@ -52,36 +59,40 @@
 }
 
 .primary {
-  background: var(--ink);
-  color: var(--paper);
+  background: var(--paper);
+  color: var(--accent);
 }
 
 @media (hover: hover) and (pointer: fine) {
   .button:hover {
-    background: var(--fill);
+    background: var(--accent-deep);
   }
 
   .primary:hover {
-    background: var(--ink);
+    background: var(--paper);
     text-decoration: underline;
   }
 }
 
 .button:active {
-  background: var(--fill);
+  background: var(--accent-deep);
 }
 
 .primary:active {
-  background: var(--ink);
+  background: var(--paper);
   text-decoration: underline;
+}
+
+/* Under the section bar the band runs to the screen edges, its text on the content column. */
+@media (max-width: 1023px) {
+  .header {
+    margin: calc(var(--space) * -3) -20px 0;
+    padding: calc(var(--space) * 3) 20px;
+  }
 }
 
 /* On a phone the header gives back some height, so the first Features row fits the first screen. */
 @media (max-width: 639px) {
-  .header {
-    padding-bottom: calc(var(--space) * 3);
-  }
-
   .links {
     margin-top: calc(var(--space) * 2);
   }

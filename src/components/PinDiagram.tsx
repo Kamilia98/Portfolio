@@ -1,4 +1,4 @@
-import { caseStudies, pins, profile } from '../content'
+import { caseStudies, layers, pins, profile } from '../content'
 import type { Pin } from '../content/types'
 import { usePinSelection } from '../state/pinSelection'
 import styles from './PinDiagram.module.css'
@@ -15,7 +15,7 @@ function PinItem({ pin }: { pin: Pin }) {
   const countId = `pin-count-${pin.id}`
   const cls = [styles.pin, active ? styles.active : '', dimmed ? styles.dimmed : ''].join(' ')
   return (
-    <li className={cls}>
+    <li className={cls} data-layer={pin.layer}>
       <span className={styles.lead} aria-hidden="true" />
       <span className={styles.label}>
         <button
@@ -54,6 +54,14 @@ export function PinDiagram() {
           ))}
         </ul>
       </div>
+      <ul className={styles.legend} aria-label="Pin colours">
+        {layers.map((l) => (
+          <li key={l.id} data-layer={l.id}>
+            <span className={styles.swatch} aria-hidden="true" />
+            {l.label}
+          </li>
+        ))}
+      </ul>
       <Readout />
     </div>
   )

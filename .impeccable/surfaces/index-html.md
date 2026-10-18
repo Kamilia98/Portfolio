@@ -17,9 +17,11 @@ THESIS: The engineer documented as a component datasheet: numbered sections, mea
 diagram of the stack Kamilia works across. It refuses the developer-portfolio default: hero greeting, skill
 pills, screenshot cards.
 
-OWN-WORLD: White datasheet paper, near-black ink, one datasheet blue for the header rule, "after" bars and
-the active pin; hairline tables with grey header fills; Archivo condensed for headings, tabular figures for
-every number; hierarchy from rule weight and type size only, no cards, shadows or rounded boxes.
+OWN-WORLD: White datasheet paper, near-black ink, a solid datasheet-blue header band (blue also for the
+"after" bars, the current section and focus); five layer colours (frontend, backend, data, AI, testing) on
+the pins, block top rules and stack lines, chosen by Kamilia on 2026-10-18 ("layers + blue header band");
+hairline tables with grey header fills; Archivo condensed for headings, tabular figures for every number;
+hierarchy from rule weight and type size, no cards, shadows or rounded boxes.
 
 STORY: The visitor learns in one screen that Kamilia ships features from the React screen to the Elasticsearch
 query, sees four measured results, and can download the CV; a reader who selects a pin sees one technology

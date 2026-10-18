@@ -34,7 +34,9 @@ test('a dimmed pin keeps full opacity, muted text and a full focus ring', async 
   expect(await mongo.evaluate((el) => getComputedStyle(el).outlineStyle)).toBe('solid')
 })
 
-test('selecting a pin marks the studies that use it without moving the page', async ({ page }) => {
+test('selecting a pin titles the studies that use it in its layer colour without moving the page', async ({
+  page,
+}) => {
   await page.setViewportSize({ width: 1440, height: 900 })
   await page.goto('')
   // Measure in Archivo, not the fallback font it replaces.
@@ -44,7 +46,8 @@ test('selecting a pin marks the studies that use it without moving the page', as
     page.locator('figure li li').evaluateAll((els) => els.map((el) => Math.round(el.getBoundingClientRect().height)))
   const [h0, b0] = [await height(), await blocks()]
   await page.getByRole('button', { name: 'Elasticsearch', exact: true }).click()
-  await expect(page.getByRole('heading', { level: 3, name: '5.2 Chart speed' })).toHaveCSS('color', 'rgb(29, 95, 191)')
+  // Elasticsearch is a data pin: amber.
+  await expect(page.getByRole('heading', { level: 3, name: '5.2 Chart speed' })).toHaveCSS('color', 'rgb(161, 98, 7)')
   await expect(page.getByRole('heading', { level: 3, name: '5.3 AI cost dashboard' })).toHaveCSS(
     'color',
     'rgb(74, 81, 96)',

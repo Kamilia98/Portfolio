@@ -76,7 +76,8 @@
   overflow-wrap: anywhere;
   transition:
     color 150ms,
-    border-color 150ms;
+    border-color 150ms,
+    box-shadow 150ms;
 }
 .what,
 .tech {
@@ -87,18 +88,24 @@
   font-size: 0.8125rem;
   transition: color 150ms;
 }
-/* The heavier frame is an inset outline: it takes no space, so selecting a pin never reflows the diagram. */
-.block[data-active='true'] {
-  border-color: var(--accent);
-  outline: 3px solid var(--accent);
-  outline-offset: -3px;
-  color: var(--accent);
+/* A block's layer shows as a heavy top rule and the colour of its technology line. */
+.block[data-layer] {
+  border-top: 4px solid var(--layer);
 }
-.block[data-active='true'] .tech {
-  color: var(--accent);
+.block[data-layer] .tech {
+  color: var(--layer);
+  font-weight: 600;
+}
+/* Selection doubles the ink frame from inside: it takes no space, so selecting a pin never reflows the
+   diagram, and it sits under the top rule, so the layer stays visible. */
+.block[data-active='true'] {
+  box-shadow: inset 0 0 0 1.5px var(--ink);
 }
 .block[data-dimmed='true'] {
   border-color: var(--muted);
+  color: var(--muted);
+}
+.block[data-dimmed='true'] .tech {
   color: var(--muted);
 }
 

@@ -1,6 +1,13 @@
 export type PinId = 'react' | 'typescript' | 'node' | 'nestjs' | 'elasticsearch' | 'mongodb' | 'llm' | 'testing'
+/** Where in the chain a technology sits; each layer has its own colour. */
+export type LayerId = 'frontend' | 'backend' | 'data' | 'ai' | 'testing'
 export interface Pin {
   id: PinId
+  label: string
+  layer: LayerId
+}
+export interface Layer {
+  id: LayerId
   label: string
 }
 export type CaseStudyId = 'ask-your-data' | 'chart-speed' | 'ai-cost-dashboard' | 'one-interface'
