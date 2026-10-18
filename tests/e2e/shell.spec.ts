@@ -107,6 +107,26 @@ test('the phone bar scrolls the marked section into sight', async ({ page }) => 
     .toBe('in view')
 })
 
+test('the phone bar keeps the marked section in sight when its links change width', async ({ page }) => {
+  // A late web font widens the links after the bar was scrolled; the marked link must stay in sight.
+  await page.setViewportSize({ width: 390, height: 844 })
+  await page.goto('')
+  await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight))
+  const link = page.locator('nav[aria-label="Sections"] a[href="#8-ordering-information"]')
+  await expect(link).toHaveAttribute('aria-current', 'location')
+  await page.evaluate(() => {
+    document.querySelectorAll<HTMLElement>('nav[aria-label="Sections"] a').forEach((a) => {
+      a.style.letterSpacing = '1px'
+    })
+  })
+  await expect
+    .poll(async () => {
+      const box = (await link.boundingBox())!
+      return box.x >= 0 && box.x + box.width <= 390 - 4
+    })
+    .toBe(true)
+})
+
 test('at the top of the page the first section is marked, in accent and bold, with no side stripe', async ({
   page,
 }) => {

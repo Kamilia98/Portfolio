@@ -7,16 +7,23 @@ export function SectionIndex() {
   const active = useActiveSection(sections.map((s) => s.id))
   const navRef = useRef<HTMLElement>(null)
 
-  // On a phone the index is a sideways-scrolling bar: keep the marked section in sight.
+  // On a phone the index is a sideways-scrolling bar: keep the marked section in sight, also when the
+  // links change width after the bar was scrolled (the web font arrives after the first render).
   useEffect(() => {
-    const nav = navRef.current
-    const link = nav?.querySelector<HTMLElement>('[aria-current="location"]')
-    if (!nav || !link || nav.scrollWidth <= nav.clientWidth) return
-    const start = link.offsetLeft
-    const end = start + link.offsetWidth
-    if (start < nav.scrollLeft || end > nav.scrollLeft + nav.clientWidth) {
-      nav.scrollTo({ left: start - (nav.clientWidth - link.offsetWidth) / 2 })
+    const nav = navRef.current!
+    const reveal = () => {
+      const link = nav.querySelector<HTMLElement>('[aria-current="location"]')
+      if (!link || nav.scrollWidth <= nav.clientWidth) return
+      const start = link.offsetLeft
+      const end = start + link.offsetWidth
+      if (start < nav.scrollLeft || end > nav.scrollLeft + nav.clientWidth) {
+        nav.scrollTo({ left: start - (nav.clientWidth - link.offsetWidth) / 2 })
+      }
     }
+    reveal()
+    const observer = new ResizeObserver(reveal)
+    observer.observe(nav.firstElementChild!)
+    return () => observer.disconnect()
   }, [active])
 
   return (
