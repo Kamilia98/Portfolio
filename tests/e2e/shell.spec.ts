@@ -85,7 +85,8 @@ test('the phone bar scrolls the marked section into sight', async ({ page }) => 
   await expect
     .poll(async () => {
       const box = (await link.boundingBox())!
-      return box.x >= 0 && box.x + box.width <= 390
+      // The bar's 5px end padding must survive at full scroll, not leave the last link flush with the edge.
+      return box.x >= 0 && box.x + box.width <= 390 - 4
     })
     .toBe(true)
 })
