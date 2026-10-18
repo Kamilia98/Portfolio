@@ -36,7 +36,7 @@ specific, measured work across the whole chain, not a list of technologies.
 
 - Read on a laptop during screening, often on a phone when a link arrives by WhatsApp or LinkedIn.
 - Sits beside the PDF CV in an application; both come from one content source in this repo.
-- Kamilia is based in Cairo and works UK hours for remote roles.
+- Kamilia is based in Cairo, Egypt, and applies for remote roles.
 
 ## Capabilities and Constraints
 

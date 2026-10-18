@@ -5,7 +5,7 @@ export const profile: Profile = {
   fullName: 'Kamilia Ahmed Hamed',
   // No-break spaces keep "React + Node" on one line.
   role: 'Full-stack engineer. React\u00A0+\u00A0Node, end to end.',
-  location: 'Cairo, Egypt · works UK hours',
+  location: 'Cairo, Egypt',
   email: 'kamiliaahmed01@gmail.com',
   linkedin: 'https://www.linkedin.com/in/kamiliaahmed/',
   github: 'https://github.com/Kamilia98',
