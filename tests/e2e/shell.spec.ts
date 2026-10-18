@@ -82,13 +82,29 @@ test('the phone bar scrolls the marked section into sight', async ({ page }) => 
   await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight))
   const link = page.locator('nav[aria-label="Sections"] a[href="#8-ordering-information"]')
   await expect(link).toHaveAttribute('aria-current', 'location')
+  // The bar's 5px end padding must survive at full scroll, not leave the last link flush with the edge.
+  // On failure the received value shows the whole state, not just "false".
   await expect
-    .poll(async () => {
-      const box = (await link.boundingBox())!
-      // The bar's 5px end padding must survive at full scroll, not leave the last link flush with the edge.
-      return box.x >= 0 && box.x + box.width <= 390 - 4
-    })
-    .toBe(true)
+    .poll(() =>
+      page.evaluate(() => {
+        const nav = document.querySelector('nav[aria-label="Sections"]')!
+        const box = nav.querySelector('a[href="#8-ordering-information"]')!.getBoundingClientRect()
+        if (box.left >= 0 && box.right <= 390 - 4) return 'in view'
+        return JSON.stringify({
+          marked: nav.querySelector('[aria-current="location"]')?.getAttribute('href'),
+          left: box.left,
+          right: box.right,
+          barScrollLeft: nav.scrollLeft,
+          barScrollWidth: nav.scrollWidth,
+          barClientWidth: nav.clientWidth,
+          innerWidth: window.innerWidth,
+          scrollY: window.scrollY,
+          innerHeight: window.innerHeight,
+          scrollHeight: document.documentElement.scrollHeight,
+        })
+      }),
+    )
+    .toBe('in view')
 })
 
 test('at the top of the page the first section is marked, in accent and bold, with no side stripe', async ({
