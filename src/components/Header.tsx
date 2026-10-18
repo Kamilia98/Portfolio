@@ -1,5 +1,5 @@
 import { pins, profile } from '../content'
-import { cvHref } from '../lib/links'
+import { cvDownloads, cvHref } from '../lib/links'
 import styles from './Header.module.css'
 
 export function Header() {
@@ -11,7 +11,7 @@ export function Header() {
       {/* No-break spaces inside a label, so the line wraps only between technologies. */}
       <p className={styles.stack}>{pins.map((p) => p.label.replaceAll(' ', '\u00A0')).join(' · ')}</p>
       <div className={styles.links}>
-        <a className={`${styles.button} ${styles.primary}`} href={cvHref} download>
+        <a className={`${styles.button} ${styles.primary}`} href={cvHref} download={cvDownloads}>
           Download CV
         </a>
         <a className={styles.button} href={`mailto:${profile.email}`}>
