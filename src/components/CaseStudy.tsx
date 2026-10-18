@@ -1,4 +1,4 @@
-import { pins as allPins, resultById } from '../content'
+import { pinById, resultById } from '../content'
 import type { CaseStudy as CaseStudyData } from '../content/types'
 import { formatMeasured } from '../lib/results'
 import { usePinSelection } from '../state/pinSelection'
@@ -7,12 +7,15 @@ import styles from './CaseStudy.module.css'
 
 export function CaseStudy({ study }: { study: CaseStudyData }) {
   const { activePin, isActive, isDimmed } = usePinSelection()
-  const stack = study.pins.map((id) => allPins.find((p) => p.id === id)!)
+  const stack = study.pins.map(pinById)
+  const active = isActive(study.pins)
   return (
     <article
       id={study.anchor}
       className={styles.study}
-      data-active={isActive(study.pins) ? 'true' : undefined}
+      // A study that uses the selected pin titles itself in that pin's colour.
+      data-layer={active ? pinById(activePin!).layer : undefined}
+      data-active={active ? 'true' : undefined}
       data-dimmed={isDimmed(study.pins) ? 'true' : undefined}
     >
       <div className={styles.head}>
@@ -53,7 +56,11 @@ export function CaseStudy({ study }: { study: CaseStudyData }) {
         {stack.map((p, i) => (
           <span key={p.id}>
             {i > 0 && ', '}
-            <span className={styles.stackItem} data-active={p.id === activePin ? 'true' : undefined}>
+            <span
+              className={styles.stackItem}
+              data-layer={p.layer}
+              data-active={p.id === activePin ? 'true' : undefined}
+            >
               {p.label}
             </span>
           </span>

@@ -8,20 +8,27 @@
       "ink": { "role": "neutral", "displayName": "Ink Black", "canonical": "#121417", "tonalRamp": ["#000000", "#121417", "#1f2328", "#2b2f36", "#3a3f48", "#4a5160", "#5f6675", "#7a8190"] },
       "muted": { "role": "neutral", "displayName": "Pencil Grey", "canonical": "#4a5160", "tonalRamp": ["#121417", "#2b2f36", "#3a3f48", "#4a5160", "#6a7080", "#8a909c", "#b3b7bf", "#dadde2"] },
       "accent": { "role": "primary", "displayName": "Datasheet Blue", "canonical": "#1d5fbf", "tonalRamp": ["#0b2552", "#113a7c", "#174b9c", "#1d5fbf", "#4a82d1", "#7aa3dd", "#aac3ea", "#dae5f6"] },
-      "fill": { "role": "neutral", "displayName": "Fill Grey", "canonical": "#eef0f3", "tonalRamp": ["#4a5160", "#7a8190", "#a9aeb9", "#cfd3da", "#dfe2e7", "#eef0f3", "#f5f6f8", "#ffffff"] }
+      "fill": { "role": "neutral", "displayName": "Fill Grey", "canonical": "#eef0f3", "tonalRamp": ["#4a5160", "#7a8190", "#a9aeb9", "#cfd3da", "#dfe2e7", "#eef0f3", "#f5f6f8", "#ffffff"] },
+      "on-accent-muted": { "role": "primary", "displayName": "Band Tint", "canonical": "#dce6f7" },
+      "accent-deep": { "role": "primary", "displayName": "Deep Blue", "canonical": "#174c99" },
+      "layer-frontend": { "role": "categorical", "displayName": "Frontend Teal", "canonical": "#0e7490" },
+      "layer-backend": { "role": "categorical", "displayName": "Backend Green", "canonical": "#15803d" },
+      "layer-data": { "role": "categorical", "displayName": "Data Amber", "canonical": "#a16207" },
+      "layer-ai": { "role": "categorical", "displayName": "AI Magenta", "canonical": "#be185d" },
+      "layer-testing": { "role": "categorical", "displayName": "Testing Violet", "canonical": "#6d28d9" }
     },
     "typographyMeta": {
       "name": { "displayName": "Name", "purpose": "The page name only; Archivo at 72% width, 850 weight." },
       "role": { "displayName": "Role", "purpose": "Role line under the name; 90% width." },
       "h2": { "displayName": "Section heading", "purpose": "Numbered sections on a 2px ink rule." },
-      "h3": { "displayName": "Case-study title", "purpose": "Titles of case studies; turn blue when their pin is active." },
+      "h3": { "displayName": "Case-study title", "purpose": "Titles of case studies; take the selected pin's layer colour when they use it." },
       "body": { "displayName": "Body", "purpose": "Prose at normal width, held to 68ch." },
       "small": { "displayName": "Small", "purpose": "Tables, captions, stack line, index links." },
       "label": { "displayName": "Label", "purpose": "Uppercase stage titles in diagrams." }
     },
     "shadows": [],
     "motion": [
-      { "name": "colour-fade", "value": "150ms", "purpose": "Colour and border-colour changes when a pin selects or dims blocks and studies." },
+      { "name": "colour-fade", "value": "150ms", "purpose": "Colour, border-colour and the selected block's inset frame when a pin selects or dims blocks and studies." },
       { "name": "bar-grow", "value": "width 900ms ease-out", "purpose": "The after bar grows to its final length when it enters view; none under reduced motion." }
     ],
     "breakpoints": [
@@ -33,8 +40,9 @@
     "rules": [
       { "name": "hair", "value": "1px", "purpose": "Rows, tables, case-study separators." },
       { "name": "section", "value": "2px", "purpose": "Under section headings, button borders, CV section titles." },
-      { "name": "header", "value": "6px accent", "purpose": "Under the page header and the CV header." },
+      { "name": "header", "value": "6px accent", "purpose": "Under the CV header only; the page heads itself with the blue band." },
       { "name": "diagram", "value": "1.5px", "purpose": "Diagram block frames and connectors." },
+      { "name": "layer", "value": "4px layer colour", "purpose": "Top rule of a diagram block, in the layer colour of its first pin." },
       { "name": "chip", "value": "3px", "purpose": "The pin diagram package chip and the focus ring." }
     ]
   },

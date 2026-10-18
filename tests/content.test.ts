@@ -1,6 +1,15 @@
 import * as content from '../src/content'
 import * as cvContent from '../src/content/cv'
-import { pins, caseStudies, sections, resultById, history } from '../src/content'
+import { pins, layers, layerOf, caseStudies, sections, resultById, history } from '../src/content'
+
+test('every layer in the legend has a pin, and every pin a layer from the legend', () => {
+  expect(new Set(pins.map((p) => p.layer))).toEqual(new Set(layers.map((l) => l.id)))
+})
+
+test('a block takes the layer of its first pin, and a block with no pins has none', () => {
+  expect(layerOf(['nestjs', 'typescript'])).toBe('backend')
+  expect(layerOf([])).toBeUndefined()
+})
 
 test('pin ids referenced by case studies and blocks exist', () => {
   const ids = new Set(pins.map((p) => p.id))
@@ -61,7 +70,7 @@ test('no banned client or account names anywhere in the content', () => {
   }
   for (const [name, value] of Object.entries(content)) {
     if (typeof value !== 'function') walk(value)
-    else expect(name).toBe('resultById')
+    else expect(['resultById', 'pinById', 'layerOf']).toContain(name)
   }
   walk(Object.values(cvContent))
 })

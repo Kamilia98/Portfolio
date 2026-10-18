@@ -1,3 +1,4 @@
+import { layerOf } from '../content'
 import type { Diagram } from '../content/types'
 import { usePinSelection } from '../state/pinSelection'
 import styles from './BlockDiagram.module.css'
@@ -19,6 +20,7 @@ export function BlockDiagram({ diagram }: { diagram: Diagram }) {
                   <li
                     key={block.id}
                     className={styles.block}
+                    data-layer={layerOf(block.pins)}
                     data-active={isActive(block.pins) ? 'true' : undefined}
                     data-dimmed={isDimmed(block.pins) ? 'true' : undefined}
                   >

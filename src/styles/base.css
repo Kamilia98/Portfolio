@@ -67,6 +67,23 @@ body {
   outline-offset: 2px;
 }
 
+/* Anything that names a layer draws in that layer's colour through --layer. */
+[data-layer='frontend'] {
+  --layer: var(--layer-frontend);
+}
+[data-layer='backend'] {
+  --layer: var(--layer-backend);
+}
+[data-layer='data'] {
+  --layer: var(--layer-data);
+}
+[data-layer='ai'] {
+  --layer: var(--layer-ai);
+}
+[data-layer='testing'] {
+  --layer: var(--layer-testing);
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

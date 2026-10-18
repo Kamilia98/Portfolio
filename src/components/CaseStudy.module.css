@@ -27,12 +27,21 @@
   line-height: 1.2;
   transition: color 150ms;
 }
-.study[data-active='true'] .title,
-.stackItem[data-active='true'] {
-  color: var(--accent);
+.study[data-active='true'] .title {
+  color: var(--layer);
 }
 .stackItem {
+  color: var(--layer);
+  font-weight: 600;
   transition: color 150ms;
+}
+.stackItem[data-active='true'] {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+.study[data-dimmed='true'] .stackItem {
+  color: var(--muted);
 }
 .status {
   margin: 0;

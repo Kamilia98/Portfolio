@@ -5,6 +5,17 @@
   --accent: #1d5fbf;
   --fill: #eef0f3;
 
+  /* On the blue header band: secondary text tinted from the blue, and the pressed button face. */
+  --on-accent-muted: #dce6f7;
+  --accent-deep: #174c99;
+
+  /* One colour per layer of the chain, each at least 4.5:1 on paper. */
+  --layer-frontend: #0e7490;
+  --layer-backend: #15803d;
+  --layer-data: #a16207;
+  --layer-ai: #be185d;
+  --layer-testing: #6d28d9;
+
   --font: 'Archivo Variable', Arial, sans-serif;
   --rule-hair: 1px;
   --rule-section: 2px;
