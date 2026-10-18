@@ -39,9 +39,10 @@ describe('CvDocument', () => {
     expect(li.textContent).not.toContain('Dialog components')
   })
 
-  it('writes the frontend build bullet as label: value (change)', () => {
+  it('lists only the case studies under the job', () => {
     render(<CvDocument />)
-    expect(screen.getByText('Frontend image build: 89 s → 52 s (−42%).')).toBeInTheDocument()
+    const job = screen.getByRole('heading', { level: 3 })
+    expect(job.nextElementSibling!.querySelectorAll('li')).toHaveLength(caseStudies.length)
   })
 
   it('shows a place after the period only where the history entry names one', () => {
@@ -50,9 +51,9 @@ describe('CvDocument', () => {
     expect(screen.getByText('Oct 2024 – Jul 2025')).toBeInTheDocument()
   })
 
-  it('mentions the commit count once', () => {
+  it('has no build time, site speed fix or commit count bullet', () => {
     const { container } = render(<CvDocument />)
-    expect(container.textContent!.match(/4,400/g)).toHaveLength(1)
+    expect(container.textContent).not.toMatch(/Frontend image build|17 production errors|4,400/)
   })
 
   it('heads the experience from the history entry, the job before its period', () => {

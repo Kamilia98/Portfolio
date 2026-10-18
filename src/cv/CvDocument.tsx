@@ -1,5 +1,5 @@
 import { caseStudies, earlierWork, history, profile, resultById } from '../content'
-import { cvHighlights, cvPhone, cvSkills } from '../content/cv'
+import { cvPhone, cvSkills } from '../content/cv'
 import type { CaseStudy, HistoryEntry, Result } from '../content/types'
 import { formatMeasured } from '../lib/results'
 
@@ -67,10 +67,6 @@ export function CvDocument() {
               <strong>{c.title}:</strong> {c.cv}
               {resultsSentence(c)}
             </li>
-          ))}
-          <li>{resultText(resultById('frontend-build'))}.</li>
-          {cvHighlights.map((h) => (
-            <li key={h}>{h}</li>
           ))}
         </ul>
       </section>
