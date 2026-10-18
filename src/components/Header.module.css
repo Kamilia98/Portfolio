@@ -1,0 +1,88 @@
+.header {
+  padding-bottom: calc(var(--space) * 4);
+  border-bottom: var(--rule-header) solid var(--accent);
+}
+
+.name {
+  margin: 0;
+  font-size: var(--size-name);
+  font-stretch: 72%;
+  font-weight: 850;
+  line-height: 0.9;
+  overflow-wrap: anywhere;
+}
+
+.role {
+  margin: calc(var(--space) * 2) 0 0;
+  font-size: 1.75rem;
+  font-stretch: 90%;
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+.location {
+  margin: var(--space) 0 0;
+  color: var(--muted);
+}
+
+.stack {
+  margin: calc(var(--space) / 2) 0 0;
+  color: var(--muted);
+  font-size: var(--size-small);
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--space) * 1.5);
+  margin-top: calc(var(--space) * 3);
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 calc(var(--space) * 2.5);
+  border: 2px solid var(--ink);
+  color: var(--ink);
+  font-weight: 700;
+  text-decoration: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.primary {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .button:hover {
+    background: var(--fill);
+  }
+
+  .primary:hover {
+    background: var(--ink);
+    text-decoration: underline;
+  }
+}
+
+.button:active {
+  background: var(--fill);
+}
+
+.primary:active {
+  background: var(--ink);
+  text-decoration: underline;
+}
+
+/* On a phone the header gives back some height, so the first Features row fits the first screen. */
+@media (max-width: 639px) {
+  .header {
+    padding-bottom: calc(var(--space) * 3);
+  }
+
+  .links {
+    margin-top: calc(var(--space) * 2);
+  }
+}

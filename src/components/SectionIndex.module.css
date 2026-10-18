@@ -1,0 +1,90 @@
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  height: 56px;
+  background: var(--paper);
+  border-bottom: var(--rule-hair) solid var(--ink);
+  padding: 5px;
+  overflow-x: auto;
+  /* A swipe that reaches the end of the bar must not become a back gesture. */
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--muted) transparent;
+}
+
+.list {
+  display: flex;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  flex: none;
+}
+
+.link {
+  display: grid;
+  align-content: center;
+  height: 100%;
+  padding: 0 calc(var(--space) * 2);
+  color: var(--ink);
+  font-size: var(--size-small);
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* An invisible bold copy holds each link at its bold width, so marking a section never shifts the bar. */
+.link::after {
+  content: attr(data-label) / '';
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  font-weight: 800;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .link:hover {
+    text-decoration: underline;
+  }
+}
+
+/* Phone bar: accent, bold and a 2px accent underline. */
+.link[aria-current='location'] {
+  color: var(--accent);
+  font-weight: 800;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+}
+
+@media (min-width: 1024px) {
+  .nav {
+    top: calc(var(--space) * 6);
+    height: auto;
+    align-self: start;
+    border-bottom: 0;
+    padding: 0;
+    overflow: visible;
+  }
+
+  .list {
+    display: block;
+  }
+
+  .link {
+    height: auto;
+    padding: var(--space) 0;
+    white-space: normal;
+  }
+
+  /* Index column: accent and bold only. */
+  .link[aria-current='location'] {
+    text-decoration: none;
+  }
+}

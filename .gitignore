@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.impeccable/mocks/
+.impeccable/review/
+test-results/
+playwright-report/
+*.tsbuildinfo

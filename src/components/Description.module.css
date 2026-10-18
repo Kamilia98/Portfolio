@@ -1,0 +1,4 @@
+.text {
+  margin: 0;
+  max-width: var(--measure);
+}

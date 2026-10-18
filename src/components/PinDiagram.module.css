@@ -1,0 +1,128 @@
+.diagram {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 16px;
+}
+.side {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.chip {
+  display: none;
+}
+.pin {
+  display: flex;
+  align-items: flex-start;
+  min-width: 0;
+}
+/* Centred on the label's first line, so a label that wraps keeps its lead. */
+.lead {
+  --lead: 3px;
+  display: none;
+  flex: none;
+  width: 28px;
+  height: var(--lead);
+  margin-top: calc(4px + var(--line-body) * 0.5em - var(--lead) / 2);
+  background: var(--ink);
+  transition: background-color 150ms;
+}
+.label {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.button {
+  appearance: none;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  margin: 0;
+  padding: 4px 0;
+  font: inherit;
+  font-weight: 600;
+  color: var(--ink);
+  text-align: start;
+  cursor: pointer;
+  min-height: 24px;
+  transition: color 150ms;
+}
+.count {
+  font-size: 0.8125rem;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+.active .button {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+.active .lead {
+  background: var(--accent);
+}
+.dimmed .button {
+  color: var(--muted);
+}
+.dimmed .lead {
+  --lead: var(--rule-hair);
+  background: var(--muted);
+}
+.hint {
+  margin: 16px 0 0;
+  color: var(--muted);
+  font-size: var(--size-small);
+}
+/* A study's number and title stay together when the readout wraps. */
+.hint a {
+  white-space: nowrap;
+}
+
+@media (min-width: 640px) {
+  .diagram {
+    grid-template-columns: 1fr 240px 1fr;
+    gap: 0;
+    align-items: center;
+  }
+  .chip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 240px;
+    height: 260px;
+    border: 3px solid var(--ink);
+    font-stretch: 75%;
+    font-weight: 800;
+    font-size: 1.75rem;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 0 16px;
+  }
+  .side {
+    gap: 24px;
+  }
+  .lead {
+    display: block;
+  }
+  .left .pin {
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+  }
+  .left .label {
+    align-items: flex-end;
+  }
+  .left .button {
+    text-align: end;
+  }
+  .right .label {
+    align-items: flex-start;
+  }
+  .left .pin,
+  .right .pin {
+    width: 100%;
+  }
+}

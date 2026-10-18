@@ -1,0 +1,32 @@
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  max-width: var(--measure);
+}
+
+.row {
+  padding: calc(var(--space) * 1.5) 0;
+  border-top: var(--rule-hair) solid var(--ink);
+}
+
+/* The section heading's rule already sits above the first row. */
+.row:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.row:last-child {
+  border-bottom: var(--rule-hair) solid var(--ink);
+}
+
+.title {
+  font-weight: 800;
+  color: var(--ink);
+}
+
+/* Every row ends with its checkable figure on a line of its own. */
+.result {
+  display: block;
+  font-variant-numeric: tabular-nums;
+}

@@ -1,0 +1,151 @@
+.figure {
+  margin: 0 0 calc(var(--space) * 3);
+  container-type: inline-size;
+}
+.caption {
+  margin-bottom: calc(var(--space) * 1.5);
+  color: var(--muted);
+  font-size: var(--size-small);
+}
+
+/* The connector between two stages is drawn, not typed: a 1.5px ink line (::before) ending in an
+   arrowhead (::after, two borders of a square turned to point the way). Column layout: downwards,
+   centred in the 32px gap above the stage. Row layout overrides the geometry below. */
+.stages {
+  --line-x: calc(50% - 0.75px);
+  --line-y: -28px;
+  --line-w: 1.5px;
+  --line-h: 22px;
+  --head-x: calc(50% - 4px);
+  --head-y: -14px;
+  --head-turn: 135deg;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  max-width: 30rem;
+}
+.stage {
+  position: relative;
+  min-width: 0;
+}
+.stage + .stage::before,
+.stage + .stage::after {
+  content: '';
+  position: absolute;
+}
+.stage + .stage::before {
+  left: var(--line-x);
+  top: var(--line-y);
+  width: var(--line-w);
+  height: var(--line-h);
+  background: var(--ink);
+}
+.stage + .stage::after {
+  left: var(--head-x);
+  top: var(--head-y);
+  width: 8px;
+  height: 8px;
+  border-top: 1.5px solid var(--ink);
+  border-right: 1.5px solid var(--ink);
+  transform: rotate(var(--head-turn));
+}
+.stageTitle {
+  margin: 0 0 var(--space);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.blocks {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space);
+}
+.block {
+  border: 1.5px solid var(--ink);
+  padding: var(--space) calc(var(--space) * 1.5);
+  font-size: var(--size-small);
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+  transition:
+    color 150ms,
+    border-color 150ms;
+}
+.what,
+.tech {
+  display: block;
+}
+.tech {
+  color: var(--muted);
+  font-size: 0.8125rem;
+  transition: color 150ms;
+}
+/* The heavier frame is an inset outline: it takes no space, so selecting a pin never reflows the diagram. */
+.block[data-active='true'] {
+  border-color: var(--accent);
+  outline: 3px solid var(--accent);
+  outline-offset: -3px;
+  color: var(--accent);
+}
+.block[data-active='true'] .tech {
+  color: var(--accent);
+}
+.block[data-dimmed='true'] {
+  border-color: var(--muted);
+  color: var(--muted);
+}
+
+/* A row only when every stage gets about 140px: up to 3 stages from 500px, up to 5 from 860px.
+   Longer pipelines stay a column at every width. The connector turns to point right, centred in
+   the 40px gap at the stage's mid-height. */
+@container (min-width: 500px) {
+  .stages:not(:has(> :nth-child(4))) {
+    --line-x: -32px;
+    --line-y: calc(50% - 0.75px);
+    --line-w: 22px;
+    --line-h: 1.5px;
+    --head-x: -18px;
+    --head-y: calc(50% - 4px);
+    --head-turn: 45deg;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
+    gap: 0 40px;
+    max-width: none;
+  }
+  .stages:not(:has(> :nth-child(4))) > .stage {
+    display: grid;
+    grid-row: span 2;
+    grid-template-rows: subgrid;
+  }
+}
+@container (min-width: 860px) {
+  .stages:not(:has(> :nth-child(6))) {
+    --line-x: -32px;
+    --line-y: calc(50% - 0.75px);
+    --line-w: 22px;
+    --line-h: 1.5px;
+    --head-x: -18px;
+    --head-y: calc(50% - 4px);
+    --head-turn: 45deg;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
+    gap: 0 40px;
+    max-width: none;
+  }
+  .stages:not(:has(> :nth-child(6))) > .stage {
+    display: grid;
+    grid-row: span 2;
+    grid-template-rows: subgrid;
+  }
+}

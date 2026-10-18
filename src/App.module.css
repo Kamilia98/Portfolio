@@ -1,0 +1,22 @@
+/* svh: on a phone 100vh is the height with the URL bar hidden, taller than what is visible. */
+.page {
+  min-height: 100svh;
+}
+
+.main {
+  max-width: 920px;
+  padding: calc(var(--space) * 3) 20px calc(var(--space) * 12);
+}
+
+@media (min-width: 1024px) {
+  .page {
+    display: grid;
+    grid-template-columns: 220px minmax(0, 920px);
+    gap: 64px;
+    padding: 48px;
+  }
+
+  .main {
+    padding: 0 0 calc(var(--space) * 12);
+  }
+}

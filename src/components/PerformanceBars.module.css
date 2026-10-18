@@ -1,0 +1,60 @@
+.bars {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--space) * 3);
+}
+.row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--space) calc(var(--space) * 2);
+  align-items: end;
+}
+.label {
+  grid-column: 1 / -1;
+  font-weight: 700;
+}
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+.line {
+  display: flex;
+  align-items: center;
+  gap: var(--space);
+}
+.value {
+  flex: none;
+  width: 4.5em;
+  font-size: var(--size-small);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+.track {
+  flex: 1;
+  min-width: 0;
+  height: 14px;
+  display: block;
+}
+.afterTrack {
+  background: var(--fill);
+}
+.before,
+.after {
+  display: block;
+  height: 14px;
+}
+.before {
+  width: 100%;
+  background: var(--ink);
+}
+.after {
+  background: var(--accent);
+  transition: width 900ms ease-out;
+}
+.change {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
